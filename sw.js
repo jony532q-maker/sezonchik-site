@@ -1,4 +1,5 @@
-СЕЗОНЩИК 5.0 — полный каталог
-
-Откройте index.html.
-В каталог добавлено 35 моделей с фотографиями, ценами, поиском и фильтрами.
+const CACHE='sezonchik-v4';
+const CORE=['./','./index.html','./style.css','./script.js','./manifest.webmanifest'];
+self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE))));
+self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))))));
+self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));
