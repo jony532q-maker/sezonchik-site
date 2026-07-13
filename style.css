@@ -72,3 +72,16 @@
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 
 .selection-cta{padding:0 0 90px}.selection-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:35px;padding:34px 38px;border:1px solid rgba(167,240,0,.28);border-radius:22px;background:linear-gradient(135deg,rgba(167,240,0,.09),rgba(255,255,255,.02))}.selection-cta h2{font-size:clamp(28px,4vw,46px);line-height:1.05;margin:7px 0 10px}.selection-cta p{margin:0;color:var(--muted);max-width:680px}.selection-cta .btn{flex:0 0 auto}.load-more-wrap{text-align:center;margin-top:28px}.load-more-wrap[hidden]{display:none}.load-more-wrap .btn{min-width:210px}@media(max-width:680px){.selection-cta{padding-bottom:62px}.selection-cta-inner{display:block;padding:26px}.selection-cta .btn{width:100%;margin-top:22px}}
+
+
+/* v3 final: buyer guide and resilience */
+.bike-guide{background:linear-gradient(180deg,#0d1013,#090b0d)}
+.guide-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.guide-grid article{padding:26px;border:1px solid var(--line);border-radius:20px;background:var(--card)}
+.guide-grid b{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:13px;background:rgba(167,240,0,.12);color:var(--green);font-size:14px}
+.guide-grid h3{margin:18px 0 10px;font-size:20px}.guide-grid p{margin:0;color:var(--muted);line-height:1.65}
+.guide-cta{margin-top:22px;padding:24px 28px;border:1px solid rgba(167,240,0,.3);border-radius:20px;background:linear-gradient(135deg,rgba(167,240,0,.1),rgba(255,255,255,.02));display:flex;align-items:center;justify-content:space-between;gap:24px}
+.guide-cta h3{margin:0 0 6px}.guide-cta p{margin:0;color:var(--muted)}
+.noscript{position:fixed;left:12px;right:12px;bottom:12px;z-index:999;padding:14px 16px;border-radius:12px;background:#fff;color:#111;text-align:center;font-weight:700;box-shadow:0 10px 40px #0008}
+@media(max-width:900px){.guide-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.guide-grid{grid-template-columns:1fr}.guide-cta{display:block}.guide-cta .btn{width:100%;margin-top:18px}}
