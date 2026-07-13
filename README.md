@@ -7,17 +7,6 @@
   <meta name="description" content="Велосипеды и электросамокаты в Хабаровске. Подбор по росту, сборка, настройка и гарантия. Магазин «Сезонщик», ул. Зелёная, 10.">
   <meta name="theme-color" content="#0a0b0d">
   <link rel="canonical" href="https://sezonchik27.ru/">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="ru_RU">
-  <meta property="og:site_name" content="Сезонщик">
-  <meta property="og:title" content="Сезонщик — велосипеды в Хабаровске">
-  <meta property="og:description" content="Взрослые, подростковые и детские велосипеды. Подбор по росту, сборка, настройка и гарантия.">
-  <meta property="og:url" content="https://sezonchik27.ru/">
-  <meta property="og:image" content="https://sezonchik27.ru/assets/customers/customer-02.webp">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="preload" as="image" href="assets/photo-6.webp" fetchpriority="high">
-  <link rel="canonical" href="https://sezonchik27.ru/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:title" content="Сезонщик — велосипеды и электросамокаты в Хабаровске">
@@ -29,34 +18,8 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"SportingGoodsStore","name":"Сезонщик","url":"https://sezonchik27.ru/","image":"https://sezonchik27.ru/assets/customers/customer-02.webp","address":{"@type":"PostalAddress","streetAddress":"ул. Зелёная, 10, офис 207А","addressLocality":"Хабаровск","addressCountry":"RU"},"openingHours":"Mo-Su 11:00-19:00","sameAs":["https://t.me/sezonchik_27"]}</script>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="style.css">
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"SportingGoodsStore",
-    "name":"Сезонщик",
-    "url":"https://sezonchik27.ru/",
-    "image":"https://sezonchik27.ru/assets/customers/customer-02.webp",
-    "description":"Магазин велосипедов и электросамокатов в Хабаровске. Подбор по росту, сборка, настройка и гарантия.",
-    "address":{"@type":"PostalAddress","streetAddress":"ул. Зелёная, 10, 2 этаж, офис 207А","addressLocality":"Хабаровск","addressCountry":"RU"},
-    "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"11:00","closes":"19:00"}],
-    "sameAs":["https://t.me/sezonchik_27","https://t.me/sezonchik_dv"],
-    "priceRange":"₽₽"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":"Велосипед выдаётся собранным?","acceptedAnswer":{"@type":"Answer","text":"Да. Перед выдачей велосипед собирают, настраивают тормоза и переключатели, проверяют основные узлы."}},
-      {"@type":"Question","name":"Можно подобрать велосипед по росту?","acceptedAnswer":{"@type":"Answer","text":"Да. На сайте есть быстрый подбор, а продавец поможет окончательно выбрать размер колёс и посадку."}},
-      {"@type":"Question","name":"Цены и наличие актуальны?","acceptedAnswer":{"@type":"Answer","text":"Ассортимент и цвета могут меняться, поэтому наличие конкретной модели лучше уточнить перед поездкой."}}
-    ]
-  }
-  </script>
 </head>
 <body>
-  <a class="skip-link" href="#catalog">Перейти к каталогу</a>
   <header class="site-header" id="top">
     <div class="container nav-wrap">
       <a class="logo" href="#top" aria-label="Сезонщик — на главную">СЕЗОН<span>ЩИК</span></a>
@@ -173,7 +136,7 @@
   <footer><div class="container footer"><a class="logo" href="#top">СЕЗОН<span>ЩИК</span></a><p>Велосипеды и электросамокаты в Хабаровске</p><span>© 2026</span></div></footer>
 
   <div class="floating"><a href="https://t.me/sezonchik_dv" target="_blank" rel="noopener" aria-label="Telegram">✈</a><a href="#top" aria-label="Наверх">↑</a></div>
-  <nav class="bottom-cta" aria-label="Быстрые действия"><a href="#catalog"><span>🚲</span>Каталог</a><a class="primary" href="https://t.me/sezonchik_dv" target="_blank" rel="noopener"><span>✈</span>Написать</a><a href="https://yandex.ru/maps/?text=Хабаровск%2C%20Зелёная%2010" target="_blank" rel="noopener"><span>📍</span>Маршрут</a></nav>
+  <div class="bottom-cta"><a href="https://t.me/sezonchik_dv" target="_blank" rel="noopener">Написать в Telegram</a></div>
 
   <div class="modal" id="productModal" aria-hidden="true"><div class="modal-panel"><button class="modal-close" type="button">×</button><div id="modalContent"></div></div></div>
   <div class="compare-bar" id="compareBar"><span>Выбрано для сравнения: <b id="compareCount">0</b>/3</span><a href="#compare">Сравнить</a><button id="compareClear" type="button">Очистить</button></div>
