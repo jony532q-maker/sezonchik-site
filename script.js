@@ -75,5 +75,24 @@ function toggleCompare(id){if(compareIds.includes(id))compareIds=compareIds.filt
 function renderCompare(){const items=products.filter(p=>compareIds.includes(p.id));document.getElementById('compareCount').textContent=items.length;document.getElementById('compareBar').classList.toggle('open',items.length>0);document.getElementById('compareEmpty').style.display=items.length?'none':'block';const wrap=document.getElementById('compareTableWrap');if(!items.length){wrap.innerHTML='';return}const rows=[['Фото',...items.map(p=>`<img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" fetchpriority="low">`)],['Модель',...items.map(p=>`<b>${p.name}</b>`)],["Цена",...items.map(p=>`<span class="price">${money(p.price)}</span>`)],["Колёса",...items.map(p=>p.wheel+'”')],["Рама",...items.map(p=>p.material==='aluminum'?'Алюминий':p.material==='steel'?'Сталь':p.material==='magnesium'?'Магниевый сплав':'Не указано')],["Особенности",...items.map(p=>p.specs.join('<br>'))],["",...items.map(p=>`<button onclick="toggleCompare(${p.id})">Убрать</button>`)]];wrap.innerHTML=`<table class="compare-table"><tbody>${rows.map(r=>`<tr>${r.map((c,i)=>i?`<td>${c}</td>`:`<th>${c}</th>`).join('')}</tr>`).join('')}</tbody></table>`}
 document.getElementById('compareClear').onclick=()=>{compareIds=[];localStorage.removeItem('sezonchik-compare');renderCompare();renderProducts()};
 
+
+// Цели Яндекс.Метрики: помогают отличать обычные просмотры от обращений покупателей.
+function reachGoal(name,params){try{if(typeof ym==='function')ym(110645856,'reachGoal',name,params||{});}catch(e){}}
+document.addEventListener('click',event=>{
+  const link=event.target.closest('a');
+  if(link){
+    const href=link.getAttribute('href')||'';
+    if(href.includes('t.me/sezonchik_dv'))reachGoal('telegram_contact',{href});
+    else if(href.includes('t.me/sezonchik_27'))reachGoal('telegram_channel',{href});
+    else if(href.includes('yandex.ru/maps'))reachGoal('build_route',{href});
+    else if(href==='#catalog')reachGoal('catalog_open');
+  }
+  if(event.target.closest('[data-detail]'))reachGoal('product_open');
+  if(event.target.closest('[data-fav]'))reachGoal('favorite_click');
+  if(event.target.closest('[data-compare]'))reachGoal('compare_click');
+});
+const pickerForm=document.getElementById('bikePicker');
+if(pickerForm)pickerForm.addEventListener('submit',()=>reachGoal('picker_complete'));
+
 renderCompare();
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});updateFavCount();renderProducts();
