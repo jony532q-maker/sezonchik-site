@@ -1,1 +1,184 @@
-# sezonchik-site
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Сезонщик — велосипеды и электросамокаты в Хабаровске</title>
+  <meta name="description" content="Велосипеды и электросамокаты в Хабаровске. Подбор по росту, сборка, настройка и гарантия. Магазин «Сезонщик», ул. Зелёная, 10.">
+  <meta name="theme-color" content="#0a0b0d">
+  <link rel="canonical" href="https://sezonchik27.ru/">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Сезонщик">
+  <meta property="og:title" content="Сезонщик — велосипеды в Хабаровске">
+  <meta property="og:description" content="Взрослые, подростковые и детские велосипеды. Подбор по росту, сборка, настройка и гарантия.">
+  <meta property="og:url" content="https://sezonchik27.ru/">
+  <meta property="og:image" content="https://sezonchik27.ru/assets/customers/customer-02.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" as="image" href="assets/photo-6.webp" fetchpriority="high">
+  <link rel="canonical" href="https://sezonchik27.ru/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Сезонщик — велосипеды и электросамокаты в Хабаровске">
+  <meta property="og:description" content="Подбор по росту, сборка, настройка и гарантия. Хабаровск, ул. Зелёная, 10.">
+  <meta property="og:url" content="https://sezonchik27.ru/">
+  <meta property="og:image" content="https://sezonchik27.ru/assets/customers/customer-02.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SportingGoodsStore","name":"Сезонщик","url":"https://sezonchik27.ru/","image":"https://sezonchik27.ru/assets/customers/customer-02.webp","address":{"@type":"PostalAddress","streetAddress":"ул. Зелёная, 10, офис 207А","addressLocality":"Хабаровск","addressCountry":"RU"},"openingHours":"Mo-Su 11:00-19:00","sameAs":["https://t.me/sezonchik_27"]}</script>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SportingGoodsStore",
+    "name":"Сезонщик",
+    "url":"https://sezonchik27.ru/",
+    "image":"https://sezonchik27.ru/assets/customers/customer-02.webp",
+    "description":"Магазин велосипедов и электросамокатов в Хабаровске. Подбор по росту, сборка, настройка и гарантия.",
+    "address":{"@type":"PostalAddress","streetAddress":"ул. Зелёная, 10, 2 этаж, офис 207А","addressLocality":"Хабаровск","addressCountry":"RU"},
+    "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"11:00","closes":"19:00"}],
+    "sameAs":["https://t.me/sezonchik_27","https://t.me/sezonchik_dv"],
+    "priceRange":"₽₽"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Велосипед выдаётся собранным?","acceptedAnswer":{"@type":"Answer","text":"Да. Перед выдачей велосипед собирают, настраивают тормоза и переключатели, проверяют основные узлы."}},
+      {"@type":"Question","name":"Можно подобрать велосипед по росту?","acceptedAnswer":{"@type":"Answer","text":"Да. На сайте есть быстрый подбор, а продавец поможет окончательно выбрать размер колёс и посадку."}},
+      {"@type":"Question","name":"Цены и наличие актуальны?","acceptedAnswer":{"@type":"Answer","text":"Ассортимент и цвета могут меняться, поэтому наличие конкретной модели лучше уточнить перед поездкой."}}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#catalog">Перейти к каталогу</a>
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="logo" href="#top" aria-label="Сезонщик — на главную">СЕЗОН<span>ЩИК</span></a>
+      <nav class="desktop-nav" aria-label="Основная навигация">
+        <a href="#catalog">Каталог</a><a href="#picker">Подбор</a><a href="#compare">Сравнение</a><a href="#buyers">Покупатели</a><a href="#gift">Подарки</a><a href="#benefits">Преимущества</a><a href="#contacts">Контакты</a>
+      </nav>
+      <div class="header-actions"><button class="icon-btn favorites-open" type="button" aria-label="Избранное">♡ <span id="favCount">0</span></button><a class="btn btn-primary desktop-cta" href="https://t.me/sezonchik_dv" target="_blank" rel="noopener">Telegram</a><button class="menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false">☰</button></div>
+    </div>
+    <div class="mobile-nav"><a href="#catalog">Каталог</a><a href="#picker">Подбор</a><a href="#compare">Сравнение</a><a href="#buyers">Покупатели</a><a href="#gift">Подарки</a><a href="#contacts">Контакты</a></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-bg"></div><div class="hero-shade"></div>
+      <div class="container hero-content reveal">
+        <span class="pill">Магазин велосипедов в Хабаровске</span>
+        <h1>ТВОЙ СЕЗОН<br><em>НАЧИНАЕТСЯ ЗДЕСЬ</em></h1>
+        <p>Взрослые, подростковые и детские велосипеды, BMX и электросамокаты. Подберём модель под рост, задачи и бюджет.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#catalog">Смотреть каталог</a><a class="btn btn-ghost" href="#picker">Подобрать за 30 секунд</a></div>
+        <div class="hero-points"><span>✓ Сборка и настройка</span><span>✓ Гарантия</span><span>✓ Без выходных</span></div>
+      </div>
+      <a class="scroll-down" href="#stats" aria-label="Прокрутить вниз">↓</a>
+    </section>
+
+    <section class="stats" id="stats"><div class="container stats-grid"><div><strong>300+</strong><span>велосипедов в наличии</span></div><div><strong>1 500+</strong><span>довольных покупателей</span></div><div><strong>11:00–19:00</strong><span>ежедневно</span></div><div><strong>Зелёная, 10</strong><span>Хабаровск</span></div></div></section>
+
+    <section class="section categories">
+      <div class="container">
+        <div class="heading reveal"><div><span class="eyebrow">КАТЕГОРИИ</span><h2>Выберите свой велосипед</h2></div><p>Реальные фотографии покупателей и живой ассортимент магазина.</p></div>
+        <div class="category-grid">
+          <a class="category-card reveal" href="#catalog" data-category-jump="adult"><img loading="eager" fetchpriority="high" decoding="async" src="assets/customers/customer-02.webp" alt="Взрослые велосипеды"><div class="category-overlay"></div><div><small>26 • 27,5 • 29 колёса</small><h3>Взрослые</h3><span>Смотреть модели →</span></div></a>
+          <a class="category-card reveal" href="#catalog" data-category-jump="teen"><img loading="lazy" decoding="async" src="assets/customers/customer-11.webp" alt="Подростковые велосипеды"><div class="category-overlay"></div><div><small>20 • 24 • 26 колёса</small><h3>Подростковые</h3><span>Смотреть модели →</span></div></a>
+          <a class="category-card reveal" href="#catalog" data-category-jump="child"><img loading="lazy" decoding="async" src="assets/customers/customer-19.webp" alt="Детские велосипеды"><div class="category-overlay"></div><div><small>12 • 14 • 16 • 18 колёса</small><h3>Детские</h3><span>Смотреть модели →</span></div></a>
+          <a class="category-card reveal" href="#catalog" data-category-jump="scooter"><img loading="lazy" decoding="async" src="assets/photo-6.webp" alt="Электросамокаты"><div class="category-overlay"></div><div><small>Для города и прогулок</small><h3>Электросамокаты</h3><span>Смотреть модели →</span></div></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section catalog-section" id="catalog">
+      <div class="container">
+        <div class="heading reveal"><div><span class="eyebrow">КАТАЛОГ</span><h2>Весь ассортимент велосипедов</h2></div><p>35 реальных моделей с фотографиями, ценами и характеристиками. Наличие уточняйте у продавца.</p></div>
+        <div class="catalog-toolbar reveal">
+          <div class="catalog-search-wrap"><input id="catalogSearch" class="catalog-search" type="search" placeholder="Поиск: Tulun, Shimano, литые диски…" aria-label="Поиск по каталогу"><span id="catalogCount">Найдено моделей: 35</span></div>
+          <div class="filter-row" id="categoryFilters"><button class="filter active" data-filter="all">Все</button><button class="filter" data-filter="adult">Взрослые</button><button class="filter" data-filter="teen">Подростковые</button><button class="filter" data-filter="child">Детские</button><button class="filter" data-filter="bmx">BMX</button><button class="filter" data-filter="stunt">Трюковые</button></div>
+          <div class="catalog-controls"><select id="wheelFilter" aria-label="Размер колёс"><option value="all">Все колёса</option><option value="16">16”</option><option value="20">20”</option><option value="22">22”</option><option value="24">24”</option><option value="26">26”</option><option value="27.5">27,5”</option><option value="29">29”</option></select><select id="materialFilter" aria-label="Материал рамы"><option value="all">Любая рама</option><option value="aluminum">Алюминий</option><option value="steel">Сталь</option><option value="magnesium">Магниевый сплав</option><option value="other">Не указано</option></select><select id="sortFilter" aria-label="Сортировка"><option value="popular">По умолчанию</option><option value="priceAsc">Цена: по возрастанию</option><option value="priceDesc">Цена: по убыванию</option></select></div>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+        <div class="catalog-note">Ассортимент и цвета могут меняться. Не нашли нужную модель? <a href="https://t.me/sezonchik_dv?text=Здравствуйте!%20Помогите%20подобрать%20велосипед" target="_blank" rel="noopener">Напишите продавцу — подберём из полного ассортимента.</a></div>
+      </div>
+    </section>
+
+    <section class="section picker-section" id="picker"><div class="container picker-layout"><div class="picker-copy reveal"><span class="eyebrow">УМНЫЙ ПОДБОР</span><h2>Подберём велосипед за 30 секунд</h2><p>Укажите рост, категорию, бюджет и стиль катания. Сайт покажет подходящие модели из реального каталога.</p><form id="bikePicker"><label>Рост, см<input id="height" type="number" min="90" max="210" placeholder="Например, 165" required></label><label>Для кого<select id="rider"><option value="adult">Взрослый</option><option value="teen">Подросток</option><option value="child">Ребёнок</option><option value="bmx">BMX / трюки</option></select></label><label>Бюджет<select id="budget"><option value="15000">До 15 000 ₽</option><option value="20000">До 20 000 ₽</option><option value="25000">До 25 000 ₽</option><option value="999999">Без ограничения</option></select></label><label>Где будете кататься?<select id="rideStyle"><option value="universal">Универсально</option><option value="city">Город и парк</option><option value="offroad">Грунтовые дороги</option><option value="stunt">Трюки / стант</option></select></label><button class="btn btn-primary" type="submit">Показать подходящие модели</button></form></div><div class="picker-result reveal" id="pickerResult"><span class="result-label">ВАША РЕКОМЕНДАЦИЯ</span><div class="result-wheel">?</div><h3>Укажите параметры</h3><p>Здесь появятся рекомендуемый размер и три подходящие модели.</p><div id="pickerMatches" class="picker-matches"></div><a class="btn btn-ghost disabled" id="pickerTelegram" href="https://t.me/sezonchik_dv" target="_blank" rel="noopener">Отправить продавцу</a></div></div></section>
+
+
+    <section class="section compare-section" id="compare"><div class="container"><div class="heading reveal"><div><span class="eyebrow">СРАВНЕНИЕ</span><h2>Сравните до трёх велосипедов</h2></div><p>Добавляйте модели из каталога и смотрите различия по цене, колёсам, раме и оснащению.</p></div><div id="compareEmpty" class="compare-empty reveal">Нажмите «Сравнить» на карточках товаров — выбранные модели появятся здесь.</div><div id="compareTableWrap" class="compare-table-wrap"></div></div></section>
+    <section class="section recent-sales" id="recent-sales">
+      <div class="container">
+        <div class="heading reveal"><div><span class="eyebrow">СВЕЖИЕ ПОКУПКИ</span><h2>Велосипеды забирают каждый день</h2></div><p>Настоящие покупатели, настоящие велосипеды и живой ассортимент магазина.</p></div>
+        <div class="sales-strip reveal">
+          <article><img loading="lazy" decoding="async" src="assets/customers/customer-01.webp" alt="Покупатель с велосипедом 26 дюймов"><div><span>Сегодня</span><h3>Алюминиевый велосипед 26”</h3><p>Гидравлические тормоза</p></div></article>
+          <article><img loading="lazy" decoding="async" src="assets/customers/customer-09.webp" alt="Покупатель с BMX"><div><span>Недавно</span><h3>Яркий BMX</h3><p>Для трюков и активного катания</p></div></article>
+          <article><img loading="lazy" decoding="async" src="assets/customers/customer-19.webp" alt="Девочка с детским велосипедом"><div><span>Недавно</span><h3>Детский велосипед</h3><p>Подобран по росту</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section buyers-section" id="buyers">
+      <div class="container">
+        <div class="heading reveal"><div><span class="eyebrow">НАШИ ПОКУПАТЕЛИ</span><h2>Более 1 500 довольных владельцев</h2></div><p>Фильтруйте галерею по категориям и открывайте фотографии крупнее.</p></div>
+        <div class="gallery-toolbar reveal" id="galleryFilters">
+          <button class="gallery-filter active" data-gallery-filter="all">Все</button>
+          <button class="gallery-filter" data-gallery-filter="adult">Взрослые</button>
+          <button class="gallery-filter" data-gallery-filter="teen">Подростковые</button>
+          <button class="gallery-filter" data-gallery-filter="child">Детские</button>
+          <button class="gallery-filter" data-gallery-filter="bmx">BMX</button>
+        </div>
+        <div class="customer-gallery" id="customerGallery"></div>
+        <div class="gallery-more"><button class="btn btn-ghost" id="galleryMore" type="button">Показать больше фотографий</button></div>
+      </div>
+    </section>
+
+    <section class="section gift-section" id="gift">
+      <div class="container">
+        <div class="gift-card reveal">
+          <div class="gift-icon" aria-hidden="true">🎁</div>
+          <div class="gift-copy">
+            <span class="eyebrow">ПРИЯТНЫЙ БОНУС</span>
+            <h2>Дарим подарок каждому покупателю</h2>
+            <p>При покупке велосипеда вы получаете полезный подарок от магазина «Сезонщик». Это наш способ поблагодарить вас за доверие и сделать покупку ещё приятнее.</p>
+            <div class="gift-points">
+              <span>✓ При покупке велосипеда</span>
+              <span>✓ Полезный аксессуар</span>
+              <span>✓ Совершенно бесплатно</span>
+            </div>
+            <small>Вид подарка зависит от выбранной модели и текущего наличия аксессуаров.</small>
+          </div>
+          <div class="gift-actions">
+            <a class="btn btn-primary" href="#catalog">Выбрать велосипед</a>
+            <a class="btn btn-ghost" href="https://t.me/sezonchik_dv?text=Здравствуйте!%20Расскажите%2C%20какой%20подарок%20идёт%20к%20велосипеду" target="_blank" rel="noopener">Узнать о подарке</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section benefits" id="benefits"><div class="container"><div class="heading reveal"><div><span class="eyebrow">ПОЧЕМУ МЫ</span><h2>Покупка без лишних сложностей</h2></div><p>Всё необходимое — от подбора до готового к поездке велосипеда.</p></div><div class="benefit-grid"><article class="reveal"><b>01</b><h3>Большой выбор</h3><p>Взрослые, подростковые, детские модели и электросамокаты.</p></article><article class="reveal"><b>02</b><h3>Подбор по росту</h3><p>Помогаем выбрать размер колёс и рамы.</p></article><article class="reveal"><b>03</b><h3>Сборка и настройка</h3><p>Проверяем тормоза, переключатели и основные узлы.</p></article><article class="reveal"><b>04</b><h3>Реальный магазин</h3><p>Можно посмотреть, сравнить и забрать в день покупки.</p></article><article class="reveal"><b>05</b><h3>Гарантия</h3><p>Консультация и поддержка после покупки.</p></article><article class="reveal"><b>06</b><h3>Без выходных</h3><p>Ждём ежедневно с 11:00 до 19:00.</p></article></div></div></section>
+
+    <section class="section reviews"><div class="container"><div class="heading reveal"><div><span class="eyebrow">ОТЗЫВЫ</span><h2>Что говорят покупатели</h2></div></div><div class="review-grid"><article class="reveal"><div>★★★★★</div><p>«Подобрали велосипед сыну по росту, всё объяснили и настроили перед выдачей».</p><strong>Покупатель магазина</strong></article><article class="reveal"><div>★★★★★</div><p>«Большой выбор, сравнили несколько моделей и нашли оптимальную по цене».</p><strong>Покупатель магазина</strong></article><article class="reveal"><div>★★★★★</div><p>«Приехали без долгой переписки, посмотрели и сразу забрали велосипед».</p><strong>Покупатель магазина</strong></article></div></div></section>
+
+
+    <section class="section faq-section"><div class="container"><div class="heading reveal"><div><span class="eyebrow">ЧАСТЫЕ ВОПРОСЫ</span><h2>Перед покупкой</h2></div><p>Коротко о подборе, сборке и наличии.</p></div><div class="faq-list"><details class="reveal"><summary>Велосипед выдаётся собранным?</summary><p>Да. Перед выдачей велосипед собирают, настраивают тормоза и переключатели, проверяют основные узлы.</p></details><details class="reveal"><summary>Можно подобрать велосипед по росту?</summary><p>Да. Используйте подбор на сайте или напишите продавцу — поможем выбрать подходящий размер колёс и посадку.</p></details><details class="reveal"><summary>Цены и наличие актуальны?</summary><p>Каталог отражает присланный ассортимент. Цвета и наличие могут меняться, поэтому перед поездкой лучше уточнить конкретную модель.</p></details><details class="reveal"><summary>Какой подарок идёт к велосипеду?</summary><p>Подарок зависит от выбранной модели и текущего наличия аксессуаров. Точный вариант подскажет продавец.</p></details></div></div></section>
+    <section class="section contacts" id="contacts"><div class="container contact-card reveal"><div><span class="eyebrow">КОНТАКТЫ</span><h2>Приезжайте в «Сезонщик»</h2><p><b>Хабаровск, ул. Зелёная, 10</b><br>2 этаж, офис 207А</p><p>Ежедневно с 11:00 до 19:00</p><p>Telegram: <b>@sezonchik_dv</b></p></div><div class="contact-buttons"><a class="btn btn-primary" href="https://t.me/sezonchik_dv" target="_blank" rel="noopener">Написать продавцу</a><a class="btn btn-ghost" href="https://t.me/sezonchik_27" target="_blank" rel="noopener">Telegram-канал</a><a class="btn btn-ghost" href="https://yandex.ru/maps/?text=Хабаровск%2C%20Зелёная%2010" target="_blank" rel="noopener">Построить маршрут</a></div></div></section>
+  </main>
+
+  <footer><div class="container footer"><a class="logo" href="#top">СЕЗОН<span>ЩИК</span></a><p>Велосипеды и электросамокаты в Хабаровске</p><span>© 2026</span></div></footer>
+
+  <div class="floating"><a href="https://t.me/sezonchik_dv" target="_blank" rel="noopener" aria-label="Telegram">✈</a><a href="#top" aria-label="Наверх">↑</a></div>
+  <nav class="bottom-cta" aria-label="Быстрые действия"><a href="#catalog"><span>🚲</span>Каталог</a><a class="primary" href="https://t.me/sezonchik_dv" target="_blank" rel="noopener"><span>✈</span>Написать</a><a href="https://yandex.ru/maps/?text=Хабаровск%2C%20Зелёная%2010" target="_blank" rel="noopener"><span>📍</span>Маршрут</a></nav>
+
+  <div class="modal" id="productModal" aria-hidden="true"><div class="modal-panel"><button class="modal-close" type="button">×</button><div id="modalContent"></div></div></div>
+  <div class="compare-bar" id="compareBar"><span>Выбрано для сравнения: <b id="compareCount">0</b>/3</span><a href="#compare">Сравнить</a><button id="compareClear" type="button">Очистить</button></div>
+  <div class="modal" id="favoritesModal" aria-hidden="true"><div class="modal-panel"><button class="modal-close" type="button">×</button><h2>Избранное</h2><div id="favoritesList"></div></div></div>
+  <div class="lightbox" id="lightbox" aria-hidden="true"><button type="button">×</button><img src="" alt=""></div>
+  <script src="script.js" defer></script>
+</body>
+</html>
