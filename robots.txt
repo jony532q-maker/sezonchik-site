@@ -1,1 +1,3 @@
-{"name":"Сезонщик — велосипеды","short_name":"Сезонщик","start_url":"./index.html","display":"standalone","background_color":"#0a0b0d","theme_color":"#a7f000","description":"Каталог велосипедов и электросамокатов магазина «Сезонщик»."}
+User-agent: *
+Allow: /
+Sitemap: https://sezonchik27.ru/sitemap.xml
