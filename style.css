@@ -110,3 +110,11 @@
 .gis-reviews{background:linear-gradient(180deg,#0b0d0f,#111519)}.gis-card{display:grid;grid-template-columns:150px minmax(0,1fr) auto;align-items:center;gap:30px;padding:38px;border:1px solid rgba(167,240,0,.28);border-radius:28px;background:linear-gradient(135deg,rgba(167,240,0,.1),rgba(255,255,255,.025));box-shadow:0 24px 70px rgba(0,0,0,.24)}.gis-mark{display:grid;place-items:center;width:130px;height:130px;border-radius:30px;background:#84d900;color:#102000;font-size:31px;font-weight:1000;letter-spacing:-.05em}.gis-copy h2{font-size:clamp(30px,4vw,50px);line-height:1.05;margin:8px 0 14px}.gis-copy p{max-width:760px;margin:0;color:var(--muted);line-height:1.65}.gis-points{display:flex;flex-wrap:wrap;gap:8px 15px;margin-top:18px}.gis-points span{font-size:14px;font-weight:800}.gis-actions{display:grid;gap:10px;min-width:235px}.gis-actions .btn{text-align:center}
 @media(max-width:900px){.gis-card{grid-template-columns:110px 1fr}.gis-mark{width:100px;height:100px;border-radius:24px;font-size:25px}.gis-actions{grid-column:1/-1;grid-template-columns:1fr 1fr}.purchase-grid{grid-template-columns:1fr}}
 @media(max-width:620px){.gis-card{display:block;padding:26px 22px}.gis-mark{width:82px;height:82px;margin-bottom:20px;border-radius:21px;font-size:22px}.gis-actions{display:grid;margin-top:22px}.gis-actions .btn{width:100%}.purchase-grid article{padding:24px}}
+
+
+/* Sezonchik 7.2: prominent 2GIS link on the first screen */
+.hero-2gis{display:inline-flex;align-items:center;gap:12px;margin-top:18px;padding:10px 15px;border:1px solid rgba(132,217,0,.55);border-radius:15px;background:rgba(8,12,8,.72);color:#fff;text-decoration:none;backdrop-filter:blur(10px);transition:transform .2s ease,border-color .2s ease,background .2s ease}
+.hero-2gis:hover{transform:translateY(-2px);border-color:#84d900;background:rgba(22,35,18,.88)}
+.hero-2gis strong{display:grid;place-items:center;min-width:58px;height:34px;padding:0 9px;border-radius:9px;background:#84d900;color:#102000;font-size:16px;font-weight:1000}
+.hero-2gis span{font-size:14px;font-weight:800}
+@media(max-width:620px){.hero-2gis{display:flex;width:100%;justify-content:flex-start;margin-top:14px}.hero-2gis span{font-size:13px}}
