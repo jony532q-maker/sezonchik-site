@@ -118,3 +118,11 @@
 .hero-2gis strong{display:grid;place-items:center;min-width:58px;height:34px;padding:0 9px;border-radius:9px;background:#84d900;color:#102000;font-size:16px;font-weight:1000}
 .hero-2gis span{font-size:14px;font-weight:800}
 @media(max-width:620px){.hero-2gis{display:flex;width:100%;justify-content:flex-start;margin-top:14px}.hero-2gis span{font-size:13px}}
+
+/* Sezonchik 8.0 — prominent 2GIS actions */
+.btn-2gis{background:#84d900!important;color:#102000!important;border-color:#84d900!important;box-shadow:0 12px 32px rgba(132,217,0,.24);font-weight:950}
+.btn-2gis:hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 16px 38px rgba(132,217,0,.32)}
+.floating-2gis{position:fixed;right:18px;bottom:86px;z-index:80;display:flex;align-items:center;gap:9px;padding:8px 13px 8px 8px;border-radius:16px;background:#84d900;color:#102000;text-decoration:none;box-shadow:0 16px 44px rgba(0,0,0,.35);font-weight:950}
+.floating-2gis strong{display:grid;place-items:center;min-width:49px;height:34px;padding:0 7px;border-radius:10px;background:#102000;color:#84d900;font-size:14px}
+.floating-2gis span{font-size:13px}
+@media(max-width:620px){.hero-actions .btn-2gis{order:-1;width:100%;font-size:16px}.floating-2gis{right:12px;bottom:76px;padding-right:10px}.floating-2gis span{display:none}}
