@@ -225,7 +225,7 @@ const products=[{"id":1,"name":"TULUN 26 бесшовная рама","category"
 {"id":39,"name":"MINGOI MD-291 серый","category":"adult","wheel":"29","price":17000,"image":"assets/products/product-39.webp","badge":"Алюминий","material":"aluminum","specs":["29”","Алюминиевая рама","21 скорость","Дисковые тормоза"],"desc":"Серая версия популярной модели MD-291 на 29-дюймовых колёсах.","slug":"mingoi-md-291-gray"},
 {"id":40,"name":"DINOS CHASER 24 — литые диски","category":"teen","wheel":"24","price":16000,"image":"assets/products/product-40.webp","badge":"Литые диски","material":"steel","specs":["24”","Стальная рама","21 скорость","Дисковые тормоза","Литые диски"],"desc":"Подростковый велосипед с эффектными литыми дисками.","slug":"dinos-chaser-24-litye-diski"},
 {"id":41,"name":"PHOENIX 20 — 21 скорость","category":"child","wheel":"20","price":12000,"image":"assets/products/product-41.webp","badge":"Детский","material":"steel","specs":["20”","Стальная рама","21 скорость","Дисковые тормоза"],"desc":"Детский скоростной велосипед со стальной рамой и дисковыми тормозами.","slug":"phoenix-20-21-speed-new"}];
-let state={category:'all',wheel:'all',material:'all',sort:'popular',search:''};
+let state={category:'all',wheel:'all',material:'all',sort:'popular',search:'',visible:12};
 let favorites=JSON.parse(localStorage.getItem('sezonchik-favorites')||'[]');
 let compareIds=JSON.parse(localStorage.getItem('sezonchik-compare')||'[]');
 const grid=document.getElementById('productGrid');
