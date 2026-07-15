@@ -82,7 +82,9 @@ document.addEventListener('click',event=>{
   const link=event.target.closest('a');
   if(link){
     const href=link.getAttribute('href')||'';
-    if(href.includes('t.me/sezonchik_dv'))reachGoal('telegram_contact',{href});
+    if(href.startsWith('tel:'))reachGoal('phone_click',{href});
+    else if(href.includes('2gis.ru'))reachGoal('2gis_click',{href});
+    else if(href.includes('t.me/sezonchik_dv'))reachGoal('telegram_contact',{href});
     else if(href.includes('t.me/sezonchik_27'))reachGoal('telegram_channel',{href});
     else if(href.includes('yandex.ru/maps'))reachGoal('build_route',{href});
     else if(href==='#catalog')reachGoal('catalog_open');
