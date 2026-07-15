@@ -1,4 +1,4 @@
-const CACHE='sezonchik-2026-final';
+const CACHE='sezonchik-2026-products-41';
 const CORE=['./','./index.html','./style.css?v=2026','./script.js?v=2026','./manifest.webmanifest','./favicon.svg'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)));self.skipWaiting();});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))));self.clients.claim();});

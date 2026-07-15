@@ -23,7 +23,8 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Велосипед выдаётся собранным?","acceptedAnswer":{"@type":"Answer","text":"Да. Перед выдачей велосипед собирают, настраивают тормоза и переключатели, проверяют основные узлы."}},{"@type":"Question","name":"Можно подобрать велосипед по росту?","acceptedAnswer":{"@type":"Answer","text":"Да. Используйте подбор на сайте или напишите продавцу — поможем выбрать подходящий размер колёс и посадку."}},{"@type":"Question","name":"Цены и наличие актуальны?","acceptedAnswer":{"@type":"Answer","text":"Цвета и наличие могут меняться, поэтому перед поездкой лучше уточнить конкретную модель у продавца."}}]}</script>
   <link rel="preload" as="image" href="assets/customers/customer-02.webp" fetchpriority="high">
   <link rel="manifest" href="manifest.webmanifest?v=2026">
-  <link rel="stylesheet" href="style.css?v=2026">
+  <link rel="preload" as="image" href="assets/customers/customer-02.webp" fetchpriority="high">
+  <link rel="stylesheet" href="style.css?v=20260715-fast">
   <!-- Yandex.Metrika counter -->
   <script>
     (function(m,e,t,r,i,k,a){
@@ -76,8 +77,8 @@
         <div class="heading reveal"><div><span class="eyebrow">КАТЕГОРИИ</span><h2>Выберите свой велосипед</h2></div><p>Реальные фотографии покупателей и живой ассортимент магазина.</p></div>
         <div class="category-grid">
           <a class="category-card reveal" href="#catalog" data-category-jump="adult"><img loading="eager" fetchpriority="high" decoding="async" src="assets/customers/customer-02.webp" width="1000" height="750" alt="Взрослые велосипеды"><div class="category-overlay"></div><div><small>26 • 27,5 • 29 колёса</small><h3>Взрослые</h3><span>Смотреть модели →</span></div></a>
-          <a class="category-card reveal" href="#catalog" data-category-jump="teen"><img loading="lazy" decoding="async" src="assets/customers/customer-11.webp" width="750" height="1000" alt="Подростковые велосипеды"><div class="category-overlay"></div><div><small>20 • 24 • 26 колёса</small><h3>Подростковые</h3><span>Смотреть модели →</span></div></a>
-          <a class="category-card reveal" href="#catalog" data-category-jump="child"><img loading="lazy" decoding="async" src="assets/customers/customer-19.webp" width="750" height="1000" alt="Детские велосипеды"><div class="category-overlay"></div><div><small>12 • 14 • 16 • 18 колёса</small><h3>Детские</h3><span>Смотреть модели →</span></div></a>
+          <a class="category-card reveal" href="#catalog" data-category-jump="teen"><img loading="eager" fetchpriority="high" decoding="async" src="assets/customers/customer-11.webp" width="750" height="1000" alt="Подростковые велосипеды"><div class="category-overlay"></div><div><small>20 • 24 • 26 колёса</small><h3>Подростковые</h3><span>Смотреть модели →</span></div></a>
+          <a class="category-card reveal" href="#catalog" data-category-jump="child"><img loading="eager" fetchpriority="high" decoding="async" src="assets/customers/customer-19.webp" width="750" height="1000" alt="Детские велосипеды"><div class="category-overlay"></div><div><small>12 • 14 • 16 • 18 колёса</small><h3>Детские</h3><span>Смотреть модели →</span></div></a>
         </div>
       </div>
     </section>
@@ -111,9 +112,9 @@
 
     <section class="section catalog-section" id="catalog">
       <div class="container">
-        <div class="heading reveal"><div><span class="eyebrow">КАТАЛОГ</span><h2>Весь ассортимент велосипедов</h2></div><p>35 реальных моделей с фотографиями, ценами и характеристиками. Наличие уточняйте у продавца.</p></div>
+        <div class="heading reveal"><div><span class="eyebrow">КАТАЛОГ</span><h2>Весь ассортимент велосипедов</h2></div><p>41 реальная модель с фотографиями, ценами и характеристиками. Наличие уточняйте у продавца.</p></div>
         <div class="catalog-toolbar reveal">
-          <div class="catalog-search-wrap"><input id="catalogSearch" class="catalog-search" type="search" placeholder="Поиск: Tulun, Shimano, литые диски…" aria-label="Поиск по каталогу"><span id="catalogCount">Найдено моделей: 35</span></div>
+          <div class="catalog-search-wrap"><input id="catalogSearch" class="catalog-search" type="search" placeholder="Поиск: Tulun, Shimano, литые диски…" aria-label="Поиск по каталогу"><span id="catalogCount">Найдено моделей: 41</span></div>
           <div class="filter-row" id="categoryFilters"><button class="filter active" data-filter="all">Все</button><button class="filter" data-filter="adult">Взрослые</button><button class="filter" data-filter="teen">Подростковые</button><button class="filter" data-filter="child">Детские</button><button class="filter" data-filter="bmx">BMX</button><button class="filter" data-filter="stunt">Трюковые</button></div>
           <div class="catalog-controls"><select id="wheelFilter" aria-label="Размер колёс"><option value="all">Все колёса</option><option value="16">16”</option><option value="20">20”</option><option value="22">22”</option><option value="24">24”</option><option value="26">26”</option><option value="27.5">27,5”</option><option value="29">29”</option></select><select id="materialFilter" aria-label="Материал рамы"><option value="all">Любая рама</option><option value="aluminum">Алюминий</option><option value="steel">Сталь</option><option value="magnesium">Магниевый сплав</option><option value="other">Не указано</option></select><select id="sortFilter" aria-label="Сортировка"><option value="popular">По умолчанию</option><option value="priceAsc">Цена: по возрастанию</option><option value="priceDesc">Цена: по убыванию</option></select></div>
         </div>
@@ -216,6 +217,6 @@
   <div class="modal" id="favoritesModal" aria-hidden="true"><div class="modal-panel"><button class="modal-close" type="button">×</button><h2>Избранное</h2><div id="favoritesList"></div></div></div>
   <div class="lightbox" id="lightbox" aria-hidden="true"><button type="button">×</button><img alt="Просмотр фотографии"></div>
   <noscript><div class="noscript">Для работы каталога включите JavaScript. Контакты магазина: Telegram @sezonchik_dv.</div></noscript>
-  <script src="script.js?v=2026" defer></script>
+  <script src="script.js?v=20260715-fast" defer></script>
 <div class="mobile-contact-bar" aria-label="Быстрые контакты"><a href="tel:+79990821045">☎ Позвонить</a><a href="https://2gis.ru/khabarovsk/geo/70000001113236221" target="_blank" rel="noopener">⌖ 2ГИС</a></div></body>
 </html>
