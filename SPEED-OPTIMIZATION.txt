@@ -1,0 +1,12 @@
+SEZONCHIK cold-load optimization — 2026-07-22
+
+Changes:
+- Yandex Metrika loads after the page is usable or on first interaction.
+- Only the hero photo is high-priority on the first screen.
+- Category photos use native lazy loading.
+- Application JavaScript moved from inline HTML to deferred script.js.
+- Legacy service workers and caches are removed.
+- Below-the-fold sections use content-visibility where supported.
+- CSS/JS cache versions updated.
+
+Important: a DNS failure cannot be fixed by website files. Verify the domain records in the registrar and GitHub Pages settings.

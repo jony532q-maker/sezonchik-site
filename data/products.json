@@ -606,5 +606,114 @@
     ],
     "desc": "Яркая синяя детская модель на 20-дюймовых колёсах.",
     "slug": "phoenix-20-sinij"
+  },
+  {
+    "id": 36,
+    "name": "MINGDI HW-354",
+    "category": "adult",
+    "wheel": "29",
+    "price": 17500,
+    "image": "assets/products/product-36.webp",
+    "badge": "29 дюймов",
+    "material": "aluminum",
+    "specs": [
+      "29”",
+      "Алюминиевая рама",
+      "21 скорость",
+      "Дисковые тормоза"
+    ],
+    "desc": "Горный велосипед на больших 29-дюймовых колёсах с лёгкой алюминиевой рамой.",
+    "slug": "mingdi-hw-354"
+  },
+  {
+    "id": 37,
+    "name": "MINGDI MD-399",
+    "category": "adult",
+    "wheel": "29",
+    "price": 18500,
+    "image": "assets/products/product-37.webp",
+    "badge": "Новинка",
+    "material": "aluminum",
+    "specs": [
+      "29”",
+      "Алюминиевая рама",
+      "21 скорость",
+      "Дисковые тормоза"
+    ],
+    "desc": "Универсальная модель для города и прогулок по грунтовым дорогам.",
+    "slug": "mingdi-md-399"
+  },
+  {
+    "id": 38,
+    "name": "MINGDI MD-291 белый",
+    "category": "adult",
+    "wheel": "29",
+    "price": 17000,
+    "image": "assets/products/product-38.webp",
+    "badge": "Алюминий",
+    "material": "aluminum",
+    "specs": [
+      "29”",
+      "Алюминиевая рама",
+      "21 скорость",
+      "Дисковые тормоза"
+    ],
+    "desc": "Белая версия популярной модели MD-291 на 29-дюймовых колёсах.",
+    "slug": "mingdi-md-291-white"
+  },
+  {
+    "id": 39,
+    "name": "MINGDI MD-291 серый",
+    "category": "adult",
+    "wheel": "29",
+    "price": 17000,
+    "image": "assets/products/product-39.webp",
+    "badge": "Алюминий",
+    "material": "aluminum",
+    "specs": [
+      "29”",
+      "Алюминиевая рама",
+      "21 скорость",
+      "Дисковые тормоза"
+    ],
+    "desc": "Серая версия популярной модели MD-291 на 29-дюймовых колёсах.",
+    "slug": "mingdi-md-291-gray"
+  },
+  {
+    "id": 40,
+    "name": "DINOS CHASER 24 — литые диски",
+    "category": "teen",
+    "wheel": "24",
+    "price": 16000,
+    "image": "assets/products/product-40.webp",
+    "badge": "Литые диски",
+    "material": "steel",
+    "specs": [
+      "24”",
+      "Стальная рама",
+      "21 скорость",
+      "Дисковые тормоза",
+      "Литые диски"
+    ],
+    "desc": "Подростковый велосипед с эффектными литыми дисками.",
+    "slug": "dinos-chaser-24-litye-diski"
+  },
+  {
+    "id": 41,
+    "name": "PHOENIX 20 розовый — 21 скорость",
+    "category": "child",
+    "wheel": "20",
+    "price": 12000,
+    "image": "assets/products/product-41.webp",
+    "badge": "Детский",
+    "material": "steel",
+    "specs": [
+      "20”",
+      "Стальная рама",
+      "21 скорость",
+      "Дисковые тормоза"
+    ],
+    "desc": "Розовый детский скоростной велосипед со стальной рамой и дисковыми тормозами.",
+    "slug": "phoenix-20-pink-21-speed"
   }
 ]

@@ -1,0 +1,4 @@
+SEZONCHIK FINAL 2026-07-22
+41 bicycles synchronized: home catalog, JSON, category pages, product pages and sitemap.
+Phone, Telegram and 2GIS buttons added; mobile button overlap removed.
+Service-worker cache disabled on the home page.
