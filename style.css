@@ -660,3 +660,23 @@ body{background:radial-gradient(circle at 50% -10%,rgba(71,104,105,.10),transpar
 .reveal{opacity:1!important;transform:none!important}
 /* Pool equipment labels — 2026-07-23 */
 .size-btn .pool-kit{font-size:13px;line-height:1.35;color:#e4f7bd;padding:7px 9px;border-radius:10px;background:rgba(167,240,0,.08);border:1px solid rgba(167,240,0,.22);font-weight:700}
+
+
+/* WhatsApp + MAX contacts 20260723 */
+.home-contact-grid{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.home-contact.whatsapp{background:linear-gradient(90deg,#1fbf5b,#25d366);color:#fff}
+.home-contact.max{background:linear-gradient(90deg,#5063f0,#7c55e8);color:#fff}
+.contact-brand-icon{width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;border:2px solid currentColor;border-radius:50%;font-size:10px;font-weight:950;line-height:1;letter-spacing:-.04em;flex:0 0 auto}
+.mobile-contact-bar{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+.mobile-contact-bar a{padding-inline:3px!important}
+.mobile-contact-bar .contact-call{background:var(--green)!important;color:#071007!important}
+.mobile-contact-bar .contact-telegram{background:#229ed9!important;color:#fff!important}
+.mobile-contact-bar .contact-whatsapp{background:#25d366!important;color:#fff!important}
+.mobile-contact-bar .contact-max{background:linear-gradient(135deg,#5063f0,#7c55e8)!important;color:#fff!important}
+.mobile-contact-bar .contact-gis{background:#fff!important;color:#101214!important}
+.mobile-contact-bar .contact-brand-icon{width:19px;height:19px;border-width:1.5px;font-size:7px}
+.whatsapp-action{background:#25d366!important;color:#fff!important}
+.max-action{background:linear-gradient(90deg,#5063f0,#7c55e8)!important;color:#fff!important}
+.category-help .whatsapp-action,.category-help .max-action{color:#fff!important}
+@media(max-width:680px){.mobile-contact-bar a{font-size:9px!important;min-width:0}.mobile-contact-bar span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}.home-contact-grid{grid-template-columns:1fr 1fr!important}.home-contact-grid .home-contact:last-child{grid-column:1/-1}}
+@media(max-width:390px){.mobile-contact-bar{left:5px!important;right:5px!important;gap:4px!important;padding:6px!important}.mobile-contact-bar a{font-size:8px!important}}
