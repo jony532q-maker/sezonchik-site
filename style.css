@@ -680,3 +680,5 @@ body{background:radial-gradient(circle at 50% -10%,rgba(71,104,105,.10),transpar
 .category-help .whatsapp-action,.category-help .max-action{color:#fff!important}
 @media(max-width:680px){.mobile-contact-bar a{font-size:9px!important;min-width:0}.mobile-contact-bar span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}.home-contact-grid{grid-template-columns:1fr 1fr!important}.home-contact-grid .home-contact:last-child{grid-column:1/-1}}
 @media(max-width:390px){.mobile-contact-bar{left:5px!important;right:5px!important;gap:4px!important;padding:6px!important}.mobile-contact-bar a{font-size:8px!important}}
+
+.footer-phone{font-weight:900;color:var(--text);white-space:nowrap}.footer-phone:hover{color:var(--green)}
