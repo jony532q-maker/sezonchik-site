@@ -658,3 +658,5 @@ body{background:radial-gradient(circle at 50% -10%,rgba(71,104,105,.10),transpar
 .gift-icon svg{width:58px;height:58px;fill:none;stroke:var(--green);stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round}
 /* Content stays visible even if JavaScript or IntersectionObserver is unavailable. */
 .reveal{opacity:1!important;transform:none!important}
+/* Pool equipment labels — 2026-07-23 */
+.size-btn .pool-kit{font-size:13px;line-height:1.35;color:#e4f7bd;padding:7px 9px;border-radius:10px;background:rgba(167,240,0,.08);border:1px solid rgba(167,240,0,.22);font-weight:700}
