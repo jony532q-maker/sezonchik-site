@@ -12,7 +12,7 @@
 <meta content="index,follow,max-image-preview:large" name="robots"/>
 <link href="manifest.webmanifest?v=2026" rel="manifest"/>
 <link as="image" fetchpriority="high" href="assets/home/hero-home-v2.webp" rel="preload"/>
-<link href="style.css?v=20260723-pickup-8marta" rel="stylesheet"/>
+<link href="style.css?v=20260723-trust-addresses" rel="stylesheet"/>
 <title>Сезонщик — велосипеды, бассейны, батуты и искусственные ёлки в Хабаровске</title>
 <meta content="Магазин «Сезонщик»: велосипеды, каркасные бассейны Bestway, батуты с защитной сеткой и искусственные ёлки в Хабаровске." name="description"/>
 <link href="https://sezonchik27.ru/" rel="canonical"/>
@@ -40,7 +40,7 @@
       window.addEventListener('load',()=>setTimeout(loadMetrika,2500),{once:true});
     })();
   </script>
-</head>
+<link rel="stylesheet" href="v3.css?v=3.1"></head>
 <body class="home-page">
 <!-- Top.Mail.Ru counter -->
 <script type="text/javascript">
@@ -91,9 +91,9 @@ _tmr.push({id: "3779642", type: "pageView", start: (new Date()).getTime()});
 <a href="trees.html">Искусственные ёлки</a>
 </nav>
 <div class="header-actions reference-header-actions">
-<a aria-label="Открыть адрес в 2ГИС" class="header-location" href="https://2gis.ru/khabarovsk/geo/70000001113236221" rel="noopener" target="_blank">
+<a aria-label="Посмотреть адреса самовывоза" class="header-location" href="#store-addresses">
 <svg aria-hidden="true"><use href="#i-pin"></use></svg>
-<span><small>г. Хабаровск,</small><strong>ул. Зелёная, 10</strong></span>
+<span><small>адрес зависит от товара</small><strong>2 пункта самовывоза</strong></span>
 </a>
 <button aria-expanded="false" aria-label="Открыть меню" class="menu-btn" type="button"><svg aria-hidden="true"><use href="#i-menu"></use></svg></button>
 </div>
@@ -104,8 +104,8 @@ _tmr.push({id: "3779642", type: "pageView", start: (new Date()).getTime()});
 <a href="pools.html">Бассейны</a>
 <a href="trampolines.html">Батуты</a>
 <a href="trees.html">Искусственные ёлки</a>
-<a class="mobile-nav-location" href="https://2gis.ru/khabarovsk/geo/70000001113236221" rel="noopener" target="_blank">
-<svg aria-hidden="true"><use href="#i-pin"></use></svg><span><small>г. Хабаровск</small><strong>ул. Зелёная, 10</strong></span>
+<a class="mobile-nav-location" href="#store-addresses">
+<svg aria-hidden="true"><use href="#i-pin"></use></svg><span><small>адрес зависит от товара</small><strong>2 пункта самовывоза</strong></span>
 </a>
 </div>
 </header>
@@ -183,10 +183,20 @@ _tmr.push({id: "3779642", type: "pageView", start: (new Date()).getTime()});
 </div>
 </div>
 </section>
+<section aria-labelledby="store-addresses-title" class="store-addresses" id="store-addresses">
+<div class="container">
+<div class="store-addresses-head reveal"><span class="eyebrow">КУДА ПРИЕЗЖАТЬ</span><h2 id="store-addresses-title">У каждой категории свой адрес</h2><p>Перед поездкой выберите нужный товар и проверьте адрес самовывоза.</p></div>
+<div class="store-address-grid">
+<article class="store-address-card reveal"><div class="store-address-icon"><svg aria-hidden="true"><use href="#i-bike"></use></svg></div><div><span>ВЕЛОСИПЕДЫ И ИСКУССТВЕННЫЕ ЁЛКИ</span><h3>ул. Зелёная, 10</h3><p>Ежедневно с 11:00 до 19:00</p><a class="btn btn-ghost" href="https://2gis.ru/khabarovsk/geo/70000001113236221" onclick="try{ym(110645856,'reachGoal','2gis_click')}catch(e){}" rel="noopener" target="_blank">Открыть в 2ГИС</a></div></article>
+<article class="store-address-card reveal"><div class="store-address-icon"><svg aria-hidden="true"><use href="#i-waves"></use></svg></div><div><span>БАССЕЙНЫ И БАТУТЫ</span><h3>ул. 8 Марта, 14</h3><p>Самовывоз только по предварительной записи</p><a class="btn btn-ghost" href="https://2gis.ru/khabarovsk/search/8%20%D0%9C%D0%B0%D1%80%D1%82%D0%B0%2C%2014" onclick="try{ym(110645856,'reachGoal','2gis_click')}catch(e){}" rel="noopener" target="_blank">Показать адрес</a></div></article>
+</div>
+<div class="store-address-warning reveal"><strong>Важно:</strong> перед поездкой уточните наличие товара по телефону или в мессенджере — мы подтвердим адрес и подготовим заказ.</div>
+</div>
+</section>
 <section aria-label="Информация о магазине" class="mock-section mock-info-strip">
 <div class="container">
 <div class="mock-info-grid reveal">
-<article><svg aria-hidden="true" class="mock-info-icon"><use href="#i-pin"></use></svg><div><h3>САМОВЫВОЗ</h3><p>Хабаровск,<br/>ул. Зелёная, 10</p><small>Только по предварительной записи</small></div></article>
+<article><svg aria-hidden="true" class="mock-info-icon"><use href="#i-pin"></use></svg><div><h3>ДВА АДРЕСА</h3><p>Адрес зависит<br/>от категории товара</p><small>Смотрите блок выше</small></div></article>
 <article><svg aria-hidden="true" class="mock-info-icon"><use href="#i-clock"></use></svg><div><h3>РЕЖИМ РАБОТЫ</h3><p>Ежедневно<br/>11:00–19:00</p><small>БЕЗ ВЫХОДНЫХ</small></div></article>
 <article><svg aria-hidden="true" class="mock-info-icon"><use href="#i-shield-check"></use></svg><div><h3>ГАРАНТИЯ</h3><p>Гарантия на всю<br/>продукцию</p><small>Поддержка после покупки</small></div></article>
 <article><svg aria-hidden="true" class="mock-info-icon"><use href="#i-truck"></use></svg><div><h3>ДОСТАВКА</h3><p>Быстрая доставка<br/>по Хабаровску</p><small>И по всей России</small></div></article>
@@ -197,7 +207,7 @@ _tmr.push({id: "3779642", type: "pageView", start: (new Date()).getTime()});
 <div class="container">
 <div class="mock-section-title reveal"><i></i><h2>ПОЧЕМУ ВЫБИРАЮТ НАС?</h2><i></i></div>
 <div class="mock-why-grid">
-<article class="reveal"><svg aria-hidden="true" class="why-icon"><use href="#i-badge-check"></use></svg><div><h3>Большой выбор</h3><p>Более 300 моделей<br/>велосипедов</p></div></article>
+<article class="reveal"><svg aria-hidden="true" class="why-icon"><use href="#i-badge-check"></use></svg><div><h3>Большой выбор</h3><p>Более 300 велосипедов<br/>в полном ассортименте</p></div></article>
 <article class="reveal"><svg aria-hidden="true" class="why-icon"><use href="#i-shield-check"></use></svg><div><h3>Выгодные цены</h3><p>Честные цены<br/>и скидки</p></div></article>
 <article class="reveal"><svg aria-hidden="true" class="why-icon"><use href="#i-tools"></use></svg><div><h3>Профессиональная сборка</h3><p>Каждый велосипед собран<br/>и настроен</p></div></article>
 <article class="reveal"><svg aria-hidden="true" class="why-icon"><use href="#i-gift"></use></svg><div><h3>Подарки и бонусы</h3><p>Приятные подарки<br/>каждому клиенту</p></div></article>
@@ -221,5 +231,5 @@ _tmr.push({id: "3779642", type: "pageView", start: (new Date()).getTime()});
 </footer>
 <div class="floating"><a aria-label="Telegram" href="https://t.me/sezonchik_dv" rel="noopener" target="_blank"><svg aria-hidden="true"><use href="#i-send"></use></svg></a><a aria-label="Наверх" href="#top"><svg aria-hidden="true"><use href="#i-arrow"></use></svg></a></div>
 <div aria-label="Быстрые контакты" class="mobile-contact-bar"><a class="contact-call" href="tel:+79990821045" onclick="try{ym(110645856,'reachGoal','phone_click')}catch(e){}"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 3h4l2 5-3 2c1.6 3.3 3.9 5.6 7.2 7.2l2-3 4.8 2V20c0 1.1-.9 2-2 2C10.1 22 2 13.9 2 4a2 2 0 0 1 2-2h1Z"></path></svg><span>Позвонить</span></a><a class="contact-telegram" href="https://t.me/sezonchik_dv" onclick="try{ym(110645856,'reachGoal','telegram_click')}catch(e){}" rel="noopener" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M22 2 9.7 14.3M22 2l-7.8 20-4.5-7.7L2 9.8 22 2Z"></path></svg><span>Telegram</span></a><a class="contact-whatsapp" href="https://wa.me/79990821045" onclick="try{ym(110645856,'reachGoal','whatsapp_click')}catch(e){}" rel="noopener" target="_blank"><span aria-hidden="true" class="contact-brand-icon">WA</span><span>WhatsApp</span></a><a class="contact-max" href="https://max.ru/u/f9LHodD0cOL2Ppqni4TvxYLSFFmBE293kCrOt-1wANP_qRUIQgPWMhpNUDc" onclick="try{ym(110645856,'reachGoal','max_click')}catch(e){}" rel="noopener" target="_blank"><span aria-hidden="true" class="contact-brand-icon">M</span><span>MAX</span></a><a class="contact-gis" href="https://2gis.ru/khabarovsk/geo/70000001113236221" onclick="try{ym(110645856,'reachGoal','2gis_click')}catch(e){}" rel="noopener" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><circle cx="12" cy="12" r="7"></circle><circle cx="12" cy="12" r="2"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path></svg><span>2ГИС</span></a></div><script defer="" src="simple.js?v=20260723-pickup-8marta"></script>
-</body>
+<script defer src="v3.js?v=3.1"></script></body>
 </html>
