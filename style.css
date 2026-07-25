@@ -716,3 +716,20 @@ body{background:radial-gradient(circle at 50% -10%,rgba(71,104,105,.10),transpar
 
 /* Extended supplier catalog */
 .supplier-card{border:1px solid rgba(255,255,255,.12);opacity:.96}.supplier-card .product-badge{background:#20252b;color:#fff}.supplier-card .product-meta{color:#a7f000}.supplier-card .price{font-size:1.05rem}.supplier-card .ask{width:100%}
+
+
+/* V7.2 — large Telegram subscription CTA */
+.telegram-subscribe{padding:30px 0 10px;background:linear-gradient(180deg,#080b0e,#0b0d10)}
+.telegram-subscribe-card{position:relative;display:grid;grid-template-columns:86px minmax(0,1fr) auto;align-items:center;gap:26px;min-height:190px;padding:32px 36px;border:1px solid rgba(88,196,255,.42);border-radius:26px;overflow:hidden;background:radial-gradient(circle at 8% 0%,rgba(101,207,255,.34),transparent 35%),linear-gradient(115deg,#0b79b4 0%,#168dcc 45%,#176d9d 100%);box-shadow:0 24px 65px rgba(0,114,173,.25);transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.telegram-subscribe-card:before{content:"";position:absolute;right:-90px;top:-160px;width:360px;height:360px;border-radius:50%;border:1px solid rgba(255,255,255,.14);box-shadow:0 0 0 42px rgba(255,255,255,.035),0 0 0 88px rgba(255,255,255,.025);pointer-events:none}
+.telegram-subscribe-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.72);box-shadow:0 30px 80px rgba(0,126,190,.36)}
+.telegram-subscribe-icon{position:relative;z-index:1;width:86px;height:86px;display:grid;place-items:center;border-radius:24px;background:#fff;color:#168dcc;box-shadow:0 15px 35px rgba(3,58,89,.22)}
+.telegram-subscribe-icon svg{width:47px;height:47px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.telegram-subscribe-copy{position:relative;z-index:1}
+.telegram-subscribe-copy span{display:block;margin-bottom:7px;color:#dff6ff;font-size:12px;font-weight:950;letter-spacing:.12em}
+.telegram-subscribe-copy h2{margin:0;color:#fff;font-size:clamp(28px,4vw,48px);line-height:1.03;letter-spacing:-.035em;max-width:760px}
+.telegram-subscribe-copy p{margin:12px 0 0;color:rgba(255,255,255,.86);font-size:16px;line-height:1.55;max-width:740px}
+.telegram-subscribe-button{position:relative;z-index:1;min-width:220px;min-height:62px;padding:0 24px;display:inline-flex;align-items:center;justify-content:center;gap:12px;border-radius:15px;background:#fff;color:#0878b2;font-size:15px;font-weight:950;letter-spacing:.035em;box-shadow:0 12px 28px rgba(0,50,78,.18)}
+.telegram-subscribe-button svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:900px){.telegram-subscribe-card{grid-template-columns:72px minmax(0,1fr);padding:28px}.telegram-subscribe-icon{width:72px;height:72px;border-radius:20px}.telegram-subscribe-icon svg{width:40px;height:40px}.telegram-subscribe-button{grid-column:1/-1;width:100%}}
+@media(max-width:620px){.telegram-subscribe{padding:20px 0 4px}.telegram-subscribe-card{grid-template-columns:58px minmax(0,1fr);gap:16px;padding:22px 18px;border-radius:20px}.telegram-subscribe-icon{width:58px;height:58px;border-radius:17px}.telegram-subscribe-icon svg{width:33px;height:33px}.telegram-subscribe-copy span{font-size:10px;letter-spacing:.08em}.telegram-subscribe-copy h2{font-size:27px}.telegram-subscribe-copy p{grid-column:1/-1;font-size:14px}.telegram-subscribe-button{min-height:58px;font-size:14px}.telegram-subscribe-card:before{right:-170px;top:-190px}}

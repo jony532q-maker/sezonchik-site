@@ -4,7 +4,7 @@
   function applyPrices(){
     const map=window.SEZONCHIK_PRICES||{};
     document.querySelectorAll('.bike-card[data-href]').forEach(card=>{
-      const slug=getSlug(card.dataset.href); const p=Number(map[slug]); if(!p)return;
+      const slug=card.dataset.slug||getSlug(card.dataset.href); const p=Number(map[slug]); if(!p)return;
       card.dataset.price=String(p);
       const el=card.querySelector('.bike-price'); if(el)el.textContent=fmt(p);
     });
@@ -17,7 +17,7 @@
       const name=(document.querySelector('h1')||{}).textContent||'велосипед';
       const msg=`Здравствуйте! Интересует ${name} за ${fmt(pagePrice)}. Подскажите, есть ли в наличии?`;
       document.querySelectorAll('.page-actions a').forEach(a=>{
-        if(a.href.includes('t.me/sezonchik_dv')) a.href='https://t.me/sezonchik_dv?text='+encodeURIComponent(msg);
+        if(a.href.includes('t.me/sezonchik_27')) a.href='https://t.me/sezonchik_27?text='+encodeURIComponent(msg);
         if(a.href.includes('wa.me/79990821045')) a.href='https://wa.me/79990821045?text='+encodeURIComponent(msg);
       });
     }

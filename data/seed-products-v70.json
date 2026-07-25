@@ -821,7 +821,7 @@
   },
   {
     "title": "Горный велосипед 29 — сине-зелёный",
-    "slug": "29-e",
+    "slug": "order-gornyy-velosiped-29-sine-zelenyy",
     "category": "bicycles",
     "price": 22000,
     "wheel_size": "29",
@@ -841,7 +841,7 @@
   },
   {
     "title": "Подростковый велосипед 24 — зелёный",
-    "slug": "24-e",
+    "slug": "order-podrostkovyy-velosiped-24-zelenyy",
     "category": "bicycles",
     "price": 21000,
     "wheel_size": "24",
@@ -861,7 +861,7 @@
   },
   {
     "title": "Горный велосипед 29 — чёрный",
-    "slug": "29-e",
+    "slug": "order-gornyy-velosiped-29-chernyy",
     "category": "bicycles",
     "price": 12000,
     "wheel_size": "29",
@@ -881,7 +881,7 @@
   },
   {
     "title": "Фэтбайк 26 — чёрно-зелёный",
-    "slug": "26-e-e",
+    "slug": "order-fetbayk-26-cherno-zelenyy",
     "category": "bicycles",
     "price": 19500,
     "wheel_size": "26",
@@ -901,7 +901,7 @@
   },
   {
     "title": "Горный велосипед 26 — золотой на литых дисках",
-    "slug": "26",
+    "slug": "order-gornyy-velosiped-26-zolotoy-na-lityh-diskah",
     "category": "bicycles",
     "price": 20000,
     "wheel_size": "26",
@@ -921,7 +921,7 @@
   },
   {
     "title": "Горный велосипед 29 — чёрно-зелёный",
-    "slug": "29-e-e",
+    "slug": "order-gornyy-velosiped-29-cherno-zelenyy",
     "category": "bicycles",
     "price": 16000,
     "wheel_size": "29",
@@ -941,7 +941,7 @@
   },
   {
     "title": "Горный велосипед 27,5 — зелёный",
-    "slug": "27-5-e",
+    "slug": "order-gornyy-velosiped-27-5-zelenyy",
     "category": "bicycles",
     "price": 16000,
     "wheel_size": "27.5",
@@ -961,7 +961,7 @@
   },
   {
     "title": "Горный велосипед 29 — белый",
-    "slug": "29",
+    "slug": "order-gornyy-velosiped-29-belyy",
     "category": "bicycles",
     "price": 16000,
     "wheel_size": "29",
@@ -981,7 +981,7 @@
   },
   {
     "title": "Подростковый велосипед 24 — чёрно-красный",
-    "slug": "24-e",
+    "slug": "order-podrostkovyy-velosiped-24-cherno-krasnyy",
     "category": "bicycles",
     "price": 21500,
     "wheel_size": "24",
@@ -1001,7 +1001,7 @@
   },
   {
     "title": "Горный велосипед 26 — чёрный",
-    "slug": "26-e",
+    "slug": "order-gornyy-velosiped-26-chernyy",
     "category": "bicycles",
     "price": 13500,
     "wheel_size": "26",
@@ -1021,7 +1021,7 @@
   },
   {
     "title": "Горный велосипед 26 — белый",
-    "slug": "26",
+    "slug": "order-gornyy-velosiped-26-belyy",
     "category": "bicycles",
     "price": 23000,
     "wheel_size": "26",
@@ -1041,7 +1041,7 @@
   },
   {
     "title": "Горный велосипед 29 — бело-чёрный",
-    "slug": "29-e",
+    "slug": "order-gornyy-velosiped-29-belo-chernyy",
     "category": "bicycles",
     "price": 19000,
     "wheel_size": "29",
@@ -1061,7 +1061,7 @@
   },
   {
     "title": "Горный велосипед 27,5 — серый",
-    "slug": "27-5",
+    "slug": "order-gornyy-velosiped-27-5-seryy",
     "category": "bicycles",
     "price": 16000,
     "wheel_size": "27.5",
@@ -1081,7 +1081,7 @@
   },
   {
     "title": "Горный велосипед 29 — графитовый",
-    "slug": "29",
+    "slug": "order-gornyy-velosiped-29-grafitovyy",
     "category": "bicycles",
     "price": 16500,
     "wheel_size": "29",
@@ -1101,7 +1101,7 @@
   },
   {
     "title": "Горный велосипед 26 — серебристый",
-    "slug": "26",
+    "slug": "order-gornyy-velosiped-26-serebristyy",
     "category": "bicycles",
     "price": 21000,
     "wheel_size": "26",
@@ -1121,7 +1121,7 @@
   },
   {
     "title": "Горный велосипед 27,5 — чёрно-красный",
-    "slug": "27-5-e",
+    "slug": "order-gornyy-velosiped-27-5-cherno-krasnyy",
     "category": "bicycles",
     "price": 12000,
     "wheel_size": "27.5",
@@ -1141,7 +1141,7 @@
   },
   {
     "title": "Горный велосипед 26 — чёрный с крыльями",
-    "slug": "26-e",
+    "slug": "order-gornyy-velosiped-26-chernyy-s-krylyami",
     "category": "bicycles",
     "price": 18000,
     "wheel_size": "26",
@@ -1161,7 +1161,7 @@
   },
   {
     "title": "Подростковый велосипед 24 — синий",
-    "slug": "24",
+    "slug": "order-podrostkovyy-velosiped-24-siniy",
     "category": "bicycles",
     "price": 21500,
     "wheel_size": "24",
@@ -1181,7 +1181,7 @@
   },
   {
     "title": "Горный велосипед 27,5 — чёрно-зелёный",
-    "slug": "27-5-e-e",
+    "slug": "order-gornyy-velosiped-27-5-cherno-zelenyy",
     "category": "bicycles",
     "price": 17000,
     "wheel_size": "27.5",
@@ -1201,7 +1201,7 @@
   },
   {
     "title": "Горный велосипед 26 — оранжево-фиолетовый",
-    "slug": "26",
+    "slug": "order-gornyy-velosiped-26-oranzhevo-fioletovyy",
     "category": "bicycles",
     "price": 23000,
     "wheel_size": "26",
@@ -1221,7 +1221,7 @@
   },
   {
     "title": "Горный велосипед 29 — бежевый",
-    "slug": "29",
+    "slug": "order-gornyy-velosiped-29-bezhevyy",
     "category": "bicycles",
     "price": 19000,
     "wheel_size": "29",
@@ -1241,7 +1241,7 @@
   },
   {
     "title": "Горный велосипед 29 — зелёно-жёлтый",
-    "slug": "29-e-e",
+    "slug": "order-gornyy-velosiped-29-zeleno-zheltyy",
     "category": "bicycles",
     "price": 13000,
     "wheel_size": "29",
@@ -1261,7 +1261,7 @@
   },
   {
     "title": "Подростковый велосипед 24 — на литых дисках",
-    "slug": "24",
+    "slug": "order-podrostkovyy-velosiped-24-na-lityh-diskah",
     "category": "bicycles",
     "price": 22000,
     "wheel_size": "24",
@@ -1281,7 +1281,7 @@
   },
   {
     "title": "Горный велосипед 27,5 — оранжево-серый",
-    "slug": "27-5",
+    "slug": "order-gornyy-velosiped-27-5-oranzhevo-seryy",
     "category": "bicycles",
     "price": 13500,
     "wheel_size": "27.5",
@@ -1301,7 +1301,7 @@
   },
   {
     "title": "Горный велосипед 27,5 — серо-фиолетовый",
-    "slug": "27-5",
+    "slug": "order-gornyy-velosiped-27-5-sero-fioletovyy",
     "category": "bicycles",
     "price": 18000,
     "wheel_size": "27.5",
@@ -1321,7 +1321,7 @@
   },
   {
     "title": "Горный велосипед 26 — зелёный на литых дисках",
-    "slug": "26-e",
+    "slug": "order-gornyy-velosiped-26-zelenyy-na-lityh-diskah",
     "category": "bicycles",
     "price": 16500,
     "wheel_size": "26",
@@ -1341,7 +1341,7 @@
   },
   {
     "title": "Горный велосипед 27,5 — графитовый",
-    "slug": "27-5",
+    "slug": "order-gornyy-velosiped-27-5-grafitovyy",
     "category": "bicycles",
     "price": 15000,
     "wheel_size": "27.5",
@@ -1361,7 +1361,7 @@
   },
   {
     "title": "Горный велосипед 29 — чёрно-оранжевый",
-    "slug": "29-e",
+    "slug": "order-gornyy-velosiped-29-cherno-oranzhevyy",
     "category": "bicycles",
     "price": 21000,
     "wheel_size": "29",
@@ -1381,7 +1381,7 @@
   },
   {
     "title": "Подростковый велосипед 24 — чёрно-жёлтый",
-    "slug": "24-e-e",
+    "slug": "order-podrostkovyy-velosiped-24-cherno-zheltyy",
     "category": "bicycles",
     "price": 13000,
     "wheel_size": "24",
@@ -1401,7 +1401,7 @@
   },
   {
     "title": "Горный велосипед 29 — чёрный",
-    "slug": "29-e",
+    "slug": "order-gornyy-velosiped-29-chernyy-2",
     "category": "bicycles",
     "price": 13500,
     "wheel_size": "29",
@@ -1421,7 +1421,7 @@
   },
   {
     "title": "Городской велосипед 28 — чёрный",
-    "slug": "28-e",
+    "slug": "order-gorodskoy-velosiped-28-chernyy",
     "category": "bicycles",
     "price": 12500,
     "wheel_size": "other",
@@ -1441,7 +1441,7 @@
   },
   {
     "title": "Горный велосипед 27,5 — графитовый",
-    "slug": "27-5",
+    "slug": "order-gornyy-velosiped-27-5-grafitovyy-2",
     "category": "bicycles",
     "price": 15500,
     "wheel_size": "27.5",
@@ -1461,7 +1461,7 @@
   },
   {
     "title": "Горный велосипед 29 — бело-золотой",
-    "slug": "29",
+    "slug": "order-gornyy-velosiped-29-belo-zolotoy",
     "category": "bicycles",
     "price": 23000,
     "wheel_size": "29",

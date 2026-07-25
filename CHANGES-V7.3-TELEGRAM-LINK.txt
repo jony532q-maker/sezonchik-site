@@ -1,0 +1,6 @@
+V7.3 — Telegram channel link corrected
+
+- Added a large Telegram subscription block immediately below the homepage hero.
+- Subscription button points to: https://t.me/sezonchik_27
+- Updated plain Telegram channel links on the homepage to the same address.
+- Product enquiry links containing prefilled text were not changed.
