@@ -1,5 +1,10 @@
 // РЕДАКТИРУЙТЕ ТОЛЬКО ЦИФРЫ ЦЕН. Файл используется каталогом и карточками товаров.
 window.SEZONCHIK_PRICES = {
+  "crolan-808": 15000,
+  "geloun-20-full-suspension": 15000,
+  "britney-b-210": 13000,
+  "britney-b-370-blue": 16000,
+  "britney-b-370-gray": 16000,
   "tulun-26-bessovnaa-rama": 26000,
   "dinos-chaser-26-litye-diski": 16500,
   "tulun-26-s-regulirovkoj": 19000,

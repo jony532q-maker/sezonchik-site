@@ -1,5 +1,96 @@
 [
   {
+    "id": 75,
+    "name": "BRITNEY B-370 серый",
+    "category": "adult",
+    "wheel": "27.5",
+    "price": 16000,
+    "image": "assets/products/product-75.webp",
+    "badge": "Новинка",
+    "material": "steel",
+    "specs": [
+      "27.5”",
+      "Стальная рама",
+      "21 скорость",
+      "Дисковые тормоза"
+    ],
+    "desc": "Новая модель BRITNEY B-370 на колёсах 27.5 дюйма со стальной рамой, 21 скоростью и дисковыми тормозами.",
+    "slug": "britney-b-370-gray"
+  },
+  {
+    "id": 76,
+    "name": "BRITNEY B-370 синий",
+    "category": "adult",
+    "wheel": "27.5",
+    "price": 16000,
+    "image": "assets/products/product-76.webp",
+    "badge": "Новинка",
+    "material": "steel",
+    "specs": [
+      "27.5”",
+      "Стальная рама",
+      "21 скорость",
+      "Дисковые тормоза"
+    ],
+    "desc": "Синяя версия BRITNEY B-370 на колёсах 27.5 дюйма со стальной рамой, 21 скоростью и дисковыми тормозами.",
+    "slug": "britney-b-370-blue"
+  },
+  {
+    "id": 77,
+    "name": "BRITNEY B-210",
+    "category": "teen",
+    "wheel": "22",
+    "price": 13000,
+    "image": "assets/products/product-77.webp",
+    "badge": "Новинка",
+    "material": "steel",
+    "specs": [
+      "22”",
+      "Стальная рама",
+      "21 скорость",
+      "Дисковые тормоза"
+    ],
+    "desc": "Подростковый BRITNEY B-210 на колёсах 22 дюйма, со стальной рамой, 21 скоростью и дисковыми тормозами.",
+    "slug": "britney-b-210"
+  },
+  {
+    "id": 78,
+    "name": "GELOUN 20 двухподвес",
+    "category": "child",
+    "wheel": "20",
+    "price": 15000,
+    "image": "assets/products/product-78.webp",
+    "badge": "Новинка",
+    "material": "other",
+    "specs": [
+      "20”",
+      "Двухподвес",
+      "Бесшовная рама",
+      "7 скоростей",
+      "Навесное L-TWOO"
+    ],
+    "desc": "Яркий двухподвесный велосипед GELOUN на колёсах 20 дюймов с бесшовной рамой, 7 скоростями и навесным оборудованием L-TWOO.",
+    "slug": "geloun-20-full-suspension"
+  },
+  {
+    "id": 79,
+    "name": "CROLAN 808",
+    "category": "adult",
+    "wheel": "26",
+    "price": 15000,
+    "image": "assets/products/product-79.webp",
+    "badge": "Новинка",
+    "material": "aluminum",
+    "specs": [
+      "26”",
+      "Алюминиевая рама",
+      "21 скорость",
+      "Дисковые тормоза"
+    ],
+    "desc": "Лёгкий CROLAN 808 на колёсах 26 дюймов с алюминиевой рамой, 21 скоростью и дисковыми тормозами.",
+    "slug": "crolan-808"
+  },
+  {
     "title": "TULUN 26 бесшовная рама",
     "slug": "tulun-26-bessovnaa-rama",
     "category": "bicycles",
