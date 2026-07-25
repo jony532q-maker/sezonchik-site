@@ -17,7 +17,7 @@
       const name=(document.querySelector('h1')||{}).textContent||'велосипед';
       const msg=`Здравствуйте! Интересует ${name} за ${fmt(pagePrice)}. Подскажите, есть ли в наличии?`;
       document.querySelectorAll('.page-actions a').forEach(a=>{
-        if(a.href.includes('t.me/sezonchik_27')) a.href='https://t.me/sezonchik_27?text='+encodeURIComponent(msg);
+        if(a.href.includes('t.me/sezonchik_dv')) a.href='https://t.me/sezonchik_dv';
         if(a.href.includes('wa.me/79990821045')) a.href='https://wa.me/79990821045?text='+encodeURIComponent(msg);
       });
     }
