@@ -16,3 +16,27 @@
 .picker-phone{display:block;margin-top:15px;text-align:center;color:#dce3e8;font-weight:800}
 body.picker-open{overflow:hidden}
 @media(max-width:760px){.home-hero-actions-v9{display:grid!important;grid-template-columns:1fr!important}.home-hero-actions-v9 .btn{width:100%;min-width:0}.hero-microcopy{font-size:12px}.picker-dialog{padding:28px 19px 22px;border-radius:21px}.picker-dialog h2{padding-right:34px}}
+
+/* V9.2 — реальные покупатели и сравнение «сел и поехал» */
+.customer-proof{padding:82px 0;background:linear-gradient(180deg,#0b0e11,#11161a)}
+.customer-proof-head{max-width:800px;margin:0 auto 30px;text-align:center}
+.customer-proof-head h2{margin:8px 0 12px;font-size:clamp(32px,5vw,58px);line-height:1.02;letter-spacing:-.04em}
+.customer-proof-head p{margin:0;color:#aeb8c0;line-height:1.65}
+.customer-proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.customer-proof-card{position:relative;margin:0;min-height:390px;border:1px solid rgba(255,255,255,.09);border-radius:22px;overflow:hidden;background:#151a1f;box-shadow:0 18px 50px rgba(0,0,0,.28)}
+.customer-proof-card img{width:100%;height:100%;min-height:390px;display:block;object-fit:cover;object-position:center}
+.customer-proof-card:after{content:"";position:absolute;inset:auto 0 0;height:42%;background:linear-gradient(transparent,rgba(0,0,0,.9))}
+.customer-proof-card figcaption{position:absolute;z-index:2;left:16px;right:16px;bottom:15px;color:#fff;font-size:13px;font-weight:850;line-height:1.35}
+.ready-ride{position:relative;display:grid;grid-template-columns:1fr 64px 1fr;align-items:stretch;margin-top:26px;border:1px solid rgba(167,240,0,.22);border-radius:25px;overflow:hidden;background:#0b0e11}
+.ready-ride-col{padding:30px}
+.ready-ride-col>span{display:block;margin-bottom:8px;font-size:11px;font-weight:950;letter-spacing:.13em}
+.ready-ride-col h3{margin:0 0 10px;font-size:clamp(25px,3vw,38px);line-height:1.05}
+.ready-ride-col p{margin:0;color:#aeb8c0;line-height:1.58}
+.ready-ride-other{background:linear-gradient(135deg,rgba(255,255,255,.035),rgba(255,255,255,.01))}
+.ready-ride-other>span{color:#8e9aa4}
+.ready-ride-us{background:radial-gradient(circle at 85% 10%,rgba(167,240,0,.2),transparent 45%),linear-gradient(135deg,rgba(167,240,0,.08),rgba(167,240,0,.02))}
+.ready-ride-us>span,.ready-ride-us strong{color:#a7f000}
+.ready-ride-us strong{display:inline-block;margin-top:17px;padding:9px 13px;border:1px solid rgba(167,240,0,.42);border-radius:999px;font-size:14px;letter-spacing:.08em}
+.ready-ride-vs{display:grid;place-items:center;background:#a7f000;color:#091006;font-weight:1000;font-size:18px}
+@media(max-width:920px){.customer-proof-grid{grid-template-columns:repeat(2,1fr)}.customer-proof-card,.customer-proof-card img{min-height:430px}}
+@media(max-width:620px){.customer-proof{padding:58px 0}.customer-proof-grid{grid-template-columns:1fr 1fr;gap:9px}.customer-proof-card,.customer-proof-card img{min-height:270px;border-radius:16px}.customer-proof-card figcaption{left:11px;right:11px;bottom:10px;font-size:11px}.ready-ride{grid-template-columns:1fr;margin-top:18px}.ready-ride-vs{min-height:42px}.ready-ride-col{padding:23px 19px}.ready-ride-col h3{font-size:25px}}
