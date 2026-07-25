@@ -22,7 +22,7 @@ ready(()=>{
     if(!height||!person||!budget)return;
     const text=`Здравствуйте! Помогите подобрать велосипед. Для кого: ${person}. Рост: ${height} см. Бюджет: ${budget} ₽. Какие модели есть в наличии?`;
     try{ym(110645856,"reachGoal","picker_submit")}catch(err){}
-    window.open(`https://wa.me/79990821045?text=${encodeURIComponent(text)}`,"_blank","noopener");
+    if(window.SeasonContact) window.SeasonContact.open(text); else window.open(`https://wa.me/79990821045?text=${encodeURIComponent(text)}`,"_blank","noopener");
   });
 });
 })();
