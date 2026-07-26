@@ -2,39 +2,53 @@
   'use strict';
 
   var VK_PIXEL_ID = 3779642;
+  var lastKey = '';
+  var lastTime = 0;
 
   function sendVkGoal(goal) {
     try {
-      var _tmr = window._tmr || (window._tmr = []);
-      _tmr.push({ id: VK_PIXEL_ID, type: 'reachGoal', goal: goal });
+      var queue = window._tmr || (window._tmr = []);
+      queue.push({ type: 'reachGoal', id: VK_PIXEL_ID, goal: goal });
+      window.__sezonchikLastVkGoal = { goal: goal, time: Date.now() };
+      return true;
     } catch (error) {
-      // Не мешаем переходу пользователя, если счётчик недоступен.
+      return false;
     }
   }
 
-  document.addEventListener('click', function (event) {
+  function classify(link) {
+    var href = (link.getAttribute('href') || '').trim().toLowerCase();
+    if (href.indexOf('tel:') === 0) return 'phone';
+    if (href.indexOf('wa.me/') !== -1 || href.indexOf('whatsapp.com/') !== -1) return 'whatsapp';
+    if (href.indexOf('max.ru/') !== -1) return 'max';
+    if (href.indexOf('t.me/sezonchik_dv') !== -1) return 'telegram';
+    if (href.indexOf('2gis.ru/') !== -1 || href.indexOf('yandex.ru/maps') !== -1) return 'route';
+    return '';
+  }
+
+  function handle(event) {
     var link = event.target.closest && event.target.closest('a[href]');
     if (!link) return;
 
-    var href = (link.getAttribute('href') || '').trim().toLowerCase();
-    var contactGoal = '';
+    var goal = classify(link);
+    if (!goal) return;
 
-    if (href.indexOf('tel:') === 0) {
-      contactGoal = 'phone';
-    } else if (href.indexOf('wa.me/') !== -1 || href.indexOf('whatsapp.com/') !== -1) {
-      contactGoal = 'whatsapp';
-    } else if (href.indexOf('max.ru/') !== -1) {
-      contactGoal = 'max';
-    } else if (href.indexOf('t.me/sezonchik_dv') !== -1) {
-      contactGoal = 'telegram';
-    } else if (href.indexOf('2gis.ru/') !== -1) {
-      sendVkGoal('route');
-      return;
-    }
+    var now = Date.now();
+    var key = goal + '|' + (link.getAttribute('href') || '');
+    if (key === lastKey && now - lastTime < 1200) return;
+    lastKey = key;
+    lastTime = now;
 
-    if (contactGoal) {
-      sendVkGoal(contactGoal);
-      sendVkGoal('lead');
-    }
-  }, true);
+    sendVkGoal(goal);
+    if (goal !== 'route') sendVkGoal('lead');
+  }
+
+  // pointerdown срабатывает до открытия приложения; click оставлен как резерв.
+  document.addEventListener('pointerdown', handle, true);
+  document.addEventListener('click', handle, true);
+
+  window.SeasonVkGoal = {
+    send: sendVkGoal,
+    lead: function () { return sendVkGoal('lead'); }
+  };
 }());

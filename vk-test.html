@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Проверка события VK — Сезонщик</title>
+<style>
+body{margin:0;background:#080b0d;color:#fff;font-family:Arial,sans-serif;display:grid;min-height:100vh;place-items:center;padding:20px;box-sizing:border-box}.box{max-width:520px;width:100%;background:#12171b;border:1px solid #2c363d;border-radius:22px;padding:26px;box-sizing:border-box}h1{font-size:26px;margin:0 0 12px}p{line-height:1.5;color:#cbd3d8}.btn{width:100%;border:0;border-radius:14px;padding:17px;font-size:18px;font-weight:800;background:#b8ef19;color:#071006;cursor:pointer}.status{margin-top:16px;padding:14px;border-radius:12px;background:#0c1114;color:#dfe7eb}.back{display:block;margin-top:18px;color:#b8ef19;text-align:center}
+</style>
+<script>
+var _tmr=window._tmr||(window._tmr=[]);_tmr.push({id:"3779642",type:"pageView",start:(new Date()).getTime()});
+(function(d,w,id){if(d.getElementById(id))return;var ts=d.createElement('script');ts.type='text/javascript';ts.async=true;ts.id=id;ts.src='https://top-fwz1.mail.ru/js/code.js';var f=function(){var s=d.getElementsByTagName('script')[0];s.parentNode.insertBefore(ts,s)};f()})(document,window,'tmr-code');
+</script>
+</head>
+<body>
+<div class="box">
+<h1>Проверка события VK</h1>
+<p>Кнопка отправит событие <b>lead</b> и останется на этой странице — мессенджер не откроется.</p>
+<button class="btn" id="testLead">Отправить тест lead</button>
+<div class="status" id="status">Тест ещё не отправлен.</div>
+<a class="back" href="index.html">Вернуться на сайт</a>
+</div>
+<script src="vk-goals.js?v=99"></script>
+<script>
+document.getElementById('testLead').addEventListener('click',function(){
+  var ok=window.SeasonVkGoal&&window.SeasonVkGoal.lead();
+  document.getElementById('status').textContent=ok?'Событие lead поставлено в очередь VK. Время: '+new Date().toLocaleTimeString():'Не удалось поставить событие в очередь.';
+});
+</script>
+</body>
+</html>
