@@ -265,7 +265,7 @@ img{content-visibility:auto}
 /* stronger desktop sizing for this homepage */
 @media(max-width:1220px){.mock-feature-line{grid-template-columns:repeat(2,1fr)}.mock-category-grid,.mock-info-grid,.mock-why-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){.mock-hero{padding-top:104px}.mock-hero-grid{grid-template-columns:1fr}.mock-hero-copy,.mock-hero-visual{min-height:auto}.mock-hero-visual{height:440px}.mock-card{min-height:unset}.mock-card p{min-height:auto}.mock-section-title h2{font-size:38px}}
-@media(max-width:680px){body{padding-bottom:112px}.mock-hero{padding:96px 0 22px}.mock-hero-copy{padding:24px 20px 24px}.mock-hero h1{font-size:56px}.mock-subline{font-size:16px}.mock-feature-line{grid-template-columns:1fr 1fr;gap:10px}.mock-feature-line article{min-height:86px;padding:12px 10px}.mock-feature-line strong{font-size:12px}.mock-feature-line span{font-size:11px}.mock-hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mock-hero-actions .btn{padding-inline:12px}.mock-hero-visual{height:330px}.mock-gift-card{left:12px;right:12px;bottom:12px;padding:12px 14px;gap:10px}.mock-gift-card span{width:42px;height:42px;font-size:22px}.mock-gift-card strong{font-size:14px}.mock-gift-card small{font-size:12px;max-width:none}.mock-section{padding:24px 0}.mock-section-title{gap:10px;margin-bottom:16px}.mock-section-title i{width:28px}.mock-section-title h2{font-size:32px}.mock-category-grid,.mock-info-grid,.mock-why-grid{grid-template-columns:1fr;gap:12px}.mock-info-grid{padding:0;border:0;background:transparent}.mock-card-media{height:240px}.mock-card-body{padding:18px 18px 20px}.mock-card h3{font-size:28px}.mock-card p{font-size:18px}.mock-badge{font-size:15px}.mock-info-grid article{padding:20px}.mock-info-grid h3{font-size:21px}.mock-info-grid p,.mock-info-grid p strong,.mock-why-grid p{font-size:17px}.mock-why-grid article{padding:20px}.mobile-contact-bar{left:12px;right:12px;bottom:10px;padding:8px 8px 10px}.mobile-contact-bar a{min-height:50px}}
+@media(max-width:680px){body{padding-bottom:112px}.mock-hero{padding:96px 0 22px}.mock-hero-copy{padding:24px 20px 24px}.mock-hero h1{font-size:56px}.mock-subline{font-size:16px}.mock-feature-line{grid-template-columns:1fr 1fr;gap:10px}.mock-feature-line article{min-height:86px;padding:12px 10px}.mock-feature-line strong{font-size:12px}.mock-feature-line span{font-size:11px}.mock-hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mock-hero-actions .btn{padding-inline:12px}.home-hero-actions{display:grid;grid-template-columns:1fr;gap:12px;max-width:360px}.home-hero-actions .btn{width:100%;min-width:0}.home-hero-actions .btn-primary svg{margin-left:10px}.mock-hero-visual{height:330px}.mock-gift-card{left:12px;right:12px;bottom:12px;padding:12px 14px;gap:10px}.mock-gift-card span{width:42px;height:42px;font-size:22px}.mock-gift-card strong{font-size:14px}.mock-gift-card small{font-size:12px;max-width:none}.mock-section{padding:24px 0}.mock-section-title{gap:10px;margin-bottom:16px}.mock-section-title i{width:28px}.mock-section-title h2{font-size:32px}.mock-category-grid,.mock-info-grid,.mock-why-grid{grid-template-columns:1fr;gap:12px}.mock-info-grid{padding:0;border:0;background:transparent}.mock-card-media{height:240px}.mock-card-body{padding:18px 18px 20px}.mock-card h3{font-size:28px}.mock-card p{font-size:18px}.mock-badge{font-size:15px}.mock-info-grid article{padding:20px}.mock-info-grid h3{font-size:21px}.mock-info-grid p,.mock-info-grid p strong,.mock-why-grid p{font-size:17px}.mock-why-grid article{padding:20px}.mobile-contact-bar{left:12px;right:12px;bottom:10px;padding:8px 8px 10px}.mobile-contact-bar a{min-height:50px}}
 
 
 /* Clear responsive imagery fix */
@@ -437,11 +437,12 @@ body{background:radial-gradient(circle at 50% -10%,rgba(71,104,105,.10),transpar
 .home-benefits article>svg{flex:0 0 42px;width:42px;height:42px;fill:none;stroke:var(--green);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .home-benefits strong{display:block;margin-top:1px;color:#fff;font-size:12px;line-height:1.15;font-weight:850}
 .home-benefits small{display:block;margin-top:6px;color:#f0f2f3;font-size:11px;line-height:1.28}
-.home-hero-actions{display:flex;gap:24px;flex-wrap:wrap}
-.home-hero-actions .btn{min-width:212px;min-height:57px;padding:0 28px;border-radius:9px;font-size:16px}
+.home-hero-actions{display:flex;gap:18px;flex-wrap:wrap;align-items:stretch}
+.home-hero-actions .btn{min-width:212px;min-height:57px;padding:0 28px;border-radius:12px;font-size:16px}
 .home-hero-actions .btn-primary{background:linear-gradient(90deg,#9ee500,#b8ff0c);box-shadow:0 9px 26px rgba(168,238,0,.17)}
 .home-hero-actions .btn-primary svg{width:20px;height:20px;margin-left:13px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.home-hero-actions .btn-ghost{min-width:130px;background:rgba(3,6,8,.68);border:1px solid rgba(168,238,0,.55);color:#fff}
+.home-hero-actions .btn-ghost{min-width:180px;background:linear-gradient(135deg,rgba(33,41,56,.96),rgba(14,18,25,.96));border:1px solid rgba(255,255,255,.16);color:#fff;box-shadow:0 10px 24px rgba(0,0,0,.28)}
+.home-hero-actions .btn-ghost:hover{border-color:#8fb5ff;color:#fff;box-shadow:0 14px 34px rgba(30,57,117,.34);transform:translateY(-2px)}
 .home-gift-card{position:absolute;z-index:3;right:26px;bottom:25px;display:flex;align-items:center;gap:17px;min-width:315px;padding:17px 23px;border:1px solid rgba(168,238,0,.74);border-radius:16px;background:rgba(3,6,8,.92);box-shadow:0 16px 38px rgba(0,0,0,.34);backdrop-filter:blur(10px)}
 .home-gift-card .gift-symbol{width:46px;height:46px;flex:0 0 46px;fill:none;stroke:var(--green);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .home-gift-card strong{display:block;color:var(--green);font-size:17px;line-height:1.1;letter-spacing:.05em}
@@ -704,3 +705,39 @@ body{background:radial-gradient(circle at 50% -10%,rgba(71,104,105,.10),transpar
 .reviews-source{margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 24px;border:1px solid rgba(167,240,0,.25);border-radius:18px;background:linear-gradient(135deg,rgba(167,240,0,.08),rgba(255,255,255,.025))}
 .reviews-source div{display:grid;gap:3px}.reviews-source b{font-size:18px}.reviews-source span{color:var(--muted)}
 @media(max-width:780px){.store-addresses{padding:48px 0}.store-addresses-head{grid-template-columns:1fr;gap:10px}.store-addresses-head .eyebrow{grid-column:auto}.store-address-grid{grid-template-columns:1fr}.store-address-card{grid-template-columns:52px minmax(0,1fr);padding:22px;gap:15px}.store-address-icon{width:48px;height:48px;border-radius:14px}.store-address-icon svg{width:26px;height:26px}.store-address-card h3{font-size:25px}.store-address-card .btn{width:100%}.reviews-source{align-items:stretch;flex-direction:column}.reviews-source .btn{width:100%}}
+
+/* V4 unified product imagery */
+.product-card img, .product-image img, .catalog-card img, [class*="product"] img[src*="assets/products/"] {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  background: #f4f5f3;
+}
+
+/* Extended supplier catalog */
+.supplier-card{border:1px solid rgba(255,255,255,.12);opacity:.96}.supplier-card .product-badge{background:#20252b;color:#fff}.supplier-card .product-meta{color:#a7f000}.supplier-card .price{font-size:1.05rem}.supplier-card .ask{width:100%}
+
+
+/* V7.2 — large Telegram subscription CTA */
+.telegram-subscribe{padding:30px 0 10px;background:linear-gradient(180deg,#080b0e,#0b0d10)}
+.telegram-subscribe-card{position:relative;display:grid;grid-template-columns:86px minmax(0,1fr) auto;align-items:center;gap:26px;min-height:190px;padding:32px 36px;border:1px solid rgba(88,196,255,.42);border-radius:26px;overflow:hidden;background:radial-gradient(circle at 8% 0%,rgba(101,207,255,.34),transparent 35%),linear-gradient(115deg,#0b79b4 0%,#168dcc 45%,#176d9d 100%);box-shadow:0 24px 65px rgba(0,114,173,.25);transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.telegram-subscribe-card:before{content:"";position:absolute;right:-90px;top:-160px;width:360px;height:360px;border-radius:50%;border:1px solid rgba(255,255,255,.14);box-shadow:0 0 0 42px rgba(255,255,255,.035),0 0 0 88px rgba(255,255,255,.025);pointer-events:none}
+.telegram-subscribe-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.72);box-shadow:0 30px 80px rgba(0,126,190,.36)}
+.telegram-subscribe-icon{position:relative;z-index:1;width:86px;height:86px;display:grid;place-items:center;border-radius:24px;background:#fff;color:#168dcc;box-shadow:0 15px 35px rgba(3,58,89,.22)}
+.telegram-subscribe-icon svg{width:47px;height:47px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.telegram-subscribe-copy{position:relative;z-index:1}
+.telegram-subscribe-copy span{display:block;margin-bottom:7px;color:#dff6ff;font-size:12px;font-weight:950;letter-spacing:.12em}
+.telegram-subscribe-copy h2{margin:0;color:#fff;font-size:clamp(28px,4vw,48px);line-height:1.03;letter-spacing:-.035em;max-width:760px}
+.telegram-subscribe-copy p{margin:12px 0 0;color:rgba(255,255,255,.86);font-size:16px;line-height:1.55;max-width:740px}
+.telegram-subscribe-button{position:relative;z-index:1;min-width:220px;min-height:62px;padding:0 24px;display:inline-flex;align-items:center;justify-content:center;gap:12px;border-radius:15px;background:#fff;color:#0878b2;font-size:15px;font-weight:950;letter-spacing:.035em;box-shadow:0 12px 28px rgba(0,50,78,.18)}
+.telegram-subscribe-button svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:900px){.telegram-subscribe-card{grid-template-columns:72px minmax(0,1fr);padding:28px}.telegram-subscribe-icon{width:72px;height:72px;border-radius:20px}.telegram-subscribe-icon svg{width:40px;height:40px}.telegram-subscribe-button{grid-column:1/-1;width:100%}}
+@media(max-width:620px){.telegram-subscribe{padding:20px 0 4px}.telegram-subscribe-card{grid-template-columns:58px minmax(0,1fr);gap:16px;padding:22px 18px;border-radius:20px}.telegram-subscribe-icon{width:58px;height:58px;border-radius:17px}.telegram-subscribe-icon svg{width:33px;height:33px}.telegram-subscribe-copy span{font-size:10px;letter-spacing:.08em}.telegram-subscribe-copy h2{font-size:27px}.telegram-subscribe-copy p{grid-column:1/-1;font-size:14px}.telegram-subscribe-button{min-height:58px;font-size:14px}.telegram-subscribe-card:before{right:-170px;top:-190px}}
+
+
+/* V9.4: whole category cards are clickable */
+.mock-card-link{color:inherit;text-decoration:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.mock-card-link .mock-card-btn{pointer-events:none}
+.mock-card-link:focus-visible{outline:3px solid var(--green);outline-offset:4px}
+.mock-card-link:active{transform:translateY(-2px) scale(.995)}
