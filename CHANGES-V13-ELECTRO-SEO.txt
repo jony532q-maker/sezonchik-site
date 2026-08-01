@@ -1,0 +1,6 @@
+SEZONCHIK V13
+- Переработаны карточки категорий электротранспорта в фирменном стиле.
+- Добавлены локальные SEO title/description/keywords, Open Graph, robots.
+- Добавлены Schema.org Store, CollectionPage, ItemList и FAQPage.
+- Добавлен SEO-текст и FAQ для электросамокатов и электроскутеров в Хабаровске.
+- Обновлён sitemap.xml и версия CSS.
