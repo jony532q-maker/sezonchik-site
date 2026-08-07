@@ -1,0 +1,7 @@
+V16 SALES CONVERSION UPGRADE — 2026-08-07
+- Hero image eager/high priority
+- Price ranges on first screen
+- Popular bikes block on home
+- Real reviews CTA to 2GIS (no fabricated quotes)
+- FAQ + FAQ schema
+- Reserve-before-visit CTA on catalog and product pages
