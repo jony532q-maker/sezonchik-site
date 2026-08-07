@@ -49,3 +49,13 @@
 .size-guide-head{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;margin-bottom:22px}.size-guide-head p{margin:0 0 7px;color:#9bd322;font-weight:800;font-size:12px;letter-spacing:.14em}.size-guide-head h2{margin:0 0 7px;font-size:clamp(24px,3vw,38px)}.size-guide-head span{color:#aeb8be}.size-guide-head>a{flex:none;padding:13px 18px;border-radius:12px;background:#9bd322;color:#0a0e10;font-weight:900;text-decoration:none}
 .size-table-wrap{overflow-x:auto;border-radius:15px;border:1px solid rgba(255,255,255,.08)}.size-table{width:100%;border-collapse:collapse;min-width:690px;background:rgba(255,255,255,.025)}.size-table th,.size-table td{padding:14px 16px;text-align:left;border-bottom:1px solid rgba(255,255,255,.07)}.size-table th{background:rgba(155,211,34,.1);color:#dff5ad;font-size:13px}.size-table td{color:#dce3e7}.size-table td:nth-child(2) b{color:#9bd322;font-size:18px}.size-table tr:last-child td{border-bottom:0}.size-table button{padding:9px 13px;border:1px solid rgba(155,211,34,.45);border-radius:10px;background:transparent;color:#bde75a;font-weight:800;cursor:pointer}.size-table button:hover{background:#9bd322;color:#08100a}.size-note{margin:15px 0 0;color:#8f9ba2;font-size:13px;line-height:1.5}
 @media(max-width:700px){.size-guide{padding:20px 15px;margin-top:30px}.size-guide-head{align-items:flex-start;flex-direction:column}.size-guide-head>a{width:100%;text-align:center}.size-table th,.size-table td{padding:12px 13px}}
+
+/* v2026.08 performance + responsive hardening */
+html{overflow-x:hidden;text-size-adjust:100%;-webkit-text-size-adjust:100%}
+body{overflow-x:clip}
+img{max-width:100%;height:auto}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+@media (max-width:680px){button,a,input,select,textarea{touch-action:manipulation}.container,.v6-container{max-width:100%}.premium-home-hero h1,.hub-hero h1,.category-page-hero h1{overflow-wrap:anywhere}}
+@media (min-width:1200px){.container{max-width:1440px}}
+
+@supports(content-visibility:auto){.bike-card{content-visibility:auto;contain-intrinsic-size:420px 320px}}

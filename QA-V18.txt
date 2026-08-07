@@ -1,0 +1,13 @@
+СЕЗОНЩИК V18 — FINAL QA
+
+Broken static local refs: 0
+
+JavaScript syntax errors: 0
+
+Visual clarity fixes:
+- Main headings and UI labels are live HTML/CSS text, not text baked into images.
+- Hero title shadow reduced so letters stay sharp.
+- Added safeguards against mobile text overflow.
+- Hero image remains eager/preloaded; lower images remain lazy-loaded.
+- Removed obsolete release notes and unused old catalog versions.
+- Telegram routing preserved.
