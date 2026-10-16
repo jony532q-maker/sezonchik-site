@@ -1,0 +1,30 @@
+/* СЕЗОНЩИК: conversion / usability pass, 16 Oct 2026 */
+.v5-find{background:#0b291f;color:#f9efd9;padding:34px 0 43px;border-block:1px solid #4b654a}
+.v5-find-inner{display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:32px}
+.v5-find h2,.v5-faq h2{font:400 clamp(31px,3.4vw,45px)/1.12 Georgia,serif;margin:0 0 10px;letter-spacing:-1px}
+.v5-find h2 em,.v5-faq h2 em{font-style:normal;color:#e4bf81}
+.v5-find-heading p,.v5-faq-inner>div:first-child p{max-width:480px;color:#cfdbcf;font-size:13px;line-height:1.7;margin:0}
+.v5-find-form{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end}
+.v5-find-form label{font-size:12px;color:#f0e7d4;font-weight:700}
+.v5-find-form select{width:100%;display:block;color:#193325;background:#f9f4e9;border:1px solid #d2c29e;border-radius:6px;min-height:52px;margin-top:8px;padding:0 10px;font:500 14px Arial,sans-serif}
+.v5-find-submit{min-height:52px;white-space:nowrap}
+.v5-faq{background:linear-gradient(140deg,#102d21,#071b14);padding:57px 0;color:#f4eddd;border-block:1px solid #39553d}
+.v5-faq-inner{display:grid;grid-template-columns:.8fr 1.2fr;gap:65px;align-items:start}
+.v5-faq-inner .v4-outline-btn{margin-top:22px}
+.v5-faq-items{border-top:1px solid #3d6047}
+.v5-faq-items details{border-bottom:1px solid #3d6047;padding:18px 0}
+.v5-faq-items summary{cursor:pointer;list-style:none;font-weight:600;font-size:15px;padding-right:26px;position:relative}
+.v5-faq-items summary::-webkit-details-marker{display:none}
+.v5-faq-items summary::after{content:'+';position:absolute;right:4px;top:-2px;font-size:22px;color:#e2c189;font-weight:400}
+.v5-faq-items details[open] summary::after{content:'−'}
+.v5-faq-items details p{font-size:13px;color:#c6d7c7;line-height:1.75;max-width:700px;margin:14px 0 0}
+.v5-product-context{display:none;margin:13px 0;padding:14px;background:#ecf1e7;border:1px solid #bdcdb4;border-radius:10px;color:#173626;font-size:13px;line-height:1.55}
+.v5-product-context.is-visible{display:block}
+.v5-product-context strong{display:block;font-size:15px;margin-bottom:4px}
+.v5-product-context .v5-copy-request{display:block;width:100%;background:#123b2b;color:#fff4d9;padding:10px;border-radius:7px;border:0;font:700 12px Arial,sans-serif;margin-top:12px;cursor:pointer}
+.v5-product-context .v5-product-note{display:block;color:#596d5e;font-size:11px;margin-top:8px}
+.tree-price-current{font-variant-numeric:tabular-nums}
+.premium-site .tree-product .tree-order:focus-visible,.premium-site .tree-product .tree-share:focus-visible{outline:3px solid #d3aa66;outline-offset:3px}
+@media(max-width:1050px){.v5-find-inner{grid-template-columns:1fr}.v5-find-form{grid-template-columns:1fr 1fr auto}}
+@media(max-width:700px){.v5-find{padding:30px 0 37px}.v5-find-form{grid-template-columns:1fr 1fr}.v5-find-submit{grid-column:1/-1}.v5-faq{padding:43px 0}.v5-faq-inner{grid-template-columns:1fr;gap:27px}.v5-faq-items summary{font-size:14px}}
+@media(max-width:360px){.v4-product-grid{grid-template-columns:1fr}.v4-product-photo{height:295px}.v4-product-foot{justify-content:space-between}.v5-find-form{grid-template-columns:1fr}.v5-find-submit{grid-column:1}}

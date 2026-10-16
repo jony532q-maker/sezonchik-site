@@ -1,0 +1,7 @@
+
+Sezonchik 7.1 PRO
+- Added verified 2GIS trust block and direct official card links
+- Removed unverified sample review quotes
+- Added 3-step purchase section
+- Added 2GIS link to structured data, navigation and contacts
+- Updated asset cache versions

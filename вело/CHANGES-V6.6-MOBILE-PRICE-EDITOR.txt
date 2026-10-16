@@ -1,0 +1,5 @@
+V6.6 — изменение цен с телефона
+
+Добавлены prices.js, price-sync.js и admin-prices.html.
+Все цены каталога и товарных страниц берутся из одного файла prices.js.
+Откройте https://sezonchik27.ru/admin-prices.html, измените цены, скачайте prices.js и замените этот единственный файл в GitHub.
