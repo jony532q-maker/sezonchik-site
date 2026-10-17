@@ -1,0 +1,4 @@
+
+.seo-links-strip{background:#0d3025;color:#fff8e6;padding:40px 20px;border-top:1px solid #c39c6133;border-bottom:1px solid #c39c6133}.seo-links-strip-inner{max-width:1200px;margin:0 auto;display:flex;gap:22px;align-items:center;justify-content:space-between}.seo-links-tag{font-size:10px;letter-spacing:2px;color:#e8c784}.seo-links-strip h2{font:normal 34px Georgia,serif;margin:8px 0}.seo-links-list{display:flex;flex-wrap:wrap;gap:10px}.seo-links-list a{display:inline-flex;padding:12px 17px;color:#f9e2af;border:1px solid #b99b67;border-radius:7px;font-size:14px;text-decoration:none}.seo-links-list a:hover{background:#d5b77b;color:#10251b}@media(max-width:800px){.seo-links-strip-inner{align-items:flex-start;flex-direction:column}.seo-links-strip h2{font-size:29px}}
+
+.seo-model-link{text-align:center;margin-top:10px}.seo-model-link a{font-size:12px;text-decoration:underline;text-underline-offset:3px;color:#c7a872}
