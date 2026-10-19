@@ -472,8 +472,8 @@
     "image": "assets/trees/catalog/tree-24.webp"
   },
   {
-    "name": "Парижанка (литая)",
-    "code": "ВК-2433",
+    "name": "Голубая Императрица",
+    "code": "2433",
     "material": "Литая хвоя",
     "variants": [
       [
@@ -501,82 +501,12 @@
         38000
       ]
     ],
-    "image": "https://sun9-7.vkuserphoto.ru/s/v1/ig2/RpxDCmzIYlf02UtP19m2F2E8yqwJ_ts6rtUcY8rSUFqFHHHex-sFS1B65ylARf3dEIpeeuKC5DukOpRwWAL9n7y1iz5yVg.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0",
-    "images": [
-      "https://sun9-7.vkuserphoto.ru/s/v1/ig2/RpxDCmzIYlf02UtP19m2F2E8yqwJ_ts6rtUcY8rSUFqFHHHex-sFS1B65ylARf3dEIpeeuKC5DukOpRwWAL9n7y1iz5yVg.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0",
-      "https://sun9-69.vkuserphoto.ru/s/v1/ig2/szHvADuEoLBD-_Bk08oBmOERRym7Rg42LJ6_VGZNDUntFxZxCZ3TWR-9WJ80OWNB2EfMTFgNTlSRS3bWiXQLwciAHT66Rw.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0",
-      "https://sun9-49.vkuserphoto.ru/s/v1/ig2/sC4GF8SnstIoSVhexMbYNs7fh-uaO4xWxFeKIUKl88jXbTaBzr4f6vHgh4Y10901VgAPMeysqbVhDlTxbx2u8tAW.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0",
-      "https://sun9-61.vkuserphoto.ru/s/v1/ig2/nL8NviPHiaie0YtQTg0TTAu967o11cG00OAU9qOERYDCLx2eAIAIL-hC9kWhDGzBmbE5FtFwsjCV09ryfMguSC4U824l3Q.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0",
-      "https://sun9-61.vkuserphoto.ru/s/v1/ig2/DpqolG0_w-4uWC2l9UyMtc4HH2pAj6YAAiQiv_oP1MuoRD1ShtyCGfDp84bgP01sDMehlOWaPLB2o6FQe69ivvnwrtffnw.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0"
-    ],
-    "source_url": "https://vk.ru/market/product/elka-parizhanka-litaya-217735845-12248271",
-    "source_date": "2025-11-29 15:15",
-    "price_verified": false,
-    "stock_verified": false,
-    "slug": "parizhanka-vk-2433"
+    "image": "assets/trees/v92/golubaya-imperatritsa-2433-1.webp"
   },
   {
-    "name": "Заснеженная литая (арт. 666)",
-    "code": "ВК-666",
-    "material": "Заснеженная литая хвоя",
-    "variants": [
-      [
-        180,
-        12200
-      ],
-      [
-        210,
-        15000
-      ]
-    ],
-    "image": "https://sun9-69.vkuserphoto.ru/s/v1/ig2/I9Ero46e0nTWXkUzNJPFDU-MvLoq73c_krFvyIJ3oNkQtmMQkYZ6pOgk6kRVrBAjGW29ge2DE4riVjTIx_4OQ60L.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0",
-    "images": [
-      "https://sun9-69.vkuserphoto.ru/s/v1/ig2/I9Ero46e0nTWXkUzNJPFDU-MvLoq73c_krFvyIJ3oNkQtmMQkYZ6pOgk6kRVrBAjGW29ge2DE4riVjTIx_4OQ60L.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0",
-      "https://sun9-52.vkuserphoto.ru/s/v1/ig2/xnQ4wvv27b6P3QxTdzA7S1IYwnLD7n1_7O57rxP7ANz7Atlb0W8Wa7nJYb0UbiFNcy6gmjPcR3OGsGMqs2fZ7znd.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0",
-      "https://sun9-48.vkuserphoto.ru/s/v1/ig2/9CohImdDYn-a9bHX1nasnsPtCVlceN5RQnROjCXO_PPSfvvZaa3LnKO-caYfD39ZmqCypsD6XtFmxBxHCiBblgy2a2PHMw.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0",
-      "https://sun9-39.vkuserphoto.ru/s/v1/ig2/LQRKiOn809y93wtewRyPZCRrVVecf3AyK4meoOQ-muBUh_naCHko5PFgbVlJMpJTF0jfD51KD-nbSidn9x9pmw3e.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0",
-      "https://sun9-38.vkuserphoto.ru/s/v1/ig2/aUI85YVB84Gao6zhHrTIVIJqEXvjWFhcgi45cpa8SA8MeLjtfvDOyqAX9oaSg1D-EU4uOGRKRSxWU_-gRaicwg-PPExEFg.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0"
-    ],
-    "source_url": "https://vk.ru/market/product/elka-zasnezhennaya-litaya-217735845-12209973",
-    "source_date": "2025-11-22 15:22",
-    "price_verified": false,
-    "stock_verified": false,
-    "slug": "zasnezhennaya-litaya-vk-666"
-  },
-  {
-    "name": "Литая ёлка (арт. 2020)",
-    "code": "ВК-2020",
-    "material": "Литая хвоя",
-    "variants": [
-      [
-        150,
-        8500
-      ],
-      [
-        180,
-        12500
-      ],
-      [
-        210,
-        16500
-      ]
-    ],
-    "image": "https://sun9-37.vkuserphoto.ru/s/v1/ig2/ZzQv6PcpBV_TgOaj0MP3bMwSJV2Wpz3G-pKr4Tv5ZLPRNELTKG64v03To-R7ZpibVwISd5YCuXJR-bRUIE9R40_B.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0",
-    "images": [
-      "https://sun9-37.vkuserphoto.ru/s/v1/ig2/ZzQv6PcpBV_TgOaj0MP3bMwSJV2Wpz3G-pKr4Tv5ZLPRNELTKG64v03To-R7ZpibVwISd5YCuXJR-bRUIE9R40_B.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0",
-      "https://sun9-61.vkuserphoto.ru/s/v1/ig2/efXiW7zoQKEkqYhQWblTOKdLUDc7NmX0ZPBn_1NlTbeT-E1zWko7MApJT1oP2mPp_dQGDq5cztEOkSXEo0bWcCBu.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0",
-      "https://sun9-6.vkuserphoto.ru/s/v1/ig2/xaIDwny6Qdi74IlkQmkwGhhbdbkEBpFccCAqwDiDdPw0s-gERkfn6d-2CyN8okldMHwbgEDmHDCmdkUnFAc62tu7.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0"
-    ],
-    "source_url": "https://vk.ru/market/product/elka-litaya-217735845-12209966",
-    "source_date": "2025-11-22 15:12",
-    "price_verified": false,
-    "stock_verified": false,
-    "slug": "litaya-vk-2020"
-  },
-  {
-    "name": "Голубая литая ёлка",
-    "code": "ВК-голубая",
-    "material": "Литая хвоя",
+    "name": "Серебряный Каскад",
+    "code": "Артикул уточняется",
+    "material": "Тип хвои уточняется",
     "variants": [
       [
         180,
@@ -591,24 +521,64 @@
         26000
       ]
     ],
-    "image": "https://sun9-4.vkuserphoto.ru/s/v1/ig2/Wl-axmcyz7l4jmjc9lcMvhSgloTAw5uN09P0_Sl1SsDgLtIlkMTMJOWpwe5m2GAHkSAHpPBJXCY8eZAA2_mlkiJrXBSdaw.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0",
-    "images": [
-      "https://sun9-4.vkuserphoto.ru/s/v1/ig2/Wl-axmcyz7l4jmjc9lcMvhSgloTAw5uN09P0_Sl1SsDgLtIlkMTMJOWpwe5m2GAHkSAHpPBJXCY8eZAA2_mlkiJrXBSdaw.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0"
-    ],
-    "source_url": "https://vk.ru/market/product/elka-golubaya-litaya-217735845-12142595",
-    "source_date": "2025-11-13 21:37",
-    "price_verified": false,
-    "stock_verified": false,
-    "slug": "golubaya-litaya-vk"
+    "image": "assets/trees/v92/serebryanyy-kaskad-1.webp"
   },
   {
-    "name": "Искусственная ёлка (арт. 1717)",
-    "code": "ВК-1717",
-    "material": "Искусственная ёлка",
+    "name": "Таёжный Водопад",
+    "code": "2425",
+    "material": "Тип хвои уточняется",
     "variants": [
       [
         150,
-        6500
+        8500
+      ],
+      [
+        180,
+        15500
+      ],
+      [
+        210,
+        19500
+      ],
+      [
+        240,
+        24000
+      ],
+      [
+        270,
+        30000
+      ]
+    ],
+    "image": "assets/trees/v92/taezhnyy-vodopad-2425-1.webp"
+  },
+  {
+    "name": "Снежная Аврора",
+    "code": "1977F",
+    "material": "Заснеженная",
+    "variants": [
+      [
+        180,
+        12600
+      ],
+      [
+        210,
+        16000
+      ],
+      [
+        240,
+        22300
+      ]
+    ],
+    "image": "assets/trees/v92/snezhnaya-avrora-1977f-1.webp"
+  },
+  {
+    "name": "Снежная Метелица",
+    "code": "06B",
+    "material": "Заснеженная",
+    "variants": [
+      [
+        150,
+        7500
       ],
       [
         180,
@@ -616,22 +586,213 @@
       ],
       [
         210,
-        13500
+        12500
       ],
       [
         240,
-        16000
+        16500
       ]
     ],
-    "image": "https://sun9-45.vkuserphoto.ru/s/v1/ig2/Tdh-Ksd47BG8XluSQSm1SGZdN2xhzpQpjS75XXx4YT8JGcfoOJIb6C6Rp2NzVPRE0MFIgdlBdhoMW37zg607zQqsUOAqug.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0",
-    "images": [
-      "https://sun9-45.vkuserphoto.ru/s/v1/ig2/Tdh-Ksd47BG8XluSQSm1SGZdN2xhzpQpjS75XXx4YT8JGcfoOJIb6C6Rp2NzVPRE0MFIgdlBdhoMW37zg607zQqsUOAqug.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0",
-      "https://sun9-54.vkuserphoto.ru/s/v1/ig2/_4Ouj6Ij0fN8C4i_FCkMR-8ZngUHdjzEYuS51piccz_Rf3i4nfvsnpgqoEPKvfdL2xZh_a2drlU68qG5XgXrNbnEcY9nFg.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0"
+    "image": "assets/trees/v92/snezhnaya-metelitsa-06b-1.webp"
+  },
+  {
+    "name": "Сосна Пушистая",
+    "code": "Артикул уточняется",
+    "material": "Тип хвои уточняется",
+    "variants": [
+      [
+        120,
+        1500
+      ],
+      [
+        150,
+        2400
+      ],
+      [
+        180,
+        4300
+      ],
+      [
+        210,
+        5000
+      ],
+      [
+        240,
+        6500
+      ]
     ],
-    "source_url": "https://vk.ru/market/product/elka-217735845-11862039",
-    "source_date": "2025-09-27 15:33",
-    "price_verified": false,
-    "stock_verified": false,
-    "slug": "elka-vk-1717"
+    "image": "assets/trees/v92/sosna-pushistaya-1.webp"
+  },
+  {
+    "name": "Рябиновая Сказка",
+    "code": "049",
+    "material": "Заснеженная",
+    "variants": [
+      [
+        120,
+        2700
+      ],
+      [
+        150,
+        3600
+      ],
+      [
+        180,
+        6500
+      ],
+      [
+        210,
+        7500
+      ],
+      [
+        240,
+        9700
+      ],
+      [
+        270,
+        15800
+      ]
+    ],
+    "image": "assets/trees/v92/ryabinovaya-skazka-049-1.webp"
+  },
+  {
+    "name": "Изумрудная Тайга",
+    "code": "2432",
+    "material": "Литая хвоя",
+    "variants": [
+      [
+        180,
+        14500
+      ],
+      [
+        210,
+        17500
+      ],
+      [
+        240,
+        23500
+      ],
+      [
+        300,
+        33000
+      ]
+    ],
+    "image": "assets/trees/v92/izumrudnaya-tayga-2432-1.webp"
+  },
+  {
+    "name": "Лесная Вуаль",
+    "code": "1902B",
+    "material": "Литая хвоя",
+    "variants": [
+      [
+        150,
+        7400
+      ],
+      [
+        180,
+        12000
+      ],
+      [
+        210,
+        14800
+      ],
+      [
+        240,
+        21000
+      ]
+    ],
+    "image": "assets/trees/v92/lesnaya-vual-1902b-1.webp"
+  },
+  {
+    "name": "Северная Дымка",
+    "code": "2108",
+    "material": "Комбинированная хвоя",
+    "variants": [
+      [
+        150,
+        8800
+      ],
+      [
+        180,
+        13500
+      ],
+      [
+        210,
+        15500
+      ],
+      [
+        240,
+        21500
+      ],
+      [
+        270,
+        26000
+      ],
+      [
+        300,
+        32000
+      ]
+    ],
+    "image": "assets/trees/v92/severnaya-dymka-2108-1.webp"
+  },
+  {
+    "name": "Лесная Элегия",
+    "code": "03B",
+    "material": "Комбинированная хвоя",
+    "variants": [
+      [
+        150,
+        6100
+      ],
+      [
+        180,
+        10000
+      ],
+      [
+        210,
+        11000
+      ],
+      [
+        240,
+        15200
+      ]
+    ],
+    "image": "assets/trees/v92/lesnaya-elegiya-03b-1.webp"
+  },
+  {
+    "name": "Зелёная классика (вариант 03B)",
+    "code": "03B (вариант 2, уточнить)",
+    "material": "Комбинированная хвоя",
+    "variants": [
+      [
+        180,
+        10000
+      ],
+      [
+        210,
+        13000
+      ],
+      [
+        240,
+        15200
+      ]
+    ],
+    "image": "assets/trees/v92/elka-03b-variant-2-1.webp"
+  },
+  {
+    "name": "Снежный Бархат",
+    "code": "2229",
+    "material": "Заснеженная · комбинированная хвоя",
+    "variants": [
+      [
+        180,
+        12400
+      ],
+      [
+        210,
+        14900
+      ]
+    ],
+    "image": "assets/trees/v92/snezhnyy-barhat-2229-1.webp"
   }
 ]

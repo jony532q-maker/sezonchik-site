@@ -1,0 +1,33 @@
+/* V9.2 — light-weight catalogue polish and street address visibility */
+:root{--v92-forest:#08261e;--v92-gold:#d9ba80;--v92-cream:#f6efe1}
+.tree-product{border-color:rgba(216,187,131,.28)!important;box-shadow:0 9px 28px rgba(0,0,0,.10)!important;overflow:hidden}
+.tree-grid .tree-product>a:first-child{height:340px!important;max-height:340px;display:flex!important;align-items:center;justify-content:center;background:#e9e7e0!important}
+.tree-grid .tree-product>a:first-child img{display:block!important;width:100%!important;height:100%!important;max-height:340px!important;object-fit:contain!important;object-position:center center!important}
+.tree-product .tree-info{padding:18px 20px 22px!important}
+.tree-product .tree-info h2{margin:3px 0 9px!important;line-height:1.2!important}
+.tree-product .tree-info p{line-height:1.45!important}
+.tree-product .tree-price{display:block!important;color:var(--v92-gold)!important;line-height:1.2!important;margin:8px 0 12px!important}
+.tree-product .premium-product-price-hint{font-size:12px!important;letter-spacing:0!important}
+.tree-product .v9-tree-tags span{font-size:11px!important;letter-spacing:.03em}
+.tree-product .v9-tree-buttons{gap:8px!important}
+.tree-product .v9-tree-buttons button{min-height:36px!important}
+.v4-store-details h3,.v4-store-details p{color:#f6efdf!important;opacity:1!important;text-shadow:0 1px 2px rgba(0,0,0,.25)!important}
+.v4-store-details h3{font-size:clamp(24px,3vw,36px)!important}
+.v9-geo-figure{background:radial-gradient(ellipse at 64% 50%,#194a39 0%,#071d18 75%);padding:12px;border:1px solid rgba(220,186,115,.46)!important;border-radius:20px!important;box-shadow:0 16px 36px rgba(0,0,0,.18)}
+.v9-geo-figure img{border-radius:12px;display:block;width:100%;height:auto;filter:saturate(.85) contrast(1.07)}
+.v9-geo-figure figcaption{color:#d9c9a8!important;opacity:.86}
+.seo-detail-img img{width:100%;max-height:680px;object-fit:contain;background:#eae7df}
+.seo-gallery img{object-fit:contain;background:#eae7df}
+.seo-product img{object-fit:contain;background:#efeee8;max-height:300px;width:100%}
+@media(max-width:640px){
+ .tree-grid .tree-product>a:first-child{height:252px!important;max-height:252px!important}
+ .tree-grid .tree-product>a:first-child img{max-height:252px!important}
+ .tree-product .tree-info{padding:14px 15px 17px!important}
+ .tree-product .tree-info h2{font-size:clamp(22px,6vw,27px)!important}
+ .tree-product .tree-info p{font-size:13px!important;margin:3px 0 9px!important}
+ .tree-product .v9-tree-buttons{display:grid!important;grid-template-columns:1fr 1fr!important}
+ .v9-geo-figure{padding:5px!important;margin:0!important;border-radius:12px!important}
+ .v9-geo-figure img{border-radius:8px!important}
+ .v4-store-details h3{font-size:26px!important}
+ .seo-product img{height:230px!important;max-height:230px!important;object-fit:contain!important}
+}
