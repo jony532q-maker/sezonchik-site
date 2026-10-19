@@ -1,0 +1,586 @@
+[
+  {
+    "id": "tree-01",
+    "name": "Лесная фея",
+    "code": "СЕ-730208",
+    "variants": [
+      {
+        "height": 120,
+        "price": 5500
+      },
+      {
+        "height": 150,
+        "price": 8500
+      },
+      {
+        "height": 180,
+        "price": 14000
+      },
+      {
+        "height": 210,
+        "price": 16000
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-02",
+    "name": "Таёжная сказка",
+    "code": "СЕ-719198",
+    "variants": [
+      {
+        "height": 180,
+        "price": 12000
+      },
+      {
+        "height": 210,
+        "price": 15000
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-03",
+    "name": "Таёжная королева",
+    "code": "СЕ-421356",
+    "variants": [
+      {
+        "height": 150,
+        "price": 8990
+      },
+      {
+        "height": 180,
+        "price": 14990
+      },
+      {
+        "height": 210,
+        "price": 18990
+      },
+      {
+        "height": 240,
+        "price": 26990
+      },
+      {
+        "height": 270,
+        "price": 35990
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-04",
+    "name": "Лесная грация",
+    "code": "СЕ-624253",
+    "variants": [
+      {
+        "height": 150,
+        "price": 9990
+      },
+      {
+        "height": 180,
+        "price": 15990
+      },
+      {
+        "height": 210,
+        "price": 21990
+      },
+      {
+        "height": 240,
+        "price": 29990
+      },
+      {
+        "height": 270,
+        "price": 37990
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-05",
+    "name": "Изумрудная мечта",
+    "code": "СЕ-320209",
+    "variants": [
+      {
+        "height": 150,
+        "price": 8490
+      },
+      {
+        "height": 180,
+        "price": 14490
+      },
+      {
+        "height": 210,
+        "price": 18490
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-06",
+    "name": "Хвойный бархат",
+    "code": "СЕ-830104",
+    "variants": [
+      {
+        "height": 120,
+        "price": 5990
+      },
+      {
+        "height": 150,
+        "price": 8590
+      },
+      {
+        "height": 180,
+        "price": 14990
+      },
+      {
+        "height": 210,
+        "price": 18490
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-07",
+    "name": "Лесная чаровница",
+    "code": "СЕ-525402",
+    "variants": [
+      {
+        "height": 180,
+        "price": 15990
+      },
+      {
+        "height": 210,
+        "price": 20990
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-08",
+    "name": "Таёжная красавица",
+    "code": "СЕ-926135",
+    "variants": [
+      {
+        "height": 180,
+        "price": 17990
+      },
+      {
+        "height": 210,
+        "price": 23990
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-09",
+    "name": "Изумрудная корона",
+    "code": "СЕ-226277",
+    "variants": [
+      {
+        "height": 180,
+        "price": 17990
+      },
+      {
+        "height": 210,
+        "price": 22490
+      },
+      {
+        "height": 240,
+        "price": 31990
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-10",
+    "name": "Лесная нежность",
+    "code": "СЕ-417179",
+    "variants": [
+      {
+        "height": 150,
+        "price": 6990
+      },
+      {
+        "height": 180,
+        "price": 9990
+      },
+      {
+        "height": 210,
+        "price": 15490
+      },
+      {
+        "height": 240,
+        "price": 18490
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-11",
+    "name": "Серебряная сказка",
+    "code": "СЕ-625664",
+    "variants": [
+      {
+        "height": 180,
+        "price": 17990
+      },
+      {
+        "height": 210,
+        "price": 23990
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-12",
+    "name": "Хвойная симфония",
+    "code": "СЕ-325426",
+    "variants": [
+      {
+        "height": 150,
+        "price": 8490
+      },
+      {
+        "height": 180,
+        "price": 14490
+      },
+      {
+        "height": 210,
+        "price": 19490
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-13",
+    "name": "Снежная королева",
+    "code": "СЕ-506В3",
+    "variants": [
+      {
+        "height": 150,
+        "price": 7490
+      },
+      {
+        "height": 210,
+        "price": 15490
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-14",
+    "name": "Лесная гармония",
+    "code": "СЕ-819765",
+    "variants": [
+      {
+        "height": 210,
+        "price": 14990
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-15",
+    "name": "Таёжная жемчужина",
+    "code": "СЕ-42566В7",
+    "variants": [
+      {
+        "height": 180,
+        "price": 15990
+      },
+      {
+        "height": 210,
+        "price": 20990
+      },
+      {
+        "height": 240,
+        "price": 27490
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-16",
+    "name": "Снежная грация",
+    "code": "СЕ-62134F9",
+    "variants": [
+      {
+        "height": 210,
+        "price": 18490
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-17",
+    "name": "Лесное очарование",
+    "code": "СЕ-924236",
+    "variants": [
+      {
+        "height": 150,
+        "price": 9990
+      },
+      {
+        "height": 180,
+        "price": 14990
+      },
+      {
+        "height": 210,
+        "price": 18990
+      },
+      {
+        "height": 240,
+        "price": 26990
+      },
+      {
+        "height": 270,
+        "price": 30490
+      },
+      {
+        "height": 300,
+        "price": 35990
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-18",
+    "name": "Хвойная сказка",
+    "code": "СЕ-724335",
+    "variants": [
+      {
+        "height": 150,
+        "price": 8490
+      },
+      {
+        "height": 180,
+        "price": 14990
+      },
+      {
+        "height": 210,
+        "price": 20990
+      },
+      {
+        "height": 240,
+        "price": 28990
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-19",
+    "name": "Лесная рябинка",
+    "code": "СЕ-325158",
+    "variants": [
+      {
+        "height": 150,
+        "price": 9490
+      },
+      {
+        "height": 180,
+        "price": 14990
+      },
+      {
+        "height": 210,
+        "price": 18490
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-20",
+    "name": "Зимняя сказка",
+    "code": "СЕ-69172",
+    "variants": [
+      {
+        "height": 150,
+        "price": 6990
+      },
+      {
+        "height": 180,
+        "price": 11490
+      },
+      {
+        "height": 210,
+        "price": 14990
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-21",
+    "name": "Хвойная красавица",
+    "code": "СЕ-823264",
+    "variants": [
+      {
+        "height": 180,
+        "price": 11490
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-22",
+    "name": "Снежная нежность",
+    "code": "СЕ-51977F8",
+    "variants": [
+      {
+        "height": 180,
+        "price": 11490
+      },
+      {
+        "height": 210,
+        "price": 15990
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-23",
+    "name": "Таёжная стройность",
+    "code": "СЕ-624027",
+    "variants": [
+      {
+        "height": 150,
+        "price": 6990
+      },
+      {
+        "height": 180,
+        "price": 11490
+      },
+      {
+        "height": 210,
+        "price": 14990
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-24",
+    "name": "Лесная прохлада",
+    "code": "СЕ-72567В4",
+    "variants": [
+      {
+        "height": 180,
+        "price": 14990
+      },
+      {
+        "height": 210,
+        "price": 18490
+      }
+    ],
+    "source": "V8"
+  },
+  {
+    "id": "tree-vk-01",
+    "name": "Парижанка (литая)",
+    "code": "ВК-2433",
+    "variants": [
+      {
+        "height": 150,
+        "price": 8500
+      },
+      {
+        "height": 180,
+        "price": 14500
+      },
+      {
+        "height": 210,
+        "price": 18500
+      },
+      {
+        "height": 240,
+        "price": 24000
+      },
+      {
+        "height": 270,
+        "price": 31000
+      },
+      {
+        "height": 300,
+        "price": 38000
+      }
+    ],
+    "source": "VK"
+  },
+  {
+    "id": "tree-vk-02",
+    "name": "Заснеженная литая (арт. 666)",
+    "code": "ВК-666",
+    "variants": [
+      {
+        "height": 180,
+        "price": 12200
+      },
+      {
+        "height": 210,
+        "price": 15000
+      }
+    ],
+    "source": "VK"
+  },
+  {
+    "id": "tree-vk-03",
+    "name": "Литая ёлка (арт. 2020)",
+    "code": "ВК-2020",
+    "variants": [
+      {
+        "height": 150,
+        "price": 8500
+      },
+      {
+        "height": 180,
+        "price": 12500
+      },
+      {
+        "height": 210,
+        "price": 16500
+      }
+    ],
+    "source": "VK"
+  },
+  {
+    "id": "tree-vk-04",
+    "name": "Голубая литая ёлка",
+    "code": "ВК-голубая",
+    "variants": [
+      {
+        "height": 180,
+        "price": 16500
+      },
+      {
+        "height": 210,
+        "price": 21500
+      },
+      {
+        "height": 240,
+        "price": 26000
+      }
+    ],
+    "source": "VK"
+  },
+  {
+    "id": "tree-vk-05",
+    "name": "Искусственная ёлка (арт. 1717)",
+    "code": "ВК-1717",
+    "variants": [
+      {
+        "height": 150,
+        "price": 6500
+      },
+      {
+        "height": 180,
+        "price": 10000
+      },
+      {
+        "height": 210,
+        "price": 13500
+      },
+      {
+        "height": 240,
+        "price": 16000
+      }
+    ],
+    "source": "VK"
+  }
+]

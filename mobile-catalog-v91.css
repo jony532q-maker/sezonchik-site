@@ -1,0 +1,26 @@
+/* SEZONCHIK V9.1 — компактные фотографии в мобильных каталогах.
+   Применяется только к листингам: на страницах отдельных товаров размер фото сохраняется. */
+@media (max-width: 600px) {
+  /* Категории /elki/litye.html, /elki/zasnezhennye.html, /elki/kombinirovannye.html */
+  .seo-grid { gap: 14px; }
+  .seo-product > a:first-child { display: flex; align-items: center; justify-content: center; height: 268px; overflow: hidden; background: #e8e9e3; }
+  .seo-product > a:first-child > img { display: block; width: 100%; height: 100%; max-height: 268px; aspect-ratio: auto; object-fit: contain; object-position: center center; }
+  .seo-product-content { padding: 13px 16px 16px; }
+  .seo-product h3 { font-size: 23px; line-height: 1.2; margin: 7px 0 5px; }
+  .seo-product p { margin-bottom: 8px; line-height: 1.4; }
+  .seo-product-price { margin: 5px 0 12px; font-size: 21px; }
+  .seo-product .seo-btn { min-height: 44px; }
+  /* Общий каталог: не затрагивать увеличенные фотографии и фотогалереи моделей */
+  .tree-grid { gap: 15px; }
+  article.tree-product > a:first-child { display: flex; justify-content: center; align-items: center; height: 278px; overflow: hidden; background: #e9ebe4; }
+  article.tree-product > a:first-child > img { width: 100%; height: 100%; max-height: 278px; aspect-ratio: auto; object-fit: contain; object-position: center center; }
+  article.tree-product .tree-info { padding: 15px 16px 17px; }
+  article.tree-product .tree-info h2 { margin: 6px 0; font-size: 23px; }
+  article.tree-product .tree-info p { min-height: 0; margin: 7px 0 10px; }
+}
+@media (max-width: 380px) {
+  .seo-product > a:first-child { height: 248px; }
+  .seo-product > a:first-child > img { max-height: 248px; }
+  article.tree-product > a:first-child { height: 258px; }
+  article.tree-product > a:first-child > img { max-height: 258px; }
+}
