@@ -20,3 +20,17 @@
 .sc-ref-pill:focus-visible,.sc-ref-widget button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 @media(max-width:760px){.sc-ref-widget{bottom:82px;right:12px;max-width:calc(100vw - 24px)}.sc-ref-card{width:min(340px,calc(100vw - 24px));max-height:min(75dvh,540px);overflow-y:auto;padding:17px 18px 15px}.sc-ref-card h2{font-size:23px}.sc-ref-gift{width:48px;height:48px;margin:8px auto}.sc-ref-gift svg{width:30px;height:30px}.sc-ref-pill{padding:10px 14px;font-size:12px}}
 @media(prefers-reduced-motion:no-preference){.sc-ref-card{animation:scRefIn .22s ease-out}@keyframes scRefIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}}
+
+/* V9.7: полноэкранный, центрированный промокод — единый стиль ПК и телефона. */
+.sc-ref-widget.sc-ref-expanded{position:fixed;inset:0!important;left:0!important;top:0!important;bottom:0!important;right:0!important;width:100vw;height:100vh;height:100dvh;max-width:none!important;margin:0;display:flex;align-items:center;justify-content:center;padding:16px;z-index:2147483000}
+.sc-ref-backdrop[hidden]{display:none!important}
+.sc-ref-widget.sc-ref-expanded .sc-ref-backdrop{display:block;position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;border-radius:0;background:rgba(0,14,10,.72);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:0}
+.sc-ref-widget.sc-ref-expanded .sc-ref-pill{display:none}
+.sc-ref-widget.sc-ref-expanded .sc-ref-card{position:relative;z-index:1;width:min(410px,calc(100vw - 32px));max-width:100%;max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contain;margin:0;border-radius:21px;padding:23px 25px 26px;box-shadow:0 28px 85px rgba(0,0,0,.65)}
+.sc-ref-widget .sc-ref-topline{gap:10px}
+.sc-ref-widget .sc-ref-gift{margin:14px auto 13px}
+.sc-ref-widget .sc-ref-explanation{font-size:14px;line-height:1.5;margin:0 0 18px}
+.sc-ref-widget .sc-ref-disclaimer{display:none!important}
+.sc-ref-widget .sc-ref-card h2{font-size:27px;line-height:1.14;margin:7px 0 12px}
+@media(max-width:760px){.sc-ref-widget:not(.sc-ref-expanded){right:50%;transform:translateX(50%);bottom:86px;max-width:calc(100vw - 24px)}.sc-ref-widget.sc-ref-expanded .sc-ref-card{width:min(395px,calc(100vw - 28px));max-height:calc(100dvh - 28px);padding:20px 22px 22px}.sc-ref-widget .sc-ref-card h2{font-size:25px}.sc-ref-widget .sc-ref-gift{margin:13px auto 12px}}
+@media(prefers-reduced-motion:no-preference){.sc-ref-widget.sc-ref-expanded .sc-ref-card{animation:scRefCentered .24s ease-out}@keyframes scRefCentered{from{opacity:.5;transform:translateY(12px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}}

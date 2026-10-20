@@ -29,6 +29,7 @@
   const holder=document.createElement('aside');
   holder.className='sc-ref-widget';holder.setAttribute('aria-label','Промокод СЕЗОНЩИК');
   holder.innerHTML=`
+    <button class="sc-ref-backdrop" type="button" tabindex="-1" aria-label="Закрыть окно промокода" hidden></button>
     <button class="sc-ref-pill" type="button" aria-expanded="false" aria-controls="sc-ref-card">
       <span class="sc-ref-ticket" aria-hidden="true">✦</span><span>Промокод <b class="sc-ref-pill-code"></b></span><span aria-hidden="true">⌃</span>
     </button>
@@ -36,19 +37,21 @@
       <div class="sc-ref-topline"><span>СЕЗОНЩИК · ДЛЯ ПОКУПАТЕЛЯ</span><button class="sc-ref-close" type="button" aria-label="Свернуть промокод">×</button></div>
       <div class="sc-ref-gift" aria-hidden="true"><svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="18" width="30" height="20" rx="2"/><path d="M5 12h34v7H5zM22 12v26M22 12c-7-13-15-6-11-1 2 2 7 2 11 1Zm0 0c7-13 15-6 11-1-2 2-7 2-11 1Z"/></svg></div>
       <h2>Обязательно назовите промокод продавцу</h2>
-      <p class="sc-ref-explanation">Для получения всех действующих акций и бонусов магазина</p>
+      <p class="sc-ref-explanation">Чтобы получить подарки и воспользоваться действующими акциями и бонусами магазина</p>
       <div class="sc-ref-code" aria-label="Ваш промокод"><span>ВАШ КОД</span><strong class="sc-ref-code-value"></strong></div>
       <button class="sc-ref-copy" type="button">Скопировать код</button>
-      <p class="sc-ref-disclaimer">Промокод помогает определить, кто вас направил. Дополнительной скидки за код нет — действуют общие предложения магазина.</p>
     </div>`;
   document.body.append(holder);
   const pill=holder.querySelector('.sc-ref-pill');
   const card=holder.querySelector('.sc-ref-card');
+  const backdrop=holder.querySelector('.sc-ref-backdrop');
   holder.querySelector('.sc-ref-pill-code').textContent=code;
   holder.querySelector('.sc-ref-code-value').textContent=code;
-  const open=(v)=>{card.hidden=!v;pill.setAttribute('aria-expanded',String(v));holder.classList.toggle('sc-ref-expanded',v);};
+  const open=(v)=>{card.hidden=!v;backdrop.hidden=!v;pill.setAttribute('aria-expanded',String(v));holder.classList.toggle('sc-ref-expanded',v);};
   pill.addEventListener('click',()=>open(card.hidden));
   holder.querySelector('.sc-ref-close').addEventListener('click',()=>open(false));
+  backdrop.addEventListener('click',()=>open(false));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!card.hidden)open(false);});
   holder.querySelector('.sc-ref-copy').addEventListener('click',async (event)=>{
     const btn=event.currentTarget;
     try{await navigator.clipboard.writeText(code);btn.textContent='Скопировано ✓';}
