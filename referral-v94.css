@@ -1,0 +1,22 @@
+/* СЕЗОНЩИК V9.4 — партнёрский промокод, премиальный вид. */
+.sc-ref-widget{position:fixed;z-index:2147483000;bottom:26px;right:20px;max-width:min(355px,calc(100vw - 28px));font-family:Arial,Helvetica,sans-serif;color:#f7f1dd;line-height:1.45;isolation:isolate}
+.sc-ref-widget *{box-sizing:border-box}
+.sc-ref-pill{display:flex;align-items:center;gap:8px;margin-left:auto;background:#173d32;border:1px solid #c6a969;border-radius:999px;padding:11px 17px;color:#fff6df;font-size:13px;font-weight:600;box-shadow:0 9px 30px #031b1460;cursor:pointer}
+.sc-ref-ticket{color:#dfc086;font-size:18px}.sc-ref-pill-code{font:700 15px Arial,sans-serif;color:#f5ce77}
+.sc-ref-card{width:350px;max-width:100%;margin-bottom:10px;background:linear-gradient(145deg,#16392c 0%,#102a23 100%);border:1px solid #c6a969;border-radius:18px;box-shadow:0 24px 65px #02110ccc;overflow:hidden;padding:20px 22px 18px;color:#fbf8ef;text-align:center}
+.sc-ref-card[hidden]{display:none!important}
+.sc-ref-topline{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#d8bc86;font-size:10px;font-weight:700;letter-spacing:1.2px;text-align:left}
+.sc-ref-close{background:transparent;border:0;color:#f7ecd8;font-size:27px;line-height:1;cursor:pointer;padding:0 5px}
+.sc-ref-gift{width:58px;height:58px;display:grid;place-items:center;border:1px solid #997f50;border-radius:50%;margin:10px auto;color:#e8c88a}
+.sc-ref-gift svg{width:37px;height:37px}
+.sc-ref-card h2{font:400 25px/1.12 Georgia,Times,serif;letter-spacing:-.3px;margin:9px 0 9px;color:#fffcf4!important;text-align:center}
+.sc-ref-explanation{font-size:13px;color:#e2d7bc;margin:0 0 14px}
+.sc-ref-code{display:flex;align-items:center;justify-content:space-between;border:1px dashed #c1a16e;padding:11px 16px;border-radius:10px;background:#213e31}
+.sc-ref-code span{font-size:10px;letter-spacing:1.2px;font-weight:700;color:#d4c59e}
+.sc-ref-code strong{font:700 32px/1 Arial,sans-serif;letter-spacing:1px;color:#f6d58d}
+.sc-ref-copy{width:100%;background:#d7b875;border:0;border-radius:8px;color:#173227;font-weight:800;font-size:13px;padding:13px 16px;margin-top:12px;cursor:pointer}
+.sc-ref-copy:hover{background:#eed18f}
+.sc-ref-disclaimer{font-size:10px;line-height:1.5;color:#c8cabb;margin:12px 0 0}
+.sc-ref-pill:focus-visible,.sc-ref-widget button:focus-visible{outline:3px solid #fff;outline-offset:2px}
+@media(max-width:760px){.sc-ref-widget{bottom:82px;right:12px;max-width:calc(100vw - 24px)}.sc-ref-card{width:min(340px,calc(100vw - 24px));max-height:min(75dvh,540px);overflow-y:auto;padding:17px 18px 15px}.sc-ref-card h2{font-size:23px}.sc-ref-gift{width:48px;height:48px;margin:8px auto}.sc-ref-gift svg{width:30px;height:30px}.sc-ref-pill{padding:10px 14px;font-size:12px}}
+@media(prefers-reduced-motion:no-preference){.sc-ref-card{animation:scRefIn .22s ease-out}@keyframes scRefIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}}

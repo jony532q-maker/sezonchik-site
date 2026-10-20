@@ -13,6 +13,8 @@
   $$('.v9-close').forEach(btn=>btn.addEventListener('click',()=>closeDialog(btn.closest('dialog'))));
   $$('dialog.v9-dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d)closeDialog(d);}));
   function showContact(message){
+    // V9.4: сохраняем источник перехода в любой заявке через диалог.
+    if(window.SEZONCHIK_REFERRAL)message=window.SEZONCHIK_REFERRAL.append(message);
     const dialog=$('#v9-message-dialog');
     if(!dialog){window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(message),'_blank','noopener');return;}
     $('#v9-message').value=message;
