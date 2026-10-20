@@ -1,0 +1,16 @@
+/* СЕЗОНЩИК V9.5 | карты, подарки, одобренные карточки размеров */
+#height-guide .v9-heights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+#height-guide .v95-height-card-image{display:block;width:100%;height:auto;aspect-ratio:1086/1448;object-fit:contain;border-radius:13px;transition:filter .2s ease}
+#height-guide .v9-height.v93-height{display:block!important;overflow:hidden;min-height:0!important;padding:0!important;border:0!important;border-radius:14px;background:#052217!important;box-shadow:0 10px 26px rgba(0,0,0,.19);line-height:0}
+#height-guide .v9-height.v93-height:hover{transform:translateY(-4px);box-shadow:0 20px 36px rgba(0,0,0,.31)}
+#height-guide .v9-height.v93-height:hover img{filter:brightness(1.09)}
+#height-guide .v9-height.v93-height:focus-visible{outline:3px solid #f4d49b;outline-offset:4px}
+.v9-gifts .v9-gifts-grid{grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:clamp(22px,3vw,50px)}
+.v9-gifts .v95-gifts-photo{display:block!important;width:100%!important;height:auto!important;max-height:none!important;min-width:0;object-fit:contain!important;object-position:center!important;border:1px solid rgba(226,189,128,.66);border-radius:16px!important;box-shadow:0 18px 40px rgba(0,0,0,.25)}
+.v9-gifts h2{font-size:clamp(34px,4vw,52px);line-height:1.1}
+#delivery .v9-geo-figure{overflow:hidden!important;background:#061e18!important;padding:0!important}
+#delivery .v95-map-full{display:block;width:100%;cursor:zoom-in}
+#delivery .v95-map-full img{display:block!important;width:100%!important;height:auto!important;min-width:0!important;max-width:100%!important;max-height:none!important;left:auto!important;right:auto!important;object-fit:contain!important;border-radius:0!important;filter:none!important}
+#delivery .v9-geo-figure figcaption{margin:0!important;padding:13px 18px!important}
+@media(max-width:850px){#height-guide .v9-heights{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+@media(max-width:700px){.v9-gifts .v9-gifts-grid{grid-template-columns:minmax(0,1fr);gap:22px}.v9-gifts .v95-gifts-photo{max-height:none!important}#delivery .v9-geo-figure{overflow:hidden!important}#delivery .v9-geo-figure img{min-width:0!important;width:100%!important}#delivery .v9-geo-figure figcaption{font-size:11px!important}#height-guide .v9-heights{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.v9-gifts h2{font-size:clamp(33px,8.5vw,44px)}}
