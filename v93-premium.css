@@ -1,0 +1,49 @@
+/* СЕЗОНЩИК Premium Christmas V9.3 · scoped corrections; load AFTER v92-elki.css */
+#store-addresses .v93-store-details{box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(140deg,#092a20 0%,#051a15 100%)!important;border:1px solid rgba(227,194,129,.46);box-shadow:inset 0 0 0 1px rgba(227,194,129,.08);border-radius:18px;padding:clamp(25px,4vw,46px)!important;color:#fff1d5!important}
+#store-addresses .v93-store-details .v93-store-tag{font-size:11px;font-weight:700;letter-spacing:.18em;color:#e4bf78!important;opacity:1!important}
+#store-addresses .v93-store-details h3{font:400 clamp(35px,4vw,55px)/1.06 Georgia,serif!important;letter-spacing:-.015em;margin:16px 0 18px!important;color:#fff0d2!important;text-shadow:none!important;overflow-wrap:anywhere}
+#store-addresses .v93-store-details p{font-size:clamp(15px,1.4vw,18px)!important;line-height:1.55!important;margin:5px 0!important;color:#e5eade!important;text-shadow:none!important;opacity:1!important}
+#store-addresses .v93-store-details .v93-store-city{font-weight:700;color:#fff7e7!important}
+#store-addresses .v93-store-details .v93-store-floor{color:#e8d0a4!important}
+#store-addresses .v93-store-details .v93-store-hours{color:#c8d7ca!important}
+#store-addresses .v93-store-phone{align-self:flex-start;display:inline-flex;font-size:clamp(18px,2.3vw,24px);font-weight:750;color:#f7d391!important;text-decoration:none;margin:15px 0 16px;letter-spacing:.015em}
+#store-addresses .v93-store-buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+#store-addresses .v93-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;box-sizing:border-box;gap:4px;padding:11px 16px;border-radius:10px;font:700 13px/1.3 system-ui,sans-serif;text-decoration:none;cursor:pointer;white-space:normal;text-align:center;transition:transform .15s,background .15s}
+#store-addresses .v93-btn:hover{transform:translateY(-2px)}
+#store-addresses .v93-btn-gold{border:1px solid #d2ab6d;background:#e7c58d;color:#08241b!important}
+#store-addresses .v93-btn-outline{border:1px solid #c3a778;background:transparent;color:#f9e9cf!important}
+/* height guide: six *different* real tree illustrations on identical baselines. Images scaled mathematically 150/300 .. 300/300 */
+#height-guide .v9-heights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+#height-guide .v93-height{padding:12px 14px 18px!important;min-width:0;min-height:0;background:radial-gradient(ellipse at 50% 65%,#214839 0%,#0a261c 72%)!important;border:1px solid rgba(222,185,123,.48);border-radius:14px;transition:border-color .2s,transform .2s}
+#height-guide .v93-height:hover{border-color:#edd1a0}
+#height-guide .v93-height-stage{width:100%;height:235px;display:flex;align-items:end;justify-content:center;position:relative;overflow:hidden;border-bottom:1px solid rgba(208,170,105,.55);background:linear-gradient(0deg,rgba(235,203,147,.04),transparent 72%)}
+#height-guide .v93-height-stage:after{position:absolute;content:'';bottom:0;left:9%;right:9%;height:1px;background:rgba(241,210,156,.44)}
+#height-guide .v93-height-stage img{height:calc(100% * var(--tree-ratio));width:auto;max-width:98%;object-fit:contain;object-position:center bottom;display:block;filter:drop-shadow(0 4px 9px #0007)}
+#height-guide .v93-height strong{font:400 clamp(24px,2.6vw,35px)/1.2 Georgia,serif;color:#fcebd0;margin:14px 0 8px}
+#height-guide .v93-height small{font:600 13px/1.35 system-ui,sans-serif;color:#e4c38a;text-align:center}
+/* advantages: strong text must not collide with gold icons */
+#advantages .v9-benefit:first-child{background:linear-gradient(140deg,#153d2e,#0a281d);border-color:rgba(224,188,123,.64)}
+#advantages .v9-benefit:first-child strong{font-size:clamp(19px,2vw,26px);line-height:1.17;max-width:275px}
+/* map images: clean borders, no aggressive filters, no cropped geography */
+#delivery .v9-geo-figure{background:#061e18!important;padding:0!important;border:1px solid rgba(231,195,128,.59)!important;border-radius:17px!important;overflow:hidden;box-shadow:0 16px 44px #0003}
+#delivery .v9-geo-figure img{width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important;border-radius:0!important;filter:none!important}
+#delivery .v9-geo-figure figcaption{padding:14px 20px 16px!important;font-size:12px;line-height:1.6;color:#bccbbb!important}
+#delivery .v9-delivery-form{scroll-margin-top:120px}
+@media(max-width:800px){#height-guide .v9-heights{grid-template-columns:repeat(2,minmax(0,1fr))}#height-guide .v93-height-stage{height:195px}}
+@media(max-width:640px){
+ #store-addresses .v93-store-details{padding:26px 22px!important;border-radius:17px!important}
+ #store-addresses .v93-store-details h3{font-size:clamp(34px,9.1vw,44px)!important}
+ #store-addresses .v93-store-details p{font-size:16px!important}
+ #store-addresses .v93-store-phone{font-size:20px;word-break:break-word}
+ #store-addresses .v93-store-buttons{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+ #store-addresses .v93-btn-gold{grid-column:1/-1}
+ #store-addresses .v93-btn{min-width:0;padding:12px 10px}
+ #height-guide .v9-heights{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ #height-guide .v93-height{padding:7px 7px 14px!important;border-radius:12px}
+ #height-guide .v93-height-stage{height:150px}
+ #height-guide .v93-height strong{font-size:27px;margin:9px 0 5px}
+ #height-guide .v93-height small{font-size:11.5px}
+ #delivery .v9-geo-figure figcaption{padding:12px!important;font-size:11px}
+ body.premium-site{overflow-x:clip}
+ #height-guide,#delivery,#store-addresses{scroll-margin-top:106px}
+}
