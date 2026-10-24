@@ -1,8 +1,8 @@
-/* СЕЗОНЩИК V9.4: промокоды партнёров 01/02/03, без дополнительных скидок. */
+/* СЕЗОНЩИК V10: партнёрские промокоды 01/02/03/04. Никакой дополнительной скидки за промокод. */
 (()=>{
   'use strict';
   const KEY='sezonchik_ref_v94';
-  const valid=new Set(['01','02','03']);
+  const valid=new Set(['01','02','03','04']);
   const TTL=30*24*60*60*1000;
   const now=Date.now();
   let rec=null;
@@ -12,7 +12,7 @@
   }catch(_){rec=null;}
   const incoming=new URLSearchParams(location.search).get('ref');
   let firstVisit=false;
-  if(incoming&&valid.has(incoming)&&!rec){
+  if(incoming&&valid.has(incoming)&&(!rec||rec.code!==incoming)){
     rec={code:incoming,until:now+TTL};firstVisit=true;
     try{localStorage.setItem(KEY,JSON.stringify(rec));}catch(_){}
   }
@@ -37,9 +37,9 @@
       <div class="sc-ref-topline"><span>СЕЗОНЩИК · ДЛЯ ПОКУПАТЕЛЯ</span><button class="sc-ref-close" type="button" aria-label="Свернуть промокод">×</button></div>
       <div class="sc-ref-gift" aria-hidden="true"><svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="18" width="30" height="20" rx="2"/><path d="M5 12h34v7H5zM22 12v26M22 12c-7-13-15-6-11-1 2 2 7 2 11 1Zm0 0c7-13 15-6 11-1-2 2-7 2-11 1Z"/></svg></div>
       <h2>Обязательно назовите промокод продавцу</h2>
-      <p class="sc-ref-explanation">Чтобы получить подарки и воспользоваться действующими акциями и бонусами магазина</p>
+      <p class="sc-ref-explanation">Для получения подарков и участия в действующих акциях магазина</p>
       <div class="sc-ref-code" aria-label="Ваш промокод"><span>ВАШ КОД</span><strong class="sc-ref-code-value"></strong></div>
-      <button class="sc-ref-copy" type="button">Скопировать код</button>
+      <button class="sc-ref-copy" type="button">Скопировать код</button><p class="sc-ref-note">Код помогает определить, кто вас направил. Действуют общие предложения магазина.</p>
     </div>`;
   document.body.append(holder);
   const pill=holder.querySelector('.sc-ref-pill');

@@ -1,0 +1,111 @@
+/* СЕЗОНЩИК 10.0 | PREMIUM CHRISTMAS. Scoped only to the Christmas-tree storefront. */
+:root { --v10-night:#061b16;--v10-deep:#0c2a20;--v10-gold:#d6b26e;--v10-gold-soft:#f0d59b;--v10-cream:#f5f0e6;--v10-sage:#a9b6ae; }
+body.premium-site{font-family:'Manrope',Arial,sans-serif;color:var(--v10-cream)}
+.premium-site :is(h1,h2,h3),.v4-category-copy b,.v4-product-foot strong{font-family:'Cormorant Garamond',Georgia,serif}
+.premium-site :is(button,a,select,input){-webkit-tap-highlight-color:transparent}
+.premium-site :is(a,button):focus-visible{outline:3px solid var(--v10-gold-soft);outline-offset:3px}
+/* Hero: same composition as approved visual mockup #1. */
+body.premium-site .v4-hero.v6-hero {background:var(--v10-night) url('assets/v10/hero-desktop.webp') center 46% / cover no-repeat!important;min-height:clamp(620px,52vw,730px)}
+body.premium-site .v4-hero.v6-hero::before{background:linear-gradient(90deg,#031710f9 0%,#031710f0 22%,#031710b8 47%,#03171036 78%,#0317100c),linear-gradient(0deg,#061b16cf,transparent 32%,transparent 88%,#061b1699)!important}
+body.premium-site .v6-hero .v4-hero-inner{min-height:clamp(620px,52vw,730px)}
+body.premium-site .v6-hero .v4-hero-text{max-width:760px;padding:72px 0 76px}
+body.premium-site .v6-hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(56px,5.45vw,80px);font-weight:500;line-height:.97;letter-spacing:-1.7px;max-width:710px;margin:12px 0 19px;color:var(--v10-cream);text-wrap:balance}
+body.premium-site .v6-hero h1 em{color:var(--v10-gold-soft);font-style:normal}
+body.premium-site .v4-overline{font-family:'Manrope',Arial,sans-serif;font-size:11px;letter-spacing:.20em;font-weight:700;color:var(--v10-gold)!important}
+body.premium-site .v10-hero-offer{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(26px,3vw,41px);line-height:1.1;font-weight:600;color:var(--v10-gold-soft);margin:0 0 16px}
+body.premium-site .v10-hero-offer span{white-space:nowrap}
+body.premium-site .v6-hero .v4-hero-description{font:500 14px/1.85 'Manrope',Arial,sans-serif;color:#e6e4d8;max-width:600px;margin-bottom:17px}
+body.premium-site .v6-hero .v4-hero-perks{gap:21px;margin:19px 0 22px}
+body.premium-site .v6-hero .v4-hero-perks b{font-size:12px}
+body.premium-site .v6-hero .v4-hero-perks small{font-size:10px}
+body.premium-site .v6-hero .v4-hero-buttons{margin:17px 0 14px}
+/* Cohesive button language across tree pages. */
+body.premium-site :is(.v4-primary-btn,.v5-find-submit,.v9-gold-btn,.v9-booking-btn,.v4-product-button,.v9-dialog button[type=submit]){display:inline-flex;justify-content:center;align-items:center;gap:13px;border:1px solid #f0d59b!important;background:linear-gradient(145deg,#f0d59b,#d6b26e)!important;color:#10281e!important;font:800 13px/1.2 'Manrope',Arial,sans-serif!important;min-height:48px;padding:12px 18px;border-radius:9px!important;text-decoration:none!important;box-shadow:inset 0 1px #fff6dc77,0 6px 15px #05160e30;transition:transform .2s,filter .2s,box-shadow .2s}
+body.premium-site :is(.v4-outline-btn,.v10-detail-btn){display:inline-flex;justify-content:center;align-items:center;gap:10px;min-height:48px;padding:11px 17px;background:#08231ccf!important;border:1px solid var(--v10-gold)!important;border-radius:9px!important;color:var(--v10-cream)!important;font:700 13px/1.2 'Manrope',Arial,sans-serif!important;text-decoration:none!important;transition:transform .2s,background .2s,box-shadow .2s}
+@media(hover:hover){body.premium-site :is(.v4-primary-btn,.v5-find-submit,.v9-gold-btn,.v9-booking-btn,.v4-product-button,.v9-dialog button[type=submit]):hover{filter:brightness(1.09);transform:translateY(-2px);box-shadow:0 8px 25px #d6b26e30}body.premium-site :is(.v4-outline-btn,.v10-detail-btn):hover{background:#1b4033!important;transform:translateY(-2px);box-shadow:0 6px 22px #d6b26e25}}
+body.premium-site :is(.v4-primary-btn,.v4-outline-btn,.v9-gold-btn,.v9-booking-btn,.v4-product-button,.v10-detail-btn):active{transform:scale(.98)}
+/* Categories: illustrated branch detail, not catalog SKU photography. */
+body.premium-site .v4-categories{background:linear-gradient(150deg,#07241a,#0d3024 66%,#061b16)!important;padding:42px 0 52px}
+body.premium-site .v4-section-head h2,body.premium-site .v9-section-top h2,body.premium-site .v9-gifts h2,body.premium-site .v9-benefits h2{font-family:'Cormorant Garamond',Georgia,serif!important;font-size:clamp(37px,3.8vw,54px)!important;font-weight:500;letter-spacing:-.5px;line-height:1.02}
+body.premium-site .v4-category-grid{gap:16px}
+body.premium-site .v4-category-card{border:1px solid #a48656a3!important;border-radius:11px!important;min-height:178px;background:#0d3024!important;box-shadow:0 14px 25px #0002;transition:transform .2s,box-shadow .2s}
+body.premium-site .v4-category-card img{right:0;top:0;height:100%;width:68%;object-fit:cover;object-position:center;opacity:.94}
+body.premium-site .v4-category-card:after{background:linear-gradient(90deg,#061f17 0%,#0b2b21ef 40%,#09291e55 73%,#09291e10 100%)!important}
+body.premium-site .v4-category-copy{max-width:79%;padding:19px 20px;gap:9px}
+body.premium-site .v4-category-copy b{font-size:clamp(24px,2.5vw,33px);font-weight:600;line-height:1.0}
+body.premium-site .v4-category-copy small{font:500 11px/1.6 'Manrope',Arial,sans-serif;max-width:195px;color:#e3e5d9}
+body.premium-site .v4-category-copy em{font:700 11px 'Manrope',Arial,sans-serif;color:#f0d59b;padding:7px 11px;border-radius:99px}
+@media(hover:hover){body.premium-site .v4-category-card:hover{transform:translateY(-3px);box-shadow:0 17px 29px #0006}}
+/* Honest product cards: current names/prices/photos from existing catalog, no fabricated pricing. */
+body.premium-site .v4-bestsellers{background:linear-gradient(135deg,#061d16,#10352a)!important;padding:66px 0 74px}
+body.premium-site .v4-bestsellers :is(.v4-section-head,.v4-section-head h2){color:var(--v10-cream)!important}
+body.premium-site .v4-bestsellers .v4-section-head p{color:#b4c5b9}
+body.premium-site .v4-bestsellers .v4-overline{color:#dfbe85!important}
+body.premium-site .v4-product-grid{gap:17px}
+body.premium-site .v4-product-card{background:#0b2a20!important;border:1px solid #59715991!important;border-radius:12px;color:var(--v10-cream)!important;box-shadow:0 15px 26px #0002}
+body.premium-site .v4-product-photo{height:clamp(205px,23vw,300px)}
+body.premium-site .v4-product-tag{background:#f1d49a;color:#10251c;font:800 10px 'Manrope',Arial,sans-serif}
+body.premium-site .v4-product-body{padding:16px}
+body.premium-site .v4-product-code{color:#b2c3b5}
+body.premium-site .v4-product-body h3{font:600 29px/1.03 'Cormorant Garamond',Georgia,serif!important;letter-spacing:0}
+body.premium-site .v4-product-body h3 a{color:var(--v10-cream)!important}
+body.premium-site .v4-product-heights{color:#bcc6ba;font-size:11px;line-height:1.6}
+body.premium-site .v4-product-foot{border-top-color:#9c97784d;display:block}
+body.premium-site .v4-product-foot small{color:#adbea9}
+body.premium-site .v4-product-foot strong{font-size:31px;color:#f0d59b}
+body.premium-site .v10-product-actions{display:grid;grid-template-columns:1fr 1.18fr;gap:8px;margin-top:12px}
+body.premium-site :is(.v10-detail-btn,.v10-book-from-home){min-width:0;width:100%;min-height:43px;padding:9px 8px;font-size:11px!important}
+/* Tree catalogue only, preserve SKU data and functional form elements. */
+body.premium-site .winter-catalog-hero{background:linear-gradient(92deg,#061b16ed,#061b169c),url('assets/v10/hero-desktop.webp') center 42% / cover no-repeat!important;border-bottom:1px solid #bd955e87}
+body.premium-site .winter-catalog-hero h1{font-family:'Cormorant Garamond',Georgia,serif!important;font-weight:500;letter-spacing:-.9px;color:var(--v10-cream)!important}
+body.premium-site :is(.tree-info h2,.tree-toolbar h2){font-family:'Cormorant Garamond',Georgia,serif!important;letter-spacing:0!important;font-weight:600}
+body.premium-site .tree-product{border-radius:13px!important;overflow:hidden;box-shadow:0 6px 18px #071f1420;transition:box-shadow .2s}
+body.premium-site .tree-info :is(.btn-primary,.v9-booking-btn){border-radius:9px!important}
+body.premium-site .tree-info select{border-radius:9px}
+/* unchanged heights UI / gift image fitting */
+body.premium-site #height-guide .v95-height-card-image{object-fit:contain!important}
+body.premium-site .v9-gifts .v95-gifts-photo{object-fit:contain!important;height:auto!important;max-height:none!important}
+body.premium-site .v9-gifts{background:linear-gradient(135deg,#09241b,#103629)!important}
+body.premium-site .v9-gifts :is(h2,p){color:var(--v10-cream)}
+body.premium-site .v9-gifts p{color:#cbd4c9;line-height:1.8}
+/* Expanded partner dialog remains at center; collapsed control in middle above mobile action bar. */
+.sc-ref-widget:not(.sc-ref-expanded){right:50%!important;transform:translateX(50%);bottom:22px}
+.sc-ref-widget:not(.sc-ref-expanded) .sc-ref-pill{margin-inline:auto}
+.sc-ref-widget .sc-ref-pill,.sc-ref-widget .sc-ref-copy{font-family:'Manrope',Arial,sans-serif}
+.sc-ref-widget .sc-ref-card h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(28px,5vw,34px)}
+.sc-ref-widget .sc-ref-note{margin:12px 0 0;font:400 11px/1.5 'Manrope',Arial,sans-serif;color:#c8d5c6}
+@media(max-width:900px){body.premium-site .v4-product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}body.premium-site .v4-product-photo{height:235px}}
+@media(max-width:700px){
+ body.premium-site .v4-hero.v6-hero{background-image:url('assets/v10/hero-mobile.webp')!important;background-position:center bottom!important;min-height:735px!important}
+ body.premium-site .v4-hero.v6-hero::before{background:linear-gradient(180deg,#051910f8 0%,#051910ef 20%,#051910e2 44%,#05191074 71%,#05191077 100%)!important}
+ body.premium-site .v6-hero .v4-hero-inner{min-height:735px}
+ body.premium-site .v6-hero .v4-hero-text{max-width:100%;padding:32px 0 102px}
+ body.premium-site .v6-hero h1{font-size:clamp(43px,11.4vw,57px);line-height:.97;letter-spacing:-.5px;margin:9px 0 13px;max-width:100%}
+ body.premium-site .v10-hero-offer{font-size:clamp(26px,7.7vw,33px);margin-bottom:10px}
+ body.premium-site .v6-hero .v4-hero-description{font-size:12px;line-height:1.6;max-width:100%;margin-bottom:12px}
+ body.premium-site .v6-hero .v4-overline{font-size:9px;letter-spacing:.14em}
+ body.premium-site .v6-hero .v4-hero-perks{gap:10px;margin:12px 0 17px}
+ body.premium-site .v6-hero .v4-hero-perks>span{font-size:17px}
+ body.premium-site .v6-hero .v4-hero-perks b{font-size:10px}
+ body.premium-site .v6-hero .v4-hero-perks small{font-size:9px}
+ body.premium-site .v6-hero .v4-hero-buttons{display:flex;flex-direction:column;gap:9px;margin:14px 0 18px}
+ body.premium-site .v6-hero .v4-hero-buttons>*{min-width:0;width:100%;min-height:49px;font-size:12px!important}
+ body.premium-site .v6-hero .v4-hero-contacts{gap:7px;margin-top:12px}
+ body.premium-site .v6-hero .v4-contact-chip{min-height:40px;padding:7px 9px}
+ body.premium-site .v4-category-grid{grid-template-columns:1fr!important;gap:10px}
+ body.premium-site .v4-category-card{min-height:137px!important}
+ body.premium-site .v4-category-copy b{font-size:27px}
+ body.premium-site .v4-bestsellers{padding:42px 0 60px}
+ body.premium-site .v4-product-grid{grid-template-columns:1fr 1fr;gap:10px}
+ body.premium-site .v4-product-photo{height:184px}
+ body.premium-site .v4-product-body{padding:11px}
+ body.premium-site .v4-product-body h3{font-size:22px!important}
+ body.premium-site .v4-product-foot strong{font-size:26px}
+ body.premium-site .v10-product-actions{grid-template-columns:1fr;gap:6px}
+ body.premium-site :is(.v10-detail-btn,.v10-book-from-home){min-height:41px;font-size:11px!important}
+ .sc-ref-widget:not(.sc-ref-expanded){right:50%!important;bottom:90px!important}
+ body.premium-site .v9-gifts .v95-gifts-photo{width:100%!important;object-fit:contain!important}
+ body.premium-site .winter-catalog-hero{background-image:linear-gradient(90deg,#061b16ef,#061b1680),url('assets/v10/hero-mobile.webp')!important;background-position:center!important}
+}
+@media(max-width:390px){body.premium-site .v6-hero h1{font-size:43px}body.premium-site .v4-product-photo{height:157px}body.premium-site .v4-product-body h3{font-size:21px!important}}
+@media(prefers-reduced-motion:reduce){body.premium-site :is(a,button,.v4-category-card){transition:none!important}}
