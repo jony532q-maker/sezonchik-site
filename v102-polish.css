@@ -1,0 +1,96 @@
+/* SEZONCHIK 10.2 — visual polish only; scope to tree pages */
+:root{--v102-emerald:#061b16;--v102-gold:#e5bf73;--v102-cream:#f5f0e6}
+body.premium-site{font-family:'Manrope',Arial,sans-serif}
+.v102-anchor-alias{position:absolute;top:0;display:block;width:0;height:0;overflow:hidden}
+/* More legible five reasons to choose us */
+body.premium-site .v101-feature-band{padding:19px 0 22px!important}
+body.premium-site .v101-feature-band .v9-benefit{min-height:120px!important;padding:3px 14px!important;gap:7px}
+body.premium-site .v101-feature-band .v9-benefit strong{font-size:14px!important;line-height:1.35!important;letter-spacing:-.01em}
+body.premium-site .v101-feature-band .v9-benefit small{font-size:12px!important;line-height:1.4!important;max-width:175px}
+body.premium-site .v101-benefit-symbol{width:54px!important;height:54px!important}
+body.premium-site .v101-benefit-symbol svg{width:29px!important;height:29px!important}
+/* Easier to scan category cards and clear click targets */
+body.premium-site .v101-category-card{min-height:0!important;box-shadow:0 16px 34px #0003!important;border-radius:15px!important}
+body.premium-site .v101-category-card img{height:206px!important;min-height:206px!important}
+body.premium-site .v101-category-card:before{top:135px!important;width:95px!important;height:95px!important}
+body.premium-site .v101-category-card .v4-category-copy{flex:1;min-height:172px!important;padding:19px 21px 21px!important;gap:10px!important}
+body.premium-site .v101-category-card .v4-category-copy b{font-size:clamp(29px,2.8vw,38px)!important;line-height:1.03!important}
+body.premium-site .v101-category-card .v4-category-copy small{font-size:14px!important;line-height:1.53!important;min-height:0!important;max-width:100%!important}
+body.premium-site .v101-category-card .v4-category-copy em{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:11px 22px!important;margin-top:auto!important;font-size:13px!important;font-weight:700!important;background:linear-gradient(135deg,#092d23,#03221b)!important}
+body.premium-site .v101-category-card:focus-visible{outline:3px solid #edce8a;outline-offset:3px}
+body.premium-site .v101-categories-all a{display:inline-block;font-size:14px!important;padding:8px 0}
+/* Existing image logo files, reused everywhere instead of placeholders */
+body.premium-site .v102-brand-icon{display:inline-grid;place-items:center;width:35px;height:35px;flex:none;border-radius:50%;overflow:hidden;vertical-align:middle}
+body.premium-site .v102-brand-icon img{width:100%;height:100%;display:block;object-fit:contain}
+body.premium-site .v102-brand-icon.v102-max{border-radius:9px}
+body.premium-site .v4-bottom-chips .v4-chip-symbol,
+body.premium-site .premium-contact-card .premium-contact-symbol{background:transparent!important;border:none!important;box-shadow:none!important;display:inline-grid;place-items:center;width:38px!important;height:38px!important;padding:0!important;color:transparent!important;font-size:0!important}
+body.premium-site .v4-bottom-chips .v4-chip-symbol .v102-brand-icon,
+body.premium-site .premium-contact-card .premium-contact-symbol .v102-brand-icon{height:36px;width:36px}
+body.premium-site .premium-drawer-link>span:first-child{display:inline-flex;align-items:center;justify-content:center;min-width:39px;width:39px;height:39px;margin-right:8px}
+body.premium-site .premium-drawer-link .v102-brand-icon{width:35px;height:35px}
+body.premium-site .v6-top-chats>a .v102-brand-icon{width:31px;height:31px}
+body.premium-site .v4-bottom-chips a,.premium-site .premium-contact-card{transition:border-color .2s,transform .2s,box-shadow .2s}
+body.premium-site .v4-bottom-chips a:hover,.premium-site .premium-contact-card:hover{border-color:#e6c583;transform:translateY(-2px)}
+/* Cards: two clear primary actions, all optional features behind a labelled disclosure */
+body.premium-site .tree-product{border:1px solid #ba985c8a!important;border-radius:16px!important;overflow:hidden;box-shadow:0 12px 28px #00140f25}
+body.premium-site .tree-info{display:flex;flex-direction:column;align-items:stretch;gap:7px}
+body.premium-site .tree-info h2{font-family:'Cormorant Garamond',Georgia,serif!important;font-weight:600!important;font-size:clamp(27px,2.5vw,35px)!important;line-height:1.04!important;color:#f8f0e1!important;margin:4px 0!important}
+body.premium-site .tree-info>.tree-price{font-size:24px!important;line-height:1.2!important;letter-spacing:-.02em}
+body.premium-site .v102-main-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:9px 0 4px}
+body.premium-site .v102-main-actions>a,body.premium-site .v102-main-actions>button{min-height:46px!important;display:flex!important;justify-content:center;align-items:center;text-align:center;padding:10px 7px!important;border-radius:11px!important;font:700 12.5px/1.15 'Manrope',Arial,sans-serif!important;white-space:normal;cursor:pointer;box-shadow:none!important}
+body.premium-site .v102-main-actions .v102-details-link{border:1px solid #e1bd74!important;color:#e1bd74!important;background:#073527!important}
+body.premium-site .v102-main-actions .v102-primary-book{border:1px solid #e2bc70!important;color:#091b15!important;background:linear-gradient(145deg,#ffe9b0,#d8b06b)!important}
+body.premium-site .v102-main-actions>:focus-visible{outline:2px solid #d9b26e;outline-offset:3px}
+body.premium-site .v102-main-actions .v102-details-link:hover{background:#164638!important}
+body.premium-site .v102-main-actions .v102-primary-book:hover{filter:brightness(1.06)}
+body.premium-site .v102-card-extras{border-top:1px solid #cfb47756;margin-top:6px;padding-top:4px;color:#e1c897}
+body.premium-site .v102-card-extras>summary{font:600 12px/1.4 'Manrope',Arial,sans-serif;cursor:pointer;padding:11px 3px;list-style:none;display:flex;gap:8px;align-items:center;justify-content:space-between}
+body.premium-site .v102-card-extras>summary::-webkit-details-marker{display:none}
+body.premium-site .v102-card-extras>summary:after{content:'+';font-size:20px;line-height:1;color:#eed18c}
+body.premium-site .v102-card-extras[open]>summary:after{content:'−'}
+body.premium-site .v102-extra-actions{display:flex;flex-direction:column;align-items:stretch;gap:8px;padding:8px 0 12px}
+body.premium-site .v102-extra-actions :is(a,button){width:100%;max-width:none;min-height:38px;border-radius:9px!important;display:flex;align-items:center;justify-content:center;padding:9px 10px!important;margin:0!important;font:600 12px/1.4 'Manrope',Arial,sans-serif!important;text-align:center}
+body.premium-site .v102-extra-actions .v9-compare-add{background:#0e3d2c!important;border:1px solid #cca963!important;color:#f3d9a2!important}
+body.premium-site .v102-extra-actions .tree-order{background:#0e3d2c!important;border:1px solid #cca963!important;color:#f3d9a2!important}
+body.premium-site .v102-extra-actions .premium-product-alt,
+body.premium-site .v102-extra-actions .tree-share{background:transparent!important;border:1px solid #d3b67e5c!important;color:#e6d7b9!important}
+/* make product card descriptions/tags more readable with consistent contrast */
+body.premium-site .tree-info>.v9-tree-tags span{font-size:11.5px!important}
+body.premium-site .tree-toolbar select,body.premium-site .tree-info select{min-height:42px}
+/* Keep mobile conversion bar functional and unblocked */
+@media(max-width:900px){body.premium-site .v101-feature-band .v9-benefit strong{font-size:13px!important}body.premium-site .v101-feature-band .v9-benefit small{font-size:11px!important}}
+@media(max-width:700px){
+ body.premium-site .v101-feature-band{padding:21px 0 24px!important}
+ body.premium-site .v101-feature-band .v9-benefit{min-height:125px!important;padding:2px 7px!important;gap:7px!important}
+ body.premium-site .v101-feature-band .v101-benefit-symbol{width:45px!important;height:45px!important}
+ body.premium-site .v101-feature-band .v101-benefit-symbol svg{width:25px!important;height:25px!important}
+ body.premium-site .v101-feature-band .v9-benefit strong{font-size:12px!important;line-height:1.3!important}
+ body.premium-site .v101-feature-band .v9-benefit small{font-size:10.5px!important;line-height:1.38!important;max-width:150px}
+ body.premium-site .v101-category-card img{height:205px!important;min-height:205px!important}
+ body.premium-site .v101-category-card:before{top:138px!important;width:85px!important;height:85px!important}
+ body.premium-site .v101-category-card .v4-category-copy{min-height:0!important;padding:21px 19px 19px!important;gap:10px!important}
+ body.premium-site .v101-category-card .v4-category-copy b{font-size:33px!important;line-height:1!important}
+ body.premium-site .v101-category-card .v4-category-copy small{font-size:13.5px!important;line-height:1.46!important}
+ body.premium-site .v101-category-card .v4-category-copy em{font-size:13px!important;min-height:44px!important;padding:12px 21px!important}
+ body.premium-site .v101-category-head p{font-size:13px!important;line-height:1.5!important}
+ body.premium-site .v4-categories{padding-bottom:48px!important}
+ body.premium-site .v102-main-actions>a,body.premium-site .v102-main-actions>button{min-height:44px!important;font-size:12px!important}
+ body.premium-site .tree-info{gap:5px}
+}
+@media(max-width:380px){body.premium-site .v101-feature-band .v9-benefit{padding:2px 5px!important}body.premium-site .v101-feature-band .v9-benefit strong{font-size:11.5px!important}body.premium-site .v101-feature-band .v9-benefit small{font-size:10px!important}}
+@media(prefers-reduced-motion:reduce){body.premium-site .v4-bottom-chips a,body.premium-site .premium-contact-card{transition:none!important;transform:none!important}}
+/* Correct strong contrast for catalog cards (earlier stylesheet sets a pale surface). */
+body.premium-site .tree-product{background:#062b22!important;color:#f5f0e6!important}
+body.premium-site .tree-product .tree-info{color:#f5f0e6!important}
+body.premium-site .tree-product .tree-info>small,
+body.premium-site .tree-product .tree-info>p,
+body.premium-site .tree-product .tree-info>label,
+body.premium-site .tree-product .premium-product-price-hint{color:#d4dfd4!important}
+body.premium-site .tree-product .tree-info h2{color:#fff6e8!important}
+body.premium-site .tree-product .tree-price{color:#f0d59b!important}
+body.premium-site .tree-product .tree-info select{background:#f6f1e5!important;color:#143c2e!important;border:1px solid #b9beab!important}
+body.premium-site .tree-product .tree-gallery{background:#07271f!important;color:#f3e9d4!important;border-top:1px solid #cba86b66!important}
+body.premium-site .tree-product .tree-gallery summary{color:#edce8c!important}
+body.premium-site .v4-bottom-contact h2 em{color:#d6b26e!important}
+body.premium-site .v4-bottom-contact .v4-bottom-chips{margin-bottom:0!important}
