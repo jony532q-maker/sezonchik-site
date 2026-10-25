@@ -22,7 +22,7 @@
     line:code?'Промокод партнёра: '+code:'',
     append(message){
       const str=String(message||'');
-      return code&&!/Промокод партнёра:\s*(?:01|02|03)/i.test(str)?str+'\nПромокод партнёра: '+code:str;
+      return code&&!/Промокод партнёра:\s*(?:01|02|03|04)/i.test(str)?str+'\nПромокод партнёра: '+code:str;
     }
   };
   if(!code)return;
