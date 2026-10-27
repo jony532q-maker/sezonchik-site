@@ -1,0 +1,87 @@
+name: "СЕЗОНЩИК — обновление размеров ёлок"
+
+on:
+  workflow_dispatch:
+    inputs:
+      include_400:
+        description: "Включить спорную ёлку 2108 / 400 см (только после подтверждения!)"
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  make-draft:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Получить текущую версию сайта"
+        uses: actions/checkout@v4
+
+      - name: "Проверить, что генератор уже загружен"
+        run: test -f apply_tree_sizes.py && test -f trees.html
+
+      - name: "Собрать патч и проверить число размеров"
+        env:
+          INCLUDE_400: ${{ inputs.include_400 }}
+        run: |
+          set -euo pipefail
+          if [ "$INCLUDE_400" = "true" ]; then
+            python3 apply_tree_sizes.py . --include-400 --output "${RUNNER_TEMP}/sezonchik-patch.zip"
+          else
+            python3 apply_tree_sizes.py . --output "${RUNNER_TEMP}/sezonchik-patch.zip"
+          fi
+          python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          import os
+          z = Path(os.environ["RUNNER_TEMP"]) / "sezonchik-patch.zip"
+          with ZipFile(z) as archive:
+              assert archive.testzip() is None
+              names = archive.namelist()
+              assert "trees.html" in names
+              assert "PATCH_INFO.txt" in names
+              assert all(n == "PATCH_INFO.txt" or n == "trees.html" or n.startswith("elki/") for n in names)
+              archive.extractall(".")
+          print("Проверка ZIP успешна; изменённые файлы распакованы.")
+          PY
+
+      - name: "Создать отдельную ветку, не затрагивая действующий сайт"
+        id: create_branch
+        run: |
+          set -euo pipefail
+          BRANCH="update/tree-sizes-${GITHUB_RUN_ID}"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+          git switch -c "$BRANCH"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add trees.html elki/
+          git diff --cached --quiet && { echo "Нет новых изменений для сохранения"; exit 1; }
+          git diff --cached --stat
+          git commit -m "Add proposed tree heights and sync SEO offers"
+          git push -u origin "$BRANCH"
+
+      - name: "Открыть черновик обновления для проверки"
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ steps.create_branch.outputs.branch }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          cat > "${RUNNER_TEMP}/pr-body.md" <<'EOF'
+          ## Что изменено
+          - Дополнены существующие карточки ёлок новыми размерами и проектными ценами.
+          - Исправлены списки размеров, фильтр высоты и SEO Product/Offer на отдельных страницах.
+          - Действующие модели, фотографии и старые цены сохранены.
+
+          **ВНИМАНИЕ**: новые цены — проект, не утверждённый для публикации.
+          Высота 400 см для модели 2108 добавляется только при включённом флаге.
+          Перед слиянием проверьте наличие и цены, оформление брони, мобильный и десктопный вид.
+          EOF
+          if gh pr create --base main --head "$BRANCH" --draft             --title "СЕЗОНЩИК: новые размеры ёлок — ПРОЕКТ"             --body-file "${RUNNER_TEMP}/pr-body.md"; then
+            echo "Создан черновик PR — сайт не опубликован."
+          else
+            echo "Ветка создана, но GitHub не разрешил автоматически создать PR."
+            echo "Откройте https://github.com/${GH_REPO}/compare/main...${BRANCH}"
+          fi
