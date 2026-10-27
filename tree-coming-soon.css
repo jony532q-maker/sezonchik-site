@@ -50,3 +50,137 @@
 .seo-product-price .sc-cat-season-label{display:block;font-size:12px;font-weight:400;opacity:.8;line-height:1.4}
 .seo-product-price .sc-cat-season-label del{white-space:nowrap}
 .seo-product-price .sc-cat-current{display:block;font-weight:800;font-size:20px;line-height:1.4}
+
+
+/* SEZONCHIK 10.4.1 — targeted contrast repair, iOS/desktop. */
+/* Earlier premium-v4.css forces a dark price even on the dark catalogue card. */
+body.premium-site .tree-product:not(.tree-coming-soon) .tree-price .tree-price-current.sc-price-now {
+  color:#ffe0a0!important;
+  -webkit-text-fill-color:#ffe0a0!important;
+  font-size:clamp(28px,3vw,34px)!important;
+  font-weight:800!important;
+  opacity:1!important;
+  text-shadow:none!important;
+}
+body.premium-site .tree-product .tree-price .sc-season-label {
+  color:#e4d7bf!important;
+  opacity:1!important;
+}
+body.premium-site .tree-product .tree-price .sc-season-cross {
+  color:#d9c7a9!important;
+  opacity:1!important;
+}
+body.premium-site .tree-product .tree-price .sc-price-now-label {
+  color:#f4d48f!important;
+  opacity:1!important;
+}
+/* Store on the homepage: pale container + pale text had too little contrast. */
+body.premium-site .v4-store-details.v93-store-details {
+  background:#10382b!important;
+  color:#fff4df!important;
+  border-color:#a58955!important;
+}
+body.premium-site .v4-store-details.v93-store-details h3 {
+  color:#fff2d6!important;
+  -webkit-text-fill-color:#fff2d6!important;
+  opacity:1!important;
+}
+body.premium-site .v4-store-details.v93-store-details :is(p,.v93-store-city,.v93-store-floor,.v93-store-hours) {
+  color:#e7eee5!important;
+  opacity:1!important;
+}
+body.premium-site .v4-store-details.v93-store-details :is(.v93-store-tag,.v4-store-dot) {
+  color:#ecc98a!important;
+  opacity:1!important;
+}
+body.premium-site .v4-store-details.v93-store-details .v93-store-phone {
+  color:#ffe0a0!important;
+  -webkit-text-fill-color:#ffe0a0!important;
+  font-weight:750!important;
+  opacity:1!important;
+}
+body.premium-site .v4-store-details.v93-store-details a:not(.v4-outline-btn) {
+  text-decoration-color:#e4c589;
+}
+/* Contact section intentionally has a beige background, so titles and labels must be dark. */
+body.premium-site .premium-contact-section {
+  background:#e9e2d4!important;
+  color:#173b2c!important;
+}
+body.premium-site .premium-contact-section .premium-contact-intro h2 {
+  color:#123d2d!important;
+  -webkit-text-fill-color:#123d2d!important;
+  opacity:1!important;
+}
+body.premium-site .premium-contact-section .premium-contact-intro h2 em {
+  color:#427b5c!important;
+  -webkit-text-fill-color:#427b5c!important;
+  opacity:1!important;
+}
+body.premium-site .premium-contact-section .premium-contact-intro>p {
+  color:#475e50!important;
+}
+body.premium-site .premium-contact-section .premium-eyebrow {
+  color:#82623c!important;
+}
+body.premium-site .premium-contact-section .premium-phone-line>span {
+  color:#637566!important;
+}
+body.premium-site .premium-contact-section .premium-phone-line>a {
+  color:#154632!important;
+  -webkit-text-fill-color:#154632!important;
+}
+body.premium-site .premium-contact-section .premium-contact-card {
+  background:#fffdf9!important;
+  color:#173e2e!important;
+}
+body.premium-site .premium-contact-section .premium-contact-card b {
+  color:#173e2e!important;
+  -webkit-text-fill-color:#173e2e!important;
+  opacity:1!important;
+}
+body.premium-site .premium-contact-section .premium-contact-card small {
+  color:#586e60!important;
+  opacity:1!important;
+}
+body.premium-site .premium-contact-section .premium-contact-card .premium-contact-arrow {
+  color:#527260!important;
+}
+/* Linked product-details pages: preserve deep green canvas and readable offer rows. */
+body.v101-tree-detail .seo-detail-card {
+  background:#103629!important;
+  color:#f8f1e2!important;
+  border-color:#9d845c!important;
+}
+body.v101-tree-detail .seo-detail-card h1,
+body.v101-tree-detail .seo-detail-card h2,
+body.v101-tree-detail .seo-detail-card h3 {
+  color:#fff0d5!important;
+  -webkit-text-fill-color:#fff0d5!important;
+}
+body.v101-tree-detail .seo-detail-card .lead,
+body.v101-tree-detail .seo-detail-card .seo-notice,
+body.v101-tree-detail .seo-detail-card .seo-variant-table td {
+  color:#ecf0e6!important;
+}
+body.v101-tree-detail .seo-detail-card .seo-price,
+body.v101-tree-detail .seo-detail-card .sc-season-detail-now {
+  color:#ffe1a4!important;
+  -webkit-text-fill-color:#ffe1a4!important;
+  opacity:1!important;
+}
+body.v101-tree-detail .seo-detail-card .sc-season-detail-future {
+  color:#d3ccbc!important;
+  opacity:1!important;
+}
+body.v101-tree-detail .seo-main .seo-kicker {
+  color:#edc98d!important;
+}
+body.v101-tree-detail .seo-main .crumb {
+  color:#dfcda9!important;
+}
+/* SEO category cards have dark green surfaces; keep the main price warm/gold. */
+body.v101-tree-detail .seo-product .seo-product-price .sc-cat-current {
+  color:#ffe0a0!important;
+  -webkit-text-fill-color:#ffe0a0!important;
+}
