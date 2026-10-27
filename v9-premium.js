@@ -47,7 +47,7 @@
     });
   }
   // Catalogue interactions (both main and imported VK catalogue)
-  const cards=$$('.tree-product');
+  const cards=$$('.tree-product:not(.tree-coming-soon)');
   if(!cards.length)return;
   const cardData=card=>{
     const sel=$('select',card),opt=sel?.selectedOptions?.[0];
@@ -65,7 +65,7 @@
     const prev=Number(op?.dataset.previousPrice||0),current=Number(op?.value||0);
     let badge=$('.v9-sale-indicator',card);
     if(!badge){badge=document.createElement('span');badge.className='v9-sale-indicator';badge.style.cssText='display:block;color:#e7c68b;font-size:12px;margin-top:6px';$('.tree-price',card)?.insertAdjacentElement('afterend',badge);}
-    badge.textContent=prev>current ? 'Подтверждённая скидка '+Math.round((prev-current)/prev*100)+'%' : (card.classList.contains('tree-product-vk')?'Цена из каталога ВК · уточняется':'Цена сезона');
+    badge.textContent=card.classList.contains('tree-product-vk')?'Цена из каталога ВК · уточняется':'Предсезонная цена';
   }
   cards.forEach(card=>{syncLabel(card);$('select',card)?.addEventListener('change',()=>syncLabel(card));});
   // Compare max 3, selectable choice height retained for comparison

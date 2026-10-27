@@ -14,7 +14,7 @@ const originalWA=wa?.href||'';
 for(const trigger of document.querySelectorAll('[data-open-contact]')){
   trigger.addEventListener('click',()=>{context.classList.remove('is-visible');if(wa)wa.href=originalWA;},true);
 }
-for(const card of document.querySelectorAll('.tree-product')){
+for(const card of document.querySelectorAll('.tree-product:not(.tree-coming-soon)')){
   const action=card.querySelector('.tree-order');const select=card.querySelector('select');const name=card.querySelector('h2')?.textContent?.trim();
   if(!action||!select||!name)continue;
   action.addEventListener('click',event=>{

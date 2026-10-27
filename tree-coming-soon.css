@@ -1,0 +1,52 @@
+/* СЕЗОНЩИК · фото позже · дизайн согласован с премиальной зелёно-золотой темой */
+.tree-grid .tree-product.tree-coming-soon>.tree-coming-visual {
+ height:340px;max-height:340px;display:flex;flex-direction:column;align-items:center;
+ justify-content:center;gap:16px;text-align:center;
+ background:radial-gradient(circle at 50% 31%,#1c5841 0%,#0b3127 48%,#071d17 100%);
+ color:#d8ba81;border-bottom:1px solid rgba(216,186,129,.3);padding:20px;
+}
+.tree-coming-visual-brand{font-family:Manrope,Arial,sans-serif;font-size:13px;letter-spacing:.22em}
+.tree-coming-visual-symbol{font-family:Georgia,serif;font-size:112px;line-height:.95;opacity:.34}
+.tree-coming-visual strong{font-family:Manrope,Arial,sans-serif;letter-spacing:.2em;font-size:18px}
+.tree-coming-visual-subtitle{color:#d9d9c5;font-size:10px;letter-spacing:.15em}
+.tree-coming-soon .tree-price{font-size:20px!important;color:#e5c68b!important}
+.tree-coming-soon .v102-main-actions{display:flex;justify-content:stretch}
+.tree-coming-soon .v102-main-actions .tree-order{display:block;width:100%;padding:12px 14px;
+ border-radius:10px;color:#09251c!important;background:#d6b471!important;text-decoration:none;font-weight:750}
+.tree-coming-soon .v9-tree-tags span{border-color:#bfac84;color:#deca9d}
+@media(max-width:580px){.tree-grid .tree-product.tree-coming-soon>.tree-coming-visual{height:252px;max-height:252px}
+.tree-coming-visual-symbol{font-size:68px}.tree-coming-visual strong{font-size:16px}}
+
+/* 10.4 · Предсезонные предложения; настоящие сниженные цены выделяются JS. */
+.sc-preseason{padding:20px 18px 30px;background:transparent}
+.sc-preseason-inner{max-width:1160px;margin:0 auto;padding:28px clamp(20px,4vw,48px);text-align:center;
+ border:1px solid rgba(218,184,113,.54);border-radius:23px;
+ background:radial-gradient(ellipse at 50% 0%,#174838 0%,#0a2c23 58%,#071c17 100%);
+ box-shadow:0 12px 35px rgba(0,0,0,.14);color:#f8f0df}
+.sc-preseason-kicker{font:700 11px/1.5 Manrope,Arial,sans-serif;letter-spacing:.22em;color:#e4c991}
+.sc-preseason h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(29px,3.5vw,46px);line-height:1.16;
+ color:#fff8eb;margin:11px 0 10px}
+.sc-preseason h2 em{color:#e6c38c;font-style:italic}
+.sc-preseason p{font-size:clamp(14px,1.3vw,17px);line-height:1.65;color:#e8e6d7;
+ max-width:740px;margin:0 auto 20px}
+.sc-preseason .sc-preseason-cta{display:inline-flex;align-items:center;gap:14px;
+ padding:12px 22px;background:linear-gradient(120deg,#e8cc96,#c79f5b);color:#163226!important;
+ font-size:14px;font-weight:750;text-decoration:none;border-radius:999px;transition:transform .2s ease}
+.sc-preseason .sc-preseason-cta:hover{transform:translateY(-2px)}
+@media(max-width:580px){.sc-preseason{padding:14px 12px 20px}.sc-preseason-inner{padding:26px 18px 23px;
+ border-radius:17px}.sc-preseason-kicker{letter-spacing:.11em;font-size:10px}}
+
+/* 10.4 · crossed-out prices are planned future prices, never fake historic prices. */
+.tree-product .tree-price .sc-season-label{display:block;color:#d0c7b5;font-size:12px;font-weight:500;line-height:1.35;margin:0 0 3px}
+.tree-product .tree-price .sc-season-cross{display:block;color:#c4b399;font-size:18px;line-height:1.25;font-weight:500;text-decoration:line-through;opacity:.86}
+.tree-product .tree-price .sc-price-now-label{display:block;color:#e5c68b;font-size:12px;line-height:1.4;font-weight:650;margin:5px 0 3px}
+.tree-product .tree-price .sc-price-now{display:block;color:#e5c68b;font-weight:800;font-size:clamp(27px,3vw,34px);line-height:1.2}
+.seo-variant-table .sc-season-detail-now{display:block;font-weight:750;color:#276d4c;line-height:1.5}
+.seo-variant-table .sc-season-detail-future{display:block;font-size:12px;font-weight:400;line-height:1.5;opacity:.8}
+.seo-variant-table .sc-season-detail-future del{white-space:nowrap}
+.v4-product-foot .sc-home-season-label{display:block;opacity:.75;font-size:11px}
+.v4-product-foot .sc-home-season-cross{display:block;font-size:17px;opacity:.75;line-height:1.25;white-space:nowrap}
+.v4-product-foot .sc-home-current-label{display:block;color:#cba869;font-size:11px;margin-top:5px}
+.seo-product-price .sc-cat-season-label{display:block;font-size:12px;font-weight:400;opacity:.8;line-height:1.4}
+.seo-product-price .sc-cat-season-label del{white-space:nowrap}
+.seo-product-price .sc-cat-current{display:block;font-weight:800;font-size:20px;line-height:1.4}
