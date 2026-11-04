@@ -1,0 +1,28 @@
+/* СЕЗОНЩИК 10.4.1 · 04.11.2026 · photo-frame correction. */
+/* Old responsive CSS limited the height of the first image, turning portrait
+   photos into a narrow strip with dark gutters. Use the photo's natural ratio. */
+html body.winter-page .tree-grid > article.tree-product > a:first-child {
+ display:block!important; position:relative!important; float:none!important;
+ box-sizing:border-box!important; width:100%!important; max-width:100%!important;
+ height:auto!important; min-height:0!important; max-height:none!important;
+ aspect-ratio:auto!important; overflow:hidden!important; padding:0!important;
+ margin:0!important; line-height:0!important; border-radius:0!important;
+ background:#092a20!important;
+}
+html body.winter-page .tree-grid > article.tree-product > a:first-child > img {
+ display:block!important; position:static!important; float:none!important;
+ box-sizing:border-box!important; transform:none!important;
+ width:100%!important; max-width:100%!important; min-width:0!important;
+ height:auto!important; min-height:0!important; max-height:none!important;
+ aspect-ratio:auto!important; object-fit:contain!important;
+ object-position:center center!important; margin:0!important; padding:0!important;
+}
+/* Keep thumbnail and detail gallery behavior unchanged. */
+@media (max-width:640px) {
+ html body.winter-page .tree-grid > article.tree-product > a:first-child {
+  width:100%!important; max-height:none!important; height:auto!important;
+ }
+ html body.winter-page .tree-grid > article.tree-product > a:first-child > img {
+  width:100%!important; height:auto!important; max-height:none!important;
+ }
+}
