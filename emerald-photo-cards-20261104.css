@@ -1,0 +1,33 @@
+/* СЕЗОНЩИК — новый первый кадр 04.11.2026. Оригинальные фотографии остаются в галерее. */
+.tree-grid > .tree-product > a:first-child,
+.tree-grid .tree-product > a:first-child:has(> img) {
+  position:relative!important; display:block!important; width:100%!important;
+  max-width:100%!important; height:auto!important; aspect-ratio:3 / 4!important;
+  overflow:hidden!important; margin:0!important; padding:0!important;
+  background:#0c241f!important; border-radius:0!important;
+}
+.tree-grid > .tree-product > a:first-child > img,
+.tree-grid .tree-product > a:first-child > img {
+  display:block!important; width:100%!important; max-width:none!important;
+  height:100%!important; min-height:0!important; aspect-ratio:3 / 4!important;
+  object-fit:contain!important; object-position:center center!important;
+  margin:0!important; padding:0!important; border:0!important;
+}
+.tree-grid > .tree-product { overflow:hidden; }
+.tree-gallery img, .seo-gallery img { object-fit:contain!important; }
+#tree-viewer img { object-fit:contain!important; max-width:100%!important; max-height:calc(100dvh - 150px)!important; }
+/* Карточка на телефоне занимает ширину доступной области, изображение видно полностью. */
+@media (max-width:640px) {
+ .tree-grid > .tree-product > a:first-child { width:100%!important; aspect-ratio:3/4!important; }
+ .tree-grid > .tree-product > a:first-child > img { width:100%!important; height:100%!important; }
+}
+/* На отдельных страницах — изображение целиком и без обрезания. */
+.seo-detail-img { overflow:visible!important; }
+.seo-detail-img img { display:block!important; width:100%!important; height:auto!important; max-height:none!important; object-fit:contain!important; }
+
+/* 2425D: цена неизвестна; не показываем 0 рублей после перерасчета каталога */
+.tree-price-request .tree-price { font-size:0!important; }
+.tree-price-request .tree-price::after {content:"Цена уточняется";font-size:1.22rem;line-height:1.4;display:inline-block; }
+.tree-price-request .tree-price > * {display:none!important;}
+.tree-price-request .tree-info .v102-main-actions {display:flex;flex-wrap:wrap;gap:8px;}
+.tree-price-request .tree-info .v102-main-actions > a {flex:1 1 140px;text-align:center;}
