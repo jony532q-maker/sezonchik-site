@@ -1,0 +1,38 @@
+/* СЕЗОНЩИК 10.4.1 — Emerald images in home collection, 04.11.2026. */
+/* Product photos are 710×947: natural portrait ratio, no cropped branches. */
+html body .v4-product-grid .v4-product-card .v4-product-photo {
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  aspect-ratio:710 / 947!important;
+  overflow:hidden!important;
+  position:relative!important;
+  padding:0!important;
+  margin:0!important;
+  background:#09291f!important;
+  border-radius:0!important;
+}
+html body .v4-product-grid .v4-product-card .v4-product-photo > img {
+  display:block!important;
+  position:static!important;
+  transform:none!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  height:auto!important;
+  max-height:none!important;
+  aspect-ratio:710 / 947!important;
+  border-radius:0!important;
+  margin:0!important;
+  padding:0!important;
+}
+/* The original product badge stays over the photo. */
+html body .v4-product-grid .v4-product-card .v4-product-photo > .v4-product-tag {
+  position:absolute!important;
+  z-index:2;
+}
