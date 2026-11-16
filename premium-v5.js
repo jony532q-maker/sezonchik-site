@@ -24,8 +24,12 @@ for(const card of document.querySelectorAll('.tree-product:not(.tree-coming-soon
     const height=parseInt(option?.textContent||'',10);
     const price=Number(option?.value||0);
     const code=action.dataset.code||'';
-    const money=price.toLocaleString('ru-RU')+' ₽';
-    message='Здравствуйте! Интересует искусственная ёлка «'+name+'»'+(code?', артикул '+code:'')+(height?', высота '+height+' см':'')+', цена '+money+'. Подскажите, пожалуйста, наличие и условия покупки.';
+    const money = price > 0 ? price.toLocaleString('ru-RU') + ' ₽' : 'Цена по запросу';
+    const priceText = price > 0 ? ', цена ' + money : '';
+    const request = price > 0 ? 'наличие' : 'цену и наличие';
+    message = 'Здравствуйте! Интересует искусственная ёлка «' + name + '»' +
+      (code ? ', артикул ' + code : '') + (height ? ', высота ' + height + ' см' : '') +
+      priceText + '. Подскажите, пожалуйста, ' + request + ' и условия покупки.';
     title.textContent='Вы выбрали: '+name;
     details.textContent=(height?height+' см · ':'')+money+(code?' · '+code:'');
     document.querySelector('[data-open-contact]')?.click();

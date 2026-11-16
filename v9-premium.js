@@ -7,7 +7,7 @@
   const $=(q,root=document)=>root.querySelector(q);
   const $$=(q,root=document)=>[...root.querySelectorAll(q)];
   const goal=(name,params)=>{try{if(window.ym)window.ym(110645856,'reachGoal',name,params||{});}catch(_){}};
-  const fmt=x=>Number(x).toLocaleString('ru-RU')+' ₽';
+  const fmt = price => price > 0 ? Number(price).toLocaleString('ru-RU') + ' ₽' : 'цена по запросу';
   function showDialog(dialog){if(!dialog)return; if(typeof dialog.showModal==='function')dialog.showModal();else dialog.setAttribute('open','');}
   function closeDialog(dialog){if(!dialog)return;if(typeof dialog.close==='function')dialog.close();else dialog.removeAttribute('open');}
   $$('.v9-close').forEach(btn=>btn.addEventListener('click',()=>closeDialog(btn.closest('dialog'))));
@@ -62,8 +62,11 @@
   // Labels and price changes - no promotional price without history
   function syncLabel(card){
     const select=$('select',card),op=select?.selectedOptions?.[0];
-    const prev=Number(op?.dataset.previousPrice||0),current=Number(op?.value||0);
     let badge=$('.v9-sale-indicator',card);
+    if (!(Number(op?.value) > 0)) {
+      badge?.remove();
+      return;
+    }
     if(!badge){badge=document.createElement('span');badge.className='v9-sale-indicator';badge.style.cssText='display:block;color:#e7c68b;font-size:12px;margin-top:6px';$('.tree-price',card)?.insertAdjacentElement('afterend',badge);}
     badge.textContent=card.classList.contains('tree-product-vk')?'Цена из каталога ВК · уточняется':'Предсезонная цена';
   }
@@ -116,7 +119,10 @@
     const btn=$('.tree-order',card);if(!btn)return;
     btn.addEventListener('click',e=>{
       e.preventDefault();const x=cardData(card);
-      showContact('Здравствуйте! Интересует ёлка «'+x.name+'», артикул '+x.code+', высота '+x.height+' см, '+(x.vk?'цена в ВК (нужно подтвердить) ':'цена ')+fmt(x.price)+'. Подскажите, пожалуйста, наличие.');goal('v9_product_request',{sku:x.code});
+      const price = x.price > 0 ? ', ' + (x.vk ? 'цена в ВК (нужно подтвердить) ' : 'цена ') + fmt(x.price) : '';
+      const request = x.price > 0 ? 'наличие' : 'цену и наличие';
+      showContact('Здравствуйте! Интересует ёлка «' + x.name + '», артикул ' + x.code + ', высота ' + x.height + ' см' + price + '. Подскажите, пожалуйста, ' + request + '.');
+      goal('v9_product_request',{sku:x.code});
     });
   });
 })();

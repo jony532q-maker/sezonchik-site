@@ -25,9 +25,5 @@
 .seo-detail-img { overflow:visible!important; }
 .seo-detail-img img { display:block!important; width:100%!important; height:auto!important; max-height:none!important; object-fit:contain!important; }
 
-/* 2425D: цена неизвестна; не показываем 0 рублей после перерасчета каталога */
-.tree-price-request .tree-price { font-size:0!important; }
-.tree-price-request .tree-price::after {content:"Цена уточняется";font-size:1.22rem;line-height:1.4;display:inline-block; }
-.tree-price-request .tree-price > * {display:none!important;}
 .tree-price-request .tree-info .v102-main-actions {display:flex;flex-wrap:wrap;gap:8px;}
 .tree-price-request .tree-info .v102-main-actions > a {flex:1 1 140px;text-align:center;}
