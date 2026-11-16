@@ -1,0 +1,163 @@
+.winter-shopping-page .winter-catalog-hero {
+  padding-top: 34px;
+  padding-bottom: 32px;
+}
+
+.winter-shopping-page .winter-catalog-hero h1 {
+  max-width: 980px;
+  margin: 12px 0;
+  font-size: clamp(32px, 5vw, 64px);
+  line-height: 1.05;
+}
+
+.winter-shopping-page .winter-catalog-hero h1 em {
+  white-space: nowrap;
+}
+
+.winter-shopping-page .winter-catalog-hero p {
+  margin: 0;
+}
+
+.winter-shopping-actions,
+.winter-shopping-heights {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.winter-shopping-actions {
+  gap: 12px 20px;
+  margin-top: 18px;
+}
+
+.winter-shopping-actions .sc-preseason-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: #ebca8d;
+  color: #061b16;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.winter-shopping-heights span {
+  font-size: 13px;
+  color: #f5ecd9;
+}
+
+.winter-shopping-heights a {
+  padding: 9px 12px;
+  border: 1px solid #b6985c;
+  border-radius: 9px;
+  background: #061b16;
+  color: #f5ecd9;
+  font-size: 13px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.winter-shopping-heights a:hover,
+.winter-shopping-heights a[aria-current="true"] {
+  background: #ebca8d;
+  color: #061b16;
+}
+
+.winter-shopping-page .sc-preseason {
+  padding-block: 0;
+}
+
+.winter-shopping-page .sc-preseason-inner {
+  margin-block: 12px;
+  padding: 14px 20px;
+}
+
+.winter-shopping-page .sc-preseason-inner h2 {
+  margin: 0 0 4px;
+  font-size: clamp(23px, 2.2vw, 32px);
+}
+
+.winter-shopping-page .sc-preseason-inner p {
+  margin: 0 auto;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.winter-shopping-page #tree-catalog {
+  padding-top: 12px;
+}
+
+body.v101-tree-detail .rubinovaya-detail {
+  grid-template-areas: "media heading" "media actions" "media copy";
+  grid-template-rows: auto auto 1fr;
+  gap: 16px 40px;
+}
+
+.rubinovaya-heading { grid-area: heading; }
+.rubinovaya-media { grid-area: media; min-width: 0; }
+.rubinovaya-actions { grid-area: actions; }
+.rubinovaya-copy { grid-area: copy; }
+
+.rubinovaya-heading h1 {
+  margin: 4px 0;
+}
+
+.rubinovaya-heading p {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 6px 0 0;
+  color: #f0d59b;
+  font-size: 17px;
+}
+
+.rubinovaya-heading strong {
+  font-size: 25px;
+}
+
+body.v101-tree-detail .rubinovaya-actions {
+  margin: 0;
+}
+
+@media (max-width: 850px) {
+  body.v101-tree-detail .rubinovaya-detail {
+    grid-template-areas: "heading" "image" "actions" "gallery" "copy";
+    grid-template-rows: auto;
+    gap: 14px;
+  }
+
+  .rubinovaya-media { display: contents; }
+  .rubinovaya-media .seo-detail-img { grid-area: image; }
+  .rubinovaya-media .seo-gallery { grid-area: gallery; margin-top: 0; }
+}
+
+@media (max-width: 700px) {
+  .winter-shopping-page .winter-catalog-hero {
+    padding: 23px 16px;
+  }
+
+  .winter-shopping-page .winter-catalog-hero p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .winter-shopping-actions {
+    margin-top: 14px;
+  }
+
+  .winter-shopping-page .sc-preseason-inner {
+    padding-inline: 12px;
+  }
+
+  .winter-shopping-heights {
+    width: 100%;
+    gap: 6px;
+  }
+
+  .winter-shopping-heights span {
+    flex-basis: 100%;
+  }
+}

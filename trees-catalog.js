@@ -37,9 +37,31 @@ function arrange() {
       (priceA - priceB) * direction || a.index - b.index;
   }).forEach(model => grid.appendChild(model.card));
 }
-function applyFilters(){const query=normalizeTreeSearch(search.value);let count=0;models.forEach(model=>{const eligible=eligibleTreeVariants(model.variants,height.value,budget.value);const match=normalizeTreeSearch(model.name+' '+model.code+' '+(model.card.dataset.originalName||'')).includes(query);const kind=model.card.querySelector('.tree-info p')?.textContent.toLowerCase()||'';const isSnow=/заснежен|снежн/.test(kind);const isMixed=/комбинирован/.test(kind);const isLit=/литая|литые|литой/.test(kind);const matchesType=!type?.value||(type.value==='lit'&&isLit)||(type.value==='snow'&&isSnow)||(type.value==='mixed'&&isMixed);model.card.hidden=!eligible.length||!match||!matchesType;if(eligible.length){const allowed=new Set(eligible.map(v=>v.index));[...model.select.options].forEach((option,i)=>{option.disabled=!allowed.has(i);option.hidden=!allowed.has(i);});if(!allowed.has(model.select.selectedIndex))model.select.selectedIndex=eligible[0].index;updatePrice(model);}if(!model.card.hidden)count++;});document.getElementById('tree-count').textContent='Найдено моделей: '+count;document.getElementById('tree-empty').hidden=count>0;arrange();}
+const quickHeights = [...document.querySelectorAll('[data-quick-height]')];
+function syncQuickHeights() {
+  quickHeights.forEach(link => {
+    if (link.dataset.quickHeight === height.value) link.setAttribute('aria-current', 'true');
+    else link.removeAttribute('aria-current');
+  });
+}
+
+quickHeights.forEach(link => {
+  link.addEventListener('click', event => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey ||
+        event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    height.value = link.dataset.quickHeight;
+    const url = new URL(location.href);
+    url.searchParams.set('height', height.value);
+    url.hash = 'tree-catalog';
+    try { history.replaceState(history.state, '', url); } catch (_) {}
+    applyFilters();
+    document.getElementById('tree-catalog').scrollIntoView();
+  });
+});
+function applyFilters(){syncQuickHeights();const query=normalizeTreeSearch(search.value);let count=0;models.forEach(model=>{const eligible=eligibleTreeVariants(model.variants,height.value,budget.value);const match=normalizeTreeSearch(model.name+' '+model.code+' '+(model.card.dataset.originalName||'')).includes(query);const kind=model.card.querySelector('.tree-info p')?.textContent.toLowerCase()||'';const isSnow=/заснежен|снежн/.test(kind);const isMixed=/комбинирован/.test(kind);const isLit=/литая|литые|литой/.test(kind);const matchesType=!type?.value||(type.value==='lit'&&isLit)||(type.value==='snow'&&isSnow)||(type.value==='mixed'&&isMixed);model.card.hidden=!eligible.length||!match||!matchesType;if(eligible.length){const allowed=new Set(eligible.map(v=>v.index));[...model.select.options].forEach((option,i)=>{option.disabled=!allowed.has(i);option.hidden=!allowed.has(i);});if(!allowed.has(model.select.selectedIndex))model.select.selectedIndex=eligible[0].index;updatePrice(model);}if(!model.card.hidden)count++;});document.getElementById('tree-count').textContent='Найдено моделей: '+count;document.getElementById('tree-empty').hidden=count>0;arrange();}
 models.forEach(model=>{model.select.addEventListener('change',()=>{updatePrice(model);arrange();});model.link.addEventListener('click',()=>{try{window.ym&&window.ym(110645856,'reachGoal','tree_order_click',{model:model.code,height:model.variants[model.select.selectedIndex].height});}catch(e){}});});
-if(type)type.addEventListener('change',()=>{const url=new URL(location.href);if(type.value)url.searchParams.set('type',type.value);else url.searchParams.delete('type');try{history.replaceState(null,'',url.pathname+url.search+url.hash);}catch(e){}applyFilters();});height.addEventListener('change',applyFilters);budget.addEventListener('change',applyFilters);sort.addEventListener('change',arrange);let timer;search.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(applyFilters,120);});document.getElementById('tree-reset').addEventListener('click',()=>{clearTimeout(timer);height.value='';budget.value='';search.value='';sort.value='default';if(type)type.value='';try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}models.forEach(m=>m.select.selectedIndex=0);applyFilters();});applyFilters();
+if(type)type.addEventListener('change',()=>{const url=new URL(location.href);if(type.value)url.searchParams.set('type',type.value);else url.searchParams.delete('type');try{history.replaceState(null,'',url.pathname+url.search+url.hash);}catch(e){}applyFilters();});height.addEventListener('change',applyFilters);budget.addEventListener('change',applyFilters);sort.addEventListener('change',arrange);let timer;search.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(applyFilters,120);});document.getElementById('tree-reset').addEventListener('click',()=>{clearTimeout(timer);height.value='';budget.value='';search.value='';sort.value='default';if(type)type.value='';const url=new URL(location.href);['height','budget','type'].forEach(key=>url.searchParams.delete(key));try{history.replaceState(history.state,'',url);}catch(e){}models.forEach(m=>m.select.selectedIndex=0);applyFilters();});applyFilters();
 const viewer=document.getElementById('tree-viewer');let photos=[],photoIndex=0,photoName='',oldOverflow='';
 function showPhoto(){viewer.querySelector('img').src=photos[photoIndex];viewer.querySelector('img').alt=photoName+', фото '+(photoIndex+1);viewer.querySelector('.viewer-caption').textContent=photoName+' · '+(photoIndex+1)+' / '+photos.length;viewer.querySelector('.viewer-prev').disabled=photoIndex===0;viewer.querySelector('.viewer-next').disabled=photoIndex===photos.length-1;}
 if(viewer&&typeof viewer.showModal==='function'){
