@@ -12,12 +12,15 @@
   function closeDialog(dialog){if(!dialog)return;if(typeof dialog.close==='function')dialog.close();else dialog.removeAttribute('open');}
   $$('.v9-close').forEach(btn=>btn.addEventListener('click',()=>closeDialog(btn.closest('dialog'))));
   $$('dialog.v9-dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d)closeDialog(d);}));
+  const copyButton = $('#v9-copy-message');
+  const copyLabel = copyButton?.querySelector('[data-v9-copy-label]') || copyButton;
   function showContact(message){
     // V9.4: сохраняем источник перехода в любой заявке через диалог.
     if(window.SEZONCHIK_REFERRAL)message=window.SEZONCHIK_REFERRAL.append(message);
     const dialog=$('#v9-message-dialog');
     if(!dialog){window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(message),'_blank','noopener');return;}
     $('#v9-message').value=message;
+    if (copyLabel) copyLabel.textContent = 'Скопировать текст';
     const draft = encodeURIComponent(message);
     $('#v9-wa-message').href = 'https://wa.me/' + phone + '?text=' + draft;
     const telegram = $('#v9-tg-message');
@@ -25,9 +28,22 @@
     showDialog(dialog);
     goal('v9_lead_open');
   }
-  $('#v9-copy-message')?.addEventListener('click',async e=>{
-    const t=$('#v9-message').value;
-    try{await navigator.clipboard.writeText(t);e.currentTarget.textContent='Скопировано ✓';}catch(_){$('#v9-message').select();try{document.execCommand('copy');e.currentTarget.textContent='Скопировано ✓';}catch(__){e.currentTarget.textContent='Выделите и скопируйте текст';}}
+  copyButton?.addEventListener('click', async () => {
+    const field = $('#v9-message');
+    const message = field.value;
+    let copied = false;
+    try {
+      await navigator.clipboard.writeText(message);
+      copied = true;
+    } catch (_) {
+      if (field.value !== message) return;
+      field.focus();
+      field.select();
+      try { copied = document.execCommand('copy'); } catch (_) {}
+    }
+    if (field.value === message) {
+      copyLabel.textContent = copied ? 'Скопировано ✓' : 'Выделите и скопируйте текст';
+    }
   });
   $$('.v9-message-actions a').forEach(a=>a.addEventListener('click',()=>goal('v9_lead_messenger',{channel:a.textContent.trim()})));
   $$('[data-v9-order-inquiry]').forEach(link => link.addEventListener('click', e => {
