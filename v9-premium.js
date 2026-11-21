@@ -27,6 +27,12 @@
     try{await navigator.clipboard.writeText(t);e.currentTarget.textContent='Скопировано ✓';}catch(_){$('#v9-message').select();try{document.execCommand('copy');e.currentTarget.textContent='Скопировано ✓';}catch(__){e.currentTarget.textContent='Выделите и скопируйте текст';}}
   });
   $$('.v9-message-actions a').forEach(a=>a.addEventListener('click',()=>goal('v9_lead_messenger',{channel:a.textContent.trim()})));
+  $$('[data-v9-order-inquiry]').forEach(link => link.addEventListener('click', e => {
+    const message = new URL(link.href).searchParams.get('text');
+    if (!message) return;
+    e.preventDefault();
+    showContact(message);
+  }));
   // Customer photos: open original photo, without presenting synthetic images as customer purchases
   const gallery=$('#happy-customers .v4-customers-grid');
   if(gallery){
@@ -103,15 +109,176 @@
   });
   // Reservation request by messenger, never auto-confirm actual inventory
   const bookDialog=$('#v9-book-dialog'),bookForm=$('#v9-book-form');let booking=null;
-  cards.forEach(card=>$('.v9-booking-btn',card)?.addEventListener('click',()=>{
+  const fulfillment = bookForm?.elements.namedItem('fulfillment');
+  const address = bookForm?.elements.namedItem('address');
+  const bookingSubmit = bookForm?.querySelector('button[type="submit"]');
+  const bookingStatus = bookForm?.querySelector('[data-v9-order-status]');
+  const bookingNotice = bookForm?.querySelector('[data-v9-order-notice]');
+  let ordersEndpoint = '';
+  let pendingOrder = null;
+  let sendingOrder = false;
+
+  function enableWebsiteOrders(endpoint, privacy) {
+    const api = new URL(endpoint);
+    const policy = new URL(privacy, location.href);
+    if (api.protocol !== 'https:' || policy.protocol !== 'https:') return;
+    ordersEndpoint = api.href;
+    $('[data-v9-order-phone]', bookForm).hidden = false;
+    bookForm.elements.phone.disabled = false;
+    bookForm.elements.phone.required = true;
+    bookingNotice.hidden = false;
+    $('[data-v9-order-privacy]', bookForm).href = policy.href;
+    bookingSubmit.textContent = 'Отправить заявку';
+  }
+
+  async function prepareWebsiteOrders() {
+    const endpoint = $('meta[name="sezonchik-orders-api"]')?.content.trim();
+    const privacy = $('meta[name="sezonchik-orders-privacy"]')?.content.trim();
+    if (endpoint && privacy) {
+      enableWebsiteOrders(endpoint, privacy);
+      return;
+    }
+
+    // The shop can turn on order delivery from its own server without republishing the catalogue.
+    const service = 'https://orders.sezonchik27.ru';
+    const abort = new AbortController();
+    const timeout = setTimeout(() => abort.abort(), 1500);
+    try {
+      const response = await fetch(service + '/config', {
+        credentials: 'omit',
+        referrerPolicy: 'no-referrer',
+        signal: abort.signal
+      });
+      if (!response.ok) return;
+      const config = await response.json();
+      if (config.enabled !== true || typeof config.privacy_url !== 'string' || !config.privacy_url) return;
+      const policy = new URL(config.privacy_url, location.href);
+      if (policy.origin !== location.origin) return;
+      enableWebsiteOrders(service + '/orders', policy.href);
+    } finally {
+      clearTimeout(timeout);
+    }
+  }
+
+  const ordersSetup = bookingSubmit && bookingStatus && bookingNotice && window.crypto?.randomUUID
+    ? prepareWebsiteOrders().catch(() => {})
+    : null;
+
+  function setBookingStatus(message) {
+    bookingStatus.textContent = message;
+    bookingStatus.hidden = !message;
+  }
+
+  async function submitWebsiteOrder(data) {
+    const phone = String(data.get('phone') || '').trim();
+    const digits = phone.replace(/\D/g, '');
+    if (!/^\+?[0-9 ().-]+$/.test(phone) || digits.length < 10 || digits.length > 15) {
+      setBookingStatus('Проверьте телефон, по которому мы сможем с вами связаться.');
+      bookForm.elements.phone.focus();
+      return;
+    }
+    const order = {
+      article: booking.code,
+      model: booking.name,
+      height: Number(booking.height),
+      price: booking.price,
+      method: fulfillment?.value || 'pickup',
+      date: data.get('date'),
+      name: data.get('name'),
+      phone,
+      address: data.get('address') || '',
+      website: data.get('website') || '',
+      ref: window.SEZONCHIK_REFERRAL?.code || ''
+    };
+    const signature = JSON.stringify(order);
+    if (pendingOrder?.signature !== signature) {
+      pendingOrder = {signature, id: window.crypto.randomUUID()};
+    }
+    sendingOrder = true;
+    bookingSubmit.disabled = true;
+    setBookingStatus('Отправляем заявку…');
+    const abort = new AbortController();
+    const timeout = setTimeout(() => abort.abort(), 12000);
+    try {
+      const response = await fetch(ordersEndpoint, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        credentials: 'omit',
+        body: JSON.stringify({...order, id: pendingOrder.id}),
+        signal: abort.signal
+      });
+      if (!response.ok) throw new Error('Order submission failed');
+      const result = await response.json();
+      if (!/^[0-9A-F]{8}$/.test(result.order_number || '')) throw new Error('Invalid order number');
+      if (!pendingOrder.accepted) goal('v9_booking_request');
+      pendingOrder.accepted = true;
+      setBookingStatus('Заявка № ' + result.order_number + ' принята. Мы свяжемся с вами и подтвердим наличие.');
+    } catch (_) {
+      bookingSubmit.disabled = false;
+      setBookingStatus('Пока не удалось подтвердить отправку. Проверьте данные и попробуйте ещё раз.');
+    } finally {
+      clearTimeout(timeout);
+      sendingOrder = false;
+    }
+  }
+  const bookingMethods = {
+    pickup: 'самовывоз',
+    delivery: 'доставка до двери в Хабаровске',
+    express: 'экспресс-доставка до двери в Хабаровске'
+  };
+
+  function syncBookingAddress() {
+    if (!address) return;
+    const needsAddress = fulfillment?.value === 'delivery' || fulfillment?.value === 'express';
+    address.closest('label').hidden = !needsAddress;
+    address.disabled = !needsAddress;
+    address.required = needsAddress;
+    if (fulfillment?.value === 'express' && !bookForm.elements.date.value) {
+      bookForm.elements.date.value = bookForm.elements.date.min;
+    }
+  }
+
+  fulfillment?.addEventListener('change', syncBookingAddress);
+  cards.forEach(card=>$('.v9-booking-btn',card)?.addEventListener('click',async()=>{
+    if (ordersSetup && !ordersEndpoint) await ordersSetup;
+    if (sendingOrder || bookDialog.open) return;
     booking=cardData(card);bookForm.elements.model.value=booking.name+' ('+booking.code+')';bookForm.elements.height.value=booking.height+' см';
+    if (ordersEndpoint) {
+      setBookingStatus('');
+      bookingSubmit.disabled = false;
+    }
     const today=new Date(); const yyyy=today.getFullYear();const mm=String(today.getMonth()+1).padStart(2,'0');const dd=String(today.getDate()).padStart(2,'0');
-    bookForm.elements.date.min=yyyy+'-'+mm+'-'+dd;bookForm.elements.date.value='';showDialog(bookDialog);goal('v9_booking_open');
+    bookForm.elements.date.min=yyyy+'-'+mm+'-'+dd;
+    bookForm.elements.date.value='';
+    if (fulfillment) fulfillment.value = 'pickup';
+    if (address) address.value = '';
+    syncBookingAddress();
+    showDialog(bookDialog);
+    goal('v9_booking_open');
   }));
   bookForm?.addEventListener('submit',e=>{
     e.preventDefault();if(!booking||!bookForm.reportValidity())return;
     const d=new FormData(bookForm);
-    const msg='Здравствуйте! Хочу оставить заявку на бронь для самовывоза.\nЁлка: '+booking.name+' ('+booking.code+')\nВысота: '+booking.height+' см\nЦена в каталоге: '+fmt(booking.price)+(booking.vk?' (ВК, требуется подтверждение)':'')+'\nИмя: '+d.get('name')+'\nЖелаемая дата: '+d.get('date')+'\nПрошу подтвердить наличие и бронь.';
+    if (ordersEndpoint) {
+      if (!sendingOrder) void submitWebsiteOrder(d);
+      return;
+    }
+    const method = bookingMethods[fulfillment?.value] || bookingMethods.pickup;
+    const deliveryAddress = d.get('address')?.trim();
+    const lines = [
+      'Здравствуйте! Хочу оставить заявку на бронь.',
+      'Ёлка: ' + booking.name + ' (' + booking.code + ')',
+      'Высота: ' + booking.height + ' см',
+      'Цена в каталоге: ' + fmt(booking.price) + (booking.vk ? ' (ВК, требуется подтверждение)' : ''),
+      'Имя: ' + d.get('name'),
+      'Способ получения: ' + method,
+      'Желаемая дата: ' + d.get('date')
+    ];
+    if (deliveryAddress) lines.push('Адрес доставки: ' + deliveryAddress);
+    lines.push(fulfillment?.value === 'express'
+      ? 'Прошу подтвердить наличие, стоимость и возможность доставки за 30 минут.'
+      : 'Прошу подтвердить наличие и условия заказа.');
+    const msg = lines.join('\n');
     closeDialog(bookDialog);goal('v9_booking_request');showContact(msg);
   });
   // Direct order button: opening correct copyable context for all messengers
