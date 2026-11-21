@@ -21,7 +21,22 @@
   const defaultTitle = title.textContent;
   const defaultPriceNote = priceNote.textContent;
 
+  const catalogLinks = [...document.querySelectorAll('a[href^="trees.html"]')];
+  const trackingParams = [...new URLSearchParams(location.search)].filter(([key]) =>
+    key.startsWith('utm_') || key === 'yclid' || key === 'ref'
+  );
+
+  function syncCatalogLinks() {
+    for (const link of catalogLinks) {
+      const url = new URL(link.href);
+      url.searchParams.set('delivery_city', city.value.trim());
+      for (const [key, value] of trackingParams) url.searchParams.set(key, value);
+      link.href = url.href;
+    }
+  }
+
   function displayRoute(key) {
+    syncCatalogLinks();
     const route = quotes.get(key);
     title.textContent = route?.title ?? defaultTitle;
     priceNote.textContent = route?.priceNote ?? defaultPriceNote;

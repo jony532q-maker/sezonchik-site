@@ -140,6 +140,17 @@
   const bookDialog=$('#v9-book-dialog'),bookForm=$('#v9-book-form');let booking=null;
   const fulfillment = bookForm?.elements.namedItem('fulfillment');
   const address = bookForm?.elements.namedItem('address');
+  const deliveryCity = bookForm?.elements.namedItem('delivery_city');
+  const regionalNote = $('#v9-book-regional-note');
+  const landingCity = new URLSearchParams(location.search).get('delivery_city');
+  let regionalCity = landingCity;
+  if (deliveryCity) {
+    try {
+      const storageKey = 'sezonchik.deliveryCity';
+      if (landingCity === null) regionalCity = sessionStorage.getItem(storageKey);
+      else sessionStorage.setItem(storageKey, landingCity.slice(0, deliveryCity.maxLength));
+    } catch (_) {}
+  }
   const payment = bookForm?.elements.namedItem('payment');
   const fullPaymentNote = $('#v9-book-full-note');
   const splitPaymentNote = $('#v9-book-split-note');
@@ -253,12 +264,14 @@
   }
   const bookingMethods = {
     pickup: 'самовывоз',
+    regional: 'отправка транспортной компанией из Хабаровска',
     delivery: 'доставка до двери в Хабаровске',
     express: 'экспресс-доставка до двери в Хабаровске'
   };
 
   function usesWebsiteOrders() {
-    return Boolean(ordersEndpoint) && payment?.value !== 'split';
+    // Regional shipping carries a city in the messenger draft; the order API accepts local methods only.
+    return Boolean(ordersEndpoint) && payment?.value !== 'split' && fulfillment?.value !== 'regional';
   }
 
   function syncBookingPayment() {
@@ -276,10 +289,27 @@
       bookingSubmit.textContent = websiteOrder ? 'Отправить заявку' : 'Выбрать способ связи ↗';
       if (!sendingOrder) setBookingStatus('');
     }
-    syncBookingAddress();
+    syncBookingFulfillment();
   }
 
-  function syncBookingAddress() {
+  function updateRegionalNote() {
+    const city = deliveryCity.value.toLocaleLowerCase('ru-RU').replace(/[^а-яё]/g, '');
+    const estimated = ['комсомольскнаамуре', 'комсомольск', 'биробиджан'].includes(city);
+    regionalNote.textContent = estimated
+      ? 'Отправляем из Хабаровска. Доставка до города — около 500 ₽. Точную стоимость и срок подтвердим до оплаты.'
+      : 'Отправляем из Хабаровска. Стоимость и срок доставки подтвердим до оплаты.';
+  }
+
+  function syncBookingFulfillment() {
+    const regional = fulfillment?.value === 'regional';
+    if (deliveryCity) {
+      deliveryCity.closest('label').hidden = !regional;
+      deliveryCity.disabled = !regional;
+      deliveryCity.required = regional;
+      deliveryCity.setCustomValidity('');
+      regionalNote.hidden = !regional;
+      if (regional) updateRegionalNote();
+    }
     if (!address) return;
     const needsAddress = fulfillment?.value === 'delivery' || fulfillment?.value === 'express';
     address.closest('label').hidden = !needsAddress;
@@ -301,7 +331,11 @@
   }
 
   bookingHeight?.addEventListener('change', syncBookingVariant);
-  fulfillment?.addEventListener('change', syncBookingAddress);
+  fulfillment?.addEventListener('change', syncBookingPayment);
+  deliveryCity?.addEventListener('input', () => {
+    deliveryCity.setCustomValidity('');
+    updateRegionalNote();
+  });
   bookForm?.addEventListener('change', event => {
     if (event.target.name === 'payment') syncBookingPayment();
   });
@@ -328,7 +362,8 @@
     const today=new Date(); const yyyy=today.getFullYear();const mm=String(today.getMonth()+1).padStart(2,'0');const dd=String(today.getDate()).padStart(2,'0');
     bookForm.elements.date.min=yyyy+'-'+mm+'-'+dd;
     bookForm.elements.date.value='';
-    if (fulfillment) fulfillment.value = method;
+    if (fulfillment) fulfillment.value = regionalCity !== null && deliveryCity && method !== 'express' ? 'regional' : method;
+    if (deliveryCity) deliveryCity.value = (regionalCity ?? '').trim().slice(0, deliveryCity.maxLength);
     if (payment) payment.value = paymentType;
     if (address) address.value = '';
     syncBookingPayment();
@@ -342,8 +377,14 @@
     });
   }));
   bookForm?.addEventListener('submit',e=>{
-    e.preventDefault();if(!booking||!bookForm.reportValidity())return;
-    const d=new FormData(bookForm);
+    e.preventDefault();
+    if (!booking) return;
+    const d = new FormData(bookForm);
+    const destination = d.get('delivery_city')?.trim();
+    if (fulfillment?.value === 'regional') {
+      deliveryCity.setCustomValidity(destination?.length >= 2 ? '' : 'Укажите город доставки');
+    }
+    if (!bookForm.reportValidity()) return;
     if (usesWebsiteOrders()) {
       if (!sendingOrder) void submitWebsiteOrder(d);
       return;
@@ -360,13 +401,18 @@
     if (d.get('payment') === 'split') {
       lines.push('Оплата: хочу оплатить частями через Яндекс Сплит. Пришлите, пожалуйста, ссылку Яндекс Пэй после подтверждения заказа.');
     }
+    if (destination) lines.push('Город доставки: ' + destination);
     const customerName = d.get('name')?.trim();
     if (customerName) lines.push('Имя: ' + customerName);
     if (d.get('date')) lines.push('Желаемая дата: ' + d.get('date'));
     if (deliveryAddress) lines.push('Адрес доставки: ' + deliveryAddress);
-    lines.push(fulfillment?.value === 'express'
-      ? 'Подтвердите, пожалуйста, итоговую сумму и возможность доставки за 30 минут.'
-      : 'Подтвердите, пожалуйста, итоговую сумму и условия получения.');
+    if (fulfillment?.value === 'regional') {
+      lines.push('Подтвердите, пожалуйста, стоимость и срок доставки до моего города.');
+    } else if (fulfillment?.value === 'express') {
+      lines.push('Подтвердите, пожалуйста, итоговую сумму и возможность доставки за 30 минут.');
+    } else {
+      lines.push('Подтвердите, пожалуйста, итоговую сумму и условия получения.');
+    }
     const msg = lines.join('\n');
     closeDialog(bookDialog);goal('v9_booking_request');showContact(msg);
   });
