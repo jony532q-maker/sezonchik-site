@@ -5,9 +5,9 @@
     const name = params.get('book');
     if(!name || !/^tree-[a-z0-9-]+$/i.test(name))return;
     const card=document.getElementById(name);
-    const selector = params.get('fulfillment') === 'delivery'
-      ? '[data-book-fulfillment="delivery"]'
-      : '.v9-booking-btn';
+    let selector = '.v9-booking-btn';
+    if (params.get('payment') === 'split') selector = '[data-book-payment="split"]';
+    else if (params.get('fulfillment') === 'delivery') selector = '[data-book-fulfillment="delivery"]';
     const button = card?.querySelector(selector);
     if(!button)return;
 

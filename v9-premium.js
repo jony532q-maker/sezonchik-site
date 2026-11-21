@@ -124,6 +124,9 @@
   const bookDialog=$('#v9-book-dialog'),bookForm=$('#v9-book-form');let booking=null;
   const fulfillment = bookForm?.elements.namedItem('fulfillment');
   const address = bookForm?.elements.namedItem('address');
+  const payment = bookForm?.elements.namedItem('payment');
+  const fullPaymentNote = $('#v9-book-full-note');
+  const splitPaymentNote = $('#v9-book-split-note');
   const bookingHeight = bookForm?.elements.namedItem('height');
   const bookingPrice = $('#v9-book-price');
   const bookingSubmit = bookForm?.querySelector('button[type="submit"]');
@@ -138,14 +141,8 @@
     const policy = new URL(privacy, location.href);
     if (api.protocol !== 'https:' || policy.protocol !== 'https:') return;
     ordersEndpoint = api.href;
-    $('[data-v9-order-phone]', bookForm).hidden = false;
-    bookForm.elements.phone.disabled = false;
-    bookForm.elements.phone.required = true;
-    bookForm.elements.name.required = true;
-    bookForm.elements.date.required = true;
-    bookingNotice.hidden = false;
     $('[data-v9-order-privacy]', bookForm).href = policy.href;
-    bookingSubmit.textContent = 'Отправить заявку';
+    syncBookingPayment();
   }
 
   async function prepareWebsiteOrders() {
@@ -244,12 +241,34 @@
     express: 'экспресс-доставка до двери в Хабаровске'
   };
 
+  function usesWebsiteOrders() {
+    return Boolean(ordersEndpoint) && payment?.value !== 'split';
+  }
+
+  function syncBookingPayment() {
+    const splitSelected = payment?.value === 'split';
+    if (fullPaymentNote) fullPaymentNote.hidden = splitSelected;
+    if (splitPaymentNote) splitPaymentNote.hidden = !splitSelected;
+    if (ordersEndpoint) {
+      const websiteOrder = usesWebsiteOrders();
+      $('[data-v9-order-phone]', bookForm).hidden = !websiteOrder;
+      bookForm.elements.phone.disabled = !websiteOrder;
+      bookForm.elements.phone.required = websiteOrder;
+      bookForm.elements.name.required = websiteOrder;
+      bookForm.elements.date.required = websiteOrder;
+      bookingNotice.hidden = !websiteOrder;
+      bookingSubmit.textContent = websiteOrder ? 'Отправить заявку' : 'Выбрать способ связи ↗';
+      if (!sendingOrder) setBookingStatus('');
+    }
+    syncBookingAddress();
+  }
+
   function syncBookingAddress() {
     if (!address) return;
     const needsAddress = fulfillment?.value === 'delivery' || fulfillment?.value === 'express';
     address.closest('label').hidden = !needsAddress;
     address.disabled = !needsAddress;
-    address.required = needsAddress && Boolean(ordersEndpoint);
+    address.required = needsAddress && usesWebsiteOrders();
     if (fulfillment?.value === 'express' && !bookForm.elements.date.value) {
       bookForm.elements.date.value = bookForm.elements.date.min;
     }
@@ -267,8 +286,11 @@
 
   bookingHeight?.addEventListener('change', syncBookingVariant);
   fulfillment?.addEventListener('change', syncBookingAddress);
-  async function openBooking(card, method) {
-    if (ordersSetup && !ordersEndpoint) await ordersSetup;
+  bookForm?.addEventListener('change', event => {
+    if (event.target.name === 'payment') syncBookingPayment();
+  });
+  async function openBooking(card, method, paymentType) {
+    if (paymentType !== 'split' && ordersSetup && !ordersEndpoint) await ordersSetup;
     if (sendingOrder || bookDialog.open) return;
     booking = cardData(card);
     bookForm.elements.model.value = booking.name + ' (' + booking.code + ')';
@@ -291,21 +313,22 @@
     bookForm.elements.date.min=yyyy+'-'+mm+'-'+dd;
     bookForm.elements.date.value='';
     if (fulfillment) fulfillment.value = method;
+    if (payment) payment.value = paymentType;
     if (address) address.value = '';
-    syncBookingAddress();
+    syncBookingPayment();
     showDialog(bookDialog);
     goal('v9_booking_open');
   }
 
-  cards.forEach(card => $$('.v9-booking-btn, [data-book-fulfillment]', card).forEach(button => {
+  cards.forEach(card => $$('.v9-booking-btn, [data-book-fulfillment], [data-book-payment]', card).forEach(button => {
     button.addEventListener('click', () => {
-      void openBooking(card, button.dataset.bookFulfillment || 'pickup');
+      void openBooking(card, button.dataset.bookFulfillment || 'pickup', button.dataset.bookPayment || 'full');
     });
   }));
   bookForm?.addEventListener('submit',e=>{
     e.preventDefault();if(!booking||!bookForm.reportValidity())return;
     const d=new FormData(bookForm);
-    if (ordersEndpoint) {
+    if (usesWebsiteOrders()) {
       if (!sendingOrder) void submitWebsiteOrder(d);
       return;
     }
@@ -318,6 +341,9 @@
       'Цена в каталоге: ' + fmt(booking.price) + (booking.vk ? ' (ВК, требуется подтверждение)' : ''),
       'Способ получения: ' + method
     ];
+    if (d.get('payment') === 'split') {
+      lines.push('Оплата: хочу оплатить частями через Яндекс Сплит. Пришлите, пожалуйста, ссылку Яндекс Пэй после подтверждения заказа.');
+    }
     const customerName = d.get('name')?.trim();
     if (customerName) lines.push('Имя: ' + customerName);
     if (d.get('date')) lines.push('Желаемая дата: ' + d.get('date'));

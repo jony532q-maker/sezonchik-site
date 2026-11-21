@@ -108,3 +108,56 @@ body.premium-site #tree-empty {
 #tree-empty p {
   margin: 0 0 12px;
 }
+
+.v10-product-actions .v9-split-purchase,
+.v102-main-actions .v9-split-purchase {
+  grid-column: 1 / -1;
+}
+
+body.premium-site .v102-main-actions .v9-split-purchase {
+  color: #f5dfad;
+  background: #123c2e;
+  border: 1px solid #cba468;
+}
+
+body.premium-site .v102-main-actions .v9-split-purchase:hover {
+  background: #1d5040;
+}
+
+.v9-payment-options {
+  min-width: 0;
+  margin: 0;
+  padding: 6px 12px;
+  border: 1px solid #987f57;
+  border-radius: 9px;
+  background: #0e3427;
+}
+
+.v9-payment-options legend {
+  padding: 0 5px;
+  color: #f5e7ce;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.v9-dialog .v9-payment-options label {
+  flex-direction: row;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+.v9-dialog .v9-payment-options input[type="radio"] {
+  flex: 0 0 auto;
+  width: 1rem;
+  height: 1rem;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  accent-color: #efd190;
+}
+
+.v9-payment-options input:focus-visible {
+  outline: 2px solid #f0d59b;
+  outline-offset: 3px;
+}
