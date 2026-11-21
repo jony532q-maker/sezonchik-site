@@ -18,7 +18,10 @@
     const dialog=$('#v9-message-dialog');
     if(!dialog){window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(message),'_blank','noopener');return;}
     $('#v9-message').value=message;
-    $('#v9-wa-message').href='https://wa.me/'+phone+'?text='+encodeURIComponent(message);
+    const draft = encodeURIComponent(message);
+    $('#v9-wa-message').href = 'https://wa.me/' + phone + '?text=' + draft;
+    const telegram = $('#v9-tg-message');
+    if (telegram) telegram.href = tgUrl + '?text=' + draft;
     showDialog(dialog);
     goal('v9_lead_open');
   }
@@ -33,6 +36,16 @@
     e.preventDefault();
     showContact(message);
   }));
+  $('[data-v9-catalog-help]')?.addEventListener('click', () => {
+    const message = ['Здравствуйте! Помогите подобрать ёлку.'];
+    for (const [selector, label] of [['#tree-height', 'Высота'], ['#tree-type', 'Тип хвои'], ['#tree-budget', 'Бюджет']]) {
+      const filter = $(selector);
+      if (filter?.value) message.push(label + ': ' + filter.options[filter.selectedIndex].textContent.trim());
+    }
+    const query = $('#tree-search')?.value.trim().slice(0, 120);
+    if (query) message.push('Что искали: ' + query);
+    showContact(message.join('\n'));
+  });
   // Customer photos: open original photo, without presenting synthetic images as customer purchases
   const gallery=$('#happy-customers .v4-customers-grid');
   if(gallery){
@@ -56,7 +69,7 @@
   const cards=$$('.tree-product:not(.tree-coming-soon)');
   if(!cards.length)return;
   const cardData=card=>{
-    const sel=$('select',card),opt=sel?.selectedOptions?.[0];
+    const sel=$('select',card),opt=sel?.options[sel.selectedIndex];
     const name=$('.tree-info h2',card)?.textContent.trim()||'Ёлка';
     const code=$('.tree-order',card)?.dataset.code||$('.tree-info small',card)?.textContent.trim()||'';
     const height=opt?.textContent.match(/\d+/)?.[0]||'';
@@ -67,7 +80,7 @@
   };
   // Labels and price changes - no promotional price without history
   function syncLabel(card){
-    const select=$('select',card),op=select?.selectedOptions?.[0];
+    const select=$('select',card),op=select?.options[select.selectedIndex];
     let badge=$('.v9-sale-indicator',card);
     if (!(Number(op?.value) > 0)) {
       badge?.remove();
@@ -107,10 +120,12 @@
     const text='Здравствуйте! Помогите выбрать из этих ёлок:\n'+[...compared].map(id=>{const x=cardData(document.getElementById(id));return '• '+x.name+' ('+x.code+'), '+x.height+' см, '+fmt(x.price)+(x.vk?' [цена из ВК, уточняется]':'');}).join('\n');
     closeDialog(dialog);goal('v9_compare_lead');showContact(text);
   });
-  // Reservation request by messenger, never auto-confirm actual inventory
+  // Purchase inquiry; availability and payment details are confirmed by the shop.
   const bookDialog=$('#v9-book-dialog'),bookForm=$('#v9-book-form');let booking=null;
   const fulfillment = bookForm?.elements.namedItem('fulfillment');
   const address = bookForm?.elements.namedItem('address');
+  const bookingHeight = bookForm?.elements.namedItem('height');
+  const bookingPrice = $('#v9-book-price');
   const bookingSubmit = bookForm?.querySelector('button[type="submit"]');
   const bookingStatus = bookForm?.querySelector('[data-v9-order-status]');
   const bookingNotice = bookForm?.querySelector('[data-v9-order-notice]');
@@ -126,6 +141,8 @@
     $('[data-v9-order-phone]', bookForm).hidden = false;
     bookForm.elements.phone.disabled = false;
     bookForm.elements.phone.required = true;
+    bookForm.elements.name.required = true;
+    bookForm.elements.date.required = true;
     bookingNotice.hidden = false;
     $('[data-v9-order-privacy]', bookForm).href = policy.href;
     bookingSubmit.textContent = 'Отправить заявку';
@@ -212,7 +229,7 @@
       if (!/^[0-9A-F]{8}$/.test(result.order_number || '')) throw new Error('Invalid order number');
       if (!pendingOrder.accepted) goal('v9_booking_request');
       pendingOrder.accepted = true;
-      setBookingStatus('Заявка № ' + result.order_number + ' принята. Мы свяжемся с вами и подтвердим наличие.');
+      setBookingStatus('Запрос № ' + result.order_number + ' отправлен. Мы проверим наличие и свяжемся с вами.');
     } catch (_) {
       bookingSubmit.disabled = false;
       setBookingStatus('Пока не удалось подтвердить отправку. Проверьте данные и попробуйте ещё раз.');
@@ -232,17 +249,40 @@
     const needsAddress = fulfillment?.value === 'delivery' || fulfillment?.value === 'express';
     address.closest('label').hidden = !needsAddress;
     address.disabled = !needsAddress;
-    address.required = needsAddress;
+    address.required = needsAddress && Boolean(ordersEndpoint);
     if (fulfillment?.value === 'express' && !bookForm.elements.date.value) {
       bookForm.elements.date.value = bookForm.elements.date.min;
     }
   }
 
+  function syncBookingVariant() {
+    const option = bookingHeight.options[bookingHeight.selectedIndex];
+    if (!booking || !option) return;
+    booking.height = option.value;
+    booking.price = Number(option.dataset.price);
+    bookingPrice.textContent = booking.price > 0
+      ? 'Цена в каталоге: ' + fmt(booking.price) + (booking.vk ? ' (уточняется)' : '')
+      : 'Цена по запросу';
+  }
+
+  bookingHeight?.addEventListener('change', syncBookingVariant);
   fulfillment?.addEventListener('change', syncBookingAddress);
-  cards.forEach(card=>$('.v9-booking-btn',card)?.addEventListener('click',async()=>{
+  async function openBooking(card, method) {
     if (ordersSetup && !ordersEndpoint) await ordersSetup;
     if (sendingOrder || bookDialog.open) return;
-    booking=cardData(card);bookForm.elements.model.value=booking.name+' ('+booking.code+')';bookForm.elements.height.value=booking.height+' см';
+    booking = cardData(card);
+    bookForm.elements.model.value = booking.name + ' (' + booking.code + ')';
+    const cardSizes = $('select', card);
+    const sizes = [...cardSizes.options].filter(option => !option.disabled);
+    bookingHeight.replaceChildren(...sizes.map(option => {
+      const height = option.textContent.match(/\d+/)?.[0] || '';
+      const choice = new Option(option.textContent.trim(), height);
+      choice.dataset.price = option.value;
+      return choice;
+    }));
+    bookingHeight.value = booking.height;
+    if (bookingHeight.selectedIndex < 0) bookingHeight.selectedIndex = 0;
+    syncBookingVariant();
     if (ordersEndpoint) {
       setBookingStatus('');
       bookingSubmit.disabled = false;
@@ -250,11 +290,17 @@
     const today=new Date(); const yyyy=today.getFullYear();const mm=String(today.getMonth()+1).padStart(2,'0');const dd=String(today.getDate()).padStart(2,'0');
     bookForm.elements.date.min=yyyy+'-'+mm+'-'+dd;
     bookForm.elements.date.value='';
-    if (fulfillment) fulfillment.value = 'pickup';
+    if (fulfillment) fulfillment.value = method;
     if (address) address.value = '';
     syncBookingAddress();
     showDialog(bookDialog);
     goal('v9_booking_open');
+  }
+
+  cards.forEach(card => $$('.v9-booking-btn, [data-book-fulfillment]', card).forEach(button => {
+    button.addEventListener('click', () => {
+      void openBooking(card, button.dataset.bookFulfillment || 'pickup');
+    });
   }));
   bookForm?.addEventListener('submit',e=>{
     e.preventDefault();if(!booking||!bookForm.reportValidity())return;
@@ -266,18 +312,19 @@
     const method = bookingMethods[fulfillment?.value] || bookingMethods.pickup;
     const deliveryAddress = d.get('address')?.trim();
     const lines = [
-      'Здравствуйте! Хочу оставить заявку на бронь.',
+      'Здравствуйте! Хочу купить ёлку. Подскажите, пожалуйста, есть ли она в наличии?',
       'Ёлка: ' + booking.name + ' (' + booking.code + ')',
       'Высота: ' + booking.height + ' см',
       'Цена в каталоге: ' + fmt(booking.price) + (booking.vk ? ' (ВК, требуется подтверждение)' : ''),
-      'Имя: ' + d.get('name'),
-      'Способ получения: ' + method,
-      'Желаемая дата: ' + d.get('date')
+      'Способ получения: ' + method
     ];
+    const customerName = d.get('name')?.trim();
+    if (customerName) lines.push('Имя: ' + customerName);
+    if (d.get('date')) lines.push('Желаемая дата: ' + d.get('date'));
     if (deliveryAddress) lines.push('Адрес доставки: ' + deliveryAddress);
     lines.push(fulfillment?.value === 'express'
-      ? 'Прошу подтвердить наличие, стоимость и возможность доставки за 30 минут.'
-      : 'Прошу подтвердить наличие и условия заказа.');
+      ? 'Подтвердите, пожалуйста, итоговую сумму и возможность доставки за 30 минут.'
+      : 'Подтвердите, пожалуйста, итоговую сумму и условия получения.');
     const msg = lines.join('\n');
     closeDialog(bookDialog);goal('v9_booking_request');showContact(msg);
   });
