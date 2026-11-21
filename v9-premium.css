@@ -270,3 +270,29 @@ body.premium-site .v102-main-actions .v9-split-purchase:hover {
 @media (prefers-reduced-motion: reduce) {
   .v9-message-actions :is(a, button) { transition: none; }
 }
+
+#sales-hits .v4-section-head {
+  align-items: baseline;
+}
+#sales-hits .v4-product-foot {
+  gap: 10px;
+  flex-wrap: wrap;
+}
+@media (max-width: 850px) {
+  #sales-hits .v4-product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  #sales-hits .v4-product-grid {
+    grid-template-columns: 1fr;
+  }
+  #sales-hits .v4-product-card {
+    display: grid;
+    grid-template-columns: minmax(110px, 36%) minmax(0, 1fr);
+    align-items: center;
+  }
+  #sales-hits .v4-product-body {
+    padding: 12px;
+  }
+}
