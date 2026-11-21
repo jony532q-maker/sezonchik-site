@@ -13,14 +13,35 @@ const cards=[...document.querySelectorAll('.tree-product')];
 const grid=document.querySelector('.tree-grid');
 const height=document.getElementById('tree-height'),budget=document.getElementById('tree-budget'),search=document.getElementById('tree-search'),sort=document.getElementById('tree-sort');
 const type=document.getElementById('tree-type');
+const filterSummary = document.getElementById('shop-filter-selection');
 const queryOptions=new URLSearchParams(window.location.search);
 const urlType=queryOptions.get('type');if(type&&['lit','snow','mixed'].includes(urlType))type.value=urlType;
 const urlHeight=queryOptions.get('height');if(urlHeight&&[...height.options].some(o=>o.value===urlHeight))height.value=urlHeight;
 const urlBudget=queryOptions.get('budget');if(urlBudget&&[...budget.options].some(o=>o.value===urlBudget))budget.value=urlBudget;
 const urlSort = queryOptions.get('sort');
 let sortOverride = [...sort.options].some(option => option.value === urlSort) ? urlSort : null;
-const models=cards.map((card,index)=>{const select=card.querySelector('select'),link=card.querySelector('.tree-order');return{card,index,soon:card.classList.contains('tree-coming-soon'),select,link,price:card.querySelector('.tree-price'),name:card.querySelector('h2').textContent,code:link.dataset.code,variants:[...select.options].map(o=>({height:parseInt(o.textContent,10),price:Number(o.value)}))};});
-function updatePrice(model){if(model.soon){const variant=model.variants[model.select.selectedIndex];model.price.textContent='Цена после поступления';model.link.href='https://wa.me/79990821045?text='+encodeURIComponent('Здравствуйте! Подскажите, когда появится ёлка «'+model.name+'», '+model.code+', '+variant.height+' см?');return;}const variant=model.variants[model.select.selectedIndex];const option=model.select.options[model.select.selectedIndex];if (!(variant.price > 0)) {
+const models = cards.map((card, index) => {
+  const select = card.querySelector('select');
+  const link = card.querySelector('.tree-order');
+  return {
+    card, index, select, link,
+    soon: card.classList.contains('tree-coming-soon'),
+    details: [...card.querySelectorAll('.shop-model-link, .v102-details-link')],
+    heightLabel: card.querySelector('.shop-card-height'),
+    price: card.querySelector('.tree-price'),
+    name: card.querySelector('h2').textContent,
+    code: link.dataset.code,
+    variants: [...select.options].map(option => ({ height: parseInt(option.textContent, 10), price: Number(option.value) }))
+  };
+});
+function updatePrice(model){if(model.soon){const variant=model.variants[model.select.selectedIndex];model.price.textContent='Цена после поступления';model.link.href='https://wa.me/79990821045?text='+encodeURIComponent('Здравствуйте! Подскажите, когда появится ёлка «'+model.name+'», '+model.code+', '+variant.height+' см?');return;}const variant=model.variants[model.select.selectedIndex];const option=model.select.options[model.select.selectedIndex];
+if (model.heightLabel) model.heightLabel.textContent = variant.height + ' см';
+for (const link of model.details) {
+  const address = new URL(link.href);
+  address.searchParams.set('size', variant.height);
+  link.href = address.href;
+}
+if (!(variant.price > 0)) {
   model.price.textContent = 'Цена по запросу';
   model.link.href = 'https://wa.me/79990821045?text=' + encodeURIComponent(
     'Здравствуйте! Подскажите цену и наличие ёлки «' + model.name + '», артикул ' + model.code + ', ' + variant.height + ' см.'
@@ -29,6 +50,13 @@ function updatePrice(model){if(model.soon){const variant=model.variants[model.se
 }
 const season=Number(option?.dataset.seasonPrice||0);const current=variant.price.toLocaleString('ru-RU')+' ₽';const planned=season>variant.price?'<span class="sc-season-label">Планируемая цена в сезон</span><del class="sc-season-cross">'+season.toLocaleString('ru-RU')+' ₽</del>':'';model.price.innerHTML=planned+'<span class="sc-price-now-label">Сейчас по предсезонной цене</span><span class="tree-price-current sc-price-now">'+current+'</span>';model.link.href='https://t.me/sezonchik_dv?text='+encodeURIComponent(model.card.classList.contains('tree-product-vk')?'Здравствуйте! Интересует ёлка «'+model.name+'», '+model.code+', '+variant.height+' см. В ВК указана цена '+variant.price.toLocaleString('ru-RU')+' ₽. Подтвердите, пожалуйста, актуальную цену и наличие.':'Здравствуйте! Интересует ёлка «'+model.name+'», '+model.code+', '+variant.height+' см, цена '+variant.price.toLocaleString('ru-RU')+' ₽. Подскажите наличие.');}
 function arrange() {
+  if (filterSummary) {
+    const labels = [height.selectedOptions[0].textContent.trim(), sort.selectedOptions[0].textContent.trim()];
+    if (type?.value) labels.push(type.selectedOptions[0].textContent.trim());
+    if (budget.value) labels.push(budget.selectedOptions[0].textContent.trim());
+    if (search.value.trim()) labels.push('Поиск по названию');
+    filterSummary.textContent = labels.join(' · ');
+  }
   const direction = sort.value === 'asc' ? 1 : sort.value === 'desc' ? -1 : 0;
   [...models].sort((a, b) => {
     if (a.soon !== b.soon) return Number(a.soon) - Number(b.soon);
@@ -68,6 +96,7 @@ quickHeights.forEach(link => {
 });
 function applyFilters() {
   syncQuickHeights();
+  grid.classList.toggle('shop-height-selected', Boolean(height.value));
   sort.value = sortOverride ?? (height.value ? 'asc' : 'default');
   const query = normalizeTreeSearch(search.value);
   let count = 0;

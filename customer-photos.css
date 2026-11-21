@@ -1,0 +1,49 @@
+.shipping-photos {
+  margin: 0 auto 22px;
+  max-width: 860px;
+  padding: clamp(13px, 2.5vw, 24px);
+  border: 1px solid #ad9361;
+  border-radius: 14px;
+  background: #0f3025;
+  color: #f5efe2;
+}
+.shipping-photos h4 {
+  font: 600 clamp(24px, 3vw, 32px)/1.15 'Cormorant Garamond', Georgia, serif;
+  color: #f5efe2;
+  margin: 0 0 12px;
+}
+.shipping-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: clamp(6px, 1.6vw, 14px);
+}
+.shipping-photos-grid figure {
+  min-width: 0;
+  margin: 0;
+}
+.shipping-photos-grid a {
+  display: block;
+  border: 1px solid #b7a472;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+.shipping-photos-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+.shipping-photos-grid figcaption {
+  padding-top: 5px;
+  color: #f5eee0;
+  font-size: clamp(10px, 2.65vw, 14px);
+  line-height: 1.35;
+}
+.shipping-photos .shipping-route {
+  margin: 14px 0 0;
+  color: #ead19d;
+  font-size: 13px;
+  line-height: 1.45;
+}
