@@ -1,0 +1,93 @@
+.tree-assembly-jump {
+  display: inline-flex;
+  gap: 0.5em;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 0.5rem;
+  padding-inline: 0.85rem;
+  color: #174033;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.v4-hero-text .tree-assembly-jump--home {
+  color: #f0d59b;
+}
+
+.tree-assembly-jump:focus-visible,
+.tree-assembly-pair a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.tree-assembly-section {
+  scroll-margin-top: 100px;
+  padding-block: clamp(28px, 5.5vw, 72px);
+  color: #f5f0e6;
+  background: #0c2a20;
+}
+
+.tree-assembly-section h2 {
+  margin: 0 0 0.6rem;
+  color: #f5f0e6;
+  font: 600 clamp(30px, 4.5vw, 50px)/1.05 "Cormorant Garamond", Georgia, serif;
+}
+
+.tree-assembly-section p {
+  max-width: 64ch;
+  margin: 0 0 1.5rem;
+  color: #f5f0e6;
+  line-height: 1.55;
+}
+
+.tree-assembly-examples {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 265px), 1fr));
+  gap: clamp(12px, 2vw, 24px);
+}
+
+.tree-assembly-example {
+  min-width: 0;
+  padding: clamp(10px, 1.5vw, 16px);
+  background: #12372a;
+  border: 1px solid #806c47;
+  border-radius: 14px;
+}
+
+.tree-assembly-example h3 {
+  margin: 0 0 0.6rem;
+  color: #f0d59b;
+  font: 600 26px/1.05 "Cormorant Garamond", Georgia, serif;
+}
+
+.tree-assembly-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(6px, 1vw, 12px);
+}
+
+.tree-assembly-pair figure {
+  min-width: 0;
+  margin: 0;
+}
+
+.tree-assembly-pair a,
+.tree-assembly-pair img {
+  display: block;
+  border-radius: 8px;
+}
+
+.tree-assembly-pair img {
+  width: 100%;
+  height: auto;
+}
+
+.tree-assembly-pair figcaption {
+  margin-top: 0.5rem;
+  color: #f5f0e6;
+  font-size: clamp(12px, 1.5vw, 14px);
+  line-height: 1.35;
+}
