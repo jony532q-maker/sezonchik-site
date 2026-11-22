@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="v9-premium.css?v=20261121-sales-hits">
   <link rel="stylesheet" href="referral-v94.css?v=9.7">
-  <link rel="stylesheet" href="delivery-page.css?v=20261121">
+  <link rel="stylesheet" href="delivery-page.css?v=20261121-shop-audit">
   <script>
     window.ym=window.ym||function(){(window.ym.a=window.ym.a||[]).push(arguments)};
     window.ym.l=Date.now();
@@ -33,8 +33,8 @@
     })();
   </script>
   <script defer src="referral-v94.js?v=10.1"></script>
-  <script defer src="delivery-page.js?v=20261121-regional-order"></script>
-  <script defer src="v9-premium.js?v=20261121-message-buttons"></script>
+  <script defer src="delivery-page.js?v=20261121-shop-audit"></script>
+  <script defer src="v9-premium.js?v=20261121-direct-audit"></script>
 </head>
 <body class="regional-shipping">
   <header class="regional-header">
@@ -52,10 +52,14 @@
         <p class="regional-origin">Отправляем из Хабаровска</p>
         <h1 id="regional-title">Доставка ёлок по России</h1>
         <p class="regional-lead">Подберём ёлку, упакуем и отправим транспортной компанией. Срок и стоимость доставки до вашего города согласуем до оплаты.</p>
-        <aside class="regional-estimate" aria-label="Пример стоимости доставки">
-          <strong>Около 500 ₽</strong>
-          <p id="regional-estimate-copy">Ориентир для близких направлений. Во столько обошлась недавняя отправка в Комсомольск-на-Амуре.</p>
+        <aside class="regional-estimate" aria-label="Условия доставки">
+          <strong id="regional-estimate-title">Рассчитаем доставку</strong>
+          <p id="regional-estimate-copy">Стоимость и срок подтвердим по вашей ёлке до оплаты.</p>
         </aside>
+        <div class="sc-regional-actions">
+          <a class="v9-gold-btn" href="trees.html#tree-catalog">Выбрать ёлку</a>
+          <a href="#delivery-quote" id="regional-quote-link">Уточнить доставку</a>
+        </div>
       </div>
       <section class="regional-quote" aria-labelledby="regional-quote-title">
         <h2 id="regional-quote-title">Узнайте срок и стоимость</h2>
@@ -85,7 +89,7 @@
               </select>
             </label>
           </div>
-          <button type="submit">Узнать срок и стоимость <span aria-hidden="true">↗</span></button>
+          <button type="submit"><span id="regional-quote-action">Узнать срок и стоимость</span> <span aria-hidden="true">↗</span></button>
         </form>
         <p class="regional-form-note">Выберите мессенджер и отправьте готовый запрос.</p>
         <noscript><p>Чтобы уточнить доставку, <a href="https://t.me/sezonchik_dv">напишите нам в Telegram</a> и укажите ваш город.</p></noscript>
@@ -116,6 +120,7 @@
       <a class="regional-catalog-link" href="trees.html#tree-catalog">Выбрать ёлку в каталоге <span aria-hidden="true">↗</span></a>
     </section>
   </main>
+  <div class="regional-wrap sc-regional-referral" data-regional-referral></div>
   <footer class="regional-footer">
     <div class="regional-wrap">СЕЗОНЩИК · Хабаровск, ул. Зелёная, 10</div>
   </footer>

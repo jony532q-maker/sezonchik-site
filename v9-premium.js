@@ -7,6 +7,9 @@
   const $=(q,root=document)=>root.querySelector(q);
   const $$=(q,root=document)=>[...root.querySelectorAll(q)];
   const goal=(name,params)=>{try{if(window.ym)window.ym(110645856,'reachGoal',name,params||{});}catch(_){}};
+  const isKomsomolsk = city => ['комсомольск', 'комсомольскнаамуре']
+    .includes((city || '').toLocaleLowerCase('ru-RU').replace(/[^а-яё]/g, ''));
+  const freeDelivery = 'Доставка 0 ₽ до пункта выдачи ТК в Комсомольске-на-Амуре.';
   const fmt = price => price > 0 ? Number(price).toLocaleString('ru-RU') + ' ₽' : 'цена по запросу';
   function showDialog(dialog){if(!dialog)return; if(typeof dialog.showModal==='function')dialog.showModal();else dialog.setAttribute('open','');}
   function closeDialog(dialog){if(!dialog)return;if(typeof dialog.close==='function')dialog.close();else dialog.removeAttribute('open');}
@@ -20,7 +23,7 @@
     const dialog=$('#v9-message-dialog');
     if(!dialog){window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(message),'_blank','noopener');return;}
     $('#v9-message').value=message;
-    if (copyLabel) copyLabel.textContent = 'Скопировать текст';
+    if (copyLabel) copyLabel.textContent = 'Скопировать заявку';
     const draft = encodeURIComponent(message);
     $('#v9-wa-message').href = 'https://wa.me/' + phone + '?text=' + draft;
     const telegram = $('#v9-tg-message');
@@ -56,7 +59,12 @@
     const message = ['Здравствуйте! Помогите подобрать ёлку.'];
     for (const [selector, label] of [['#tree-height', 'Высота'], ['#tree-type', 'Тип хвои'], ['#tree-budget', 'Бюджет']]) {
       const filter = $(selector);
-      if (filter?.value) message.push(label + ': ' + filter.options[filter.selectedIndex].textContent.trim());
+      if (filter?.value) {
+        const value = filter instanceof HTMLSelectElement
+          ? filter.options[filter.selectedIndex].textContent.trim()
+          : 'до ' + fmt(Number(filter.value));
+        message.push(label + ': ' + value);
+      }
     }
     const query = $('#tree-search')?.value.trim().slice(0, 120);
     if (query) message.push('Что искали: ' + query);
@@ -77,7 +85,17 @@
       e.preventDefault();
       if(!deliveryForm.reportValidity())return;
       const data=new FormData(deliveryForm);
-      const msg='Здравствуйте! Прошу рассчитать доставку ёлки из Хабаровска.\nГород: '+data.get('city')+'\nМодель: '+(data.get('model')||'Помогите выбрать')+'\nВысота: '+(data.get('height')?data.get('height')+' см':'Нужно уточнить')+'\nПодскажите ориентировочную стоимость и сроки.';
+      const city = String(data.get('city') || '').trim();
+      const request = isKomsomolsk(city)
+        ? freeDelivery + ' Подтвердите срок и пункт получения.'
+        : 'Подскажите ориентировочную стоимость и сроки.';
+      const msg = [
+        'Здравствуйте! Хочу заказать доставку ёлки из Хабаровска.',
+        'Город: ' + city,
+        'Модель: ' + (data.get('model') || 'Помогите выбрать'),
+        'Высота: ' + (data.get('height') ? data.get('height') + ' см' : 'Нужно уточнить'),
+        request
+      ].join('\n');
       goal('v9_delivery_request');showContact(msg);
     });
   }
@@ -92,7 +110,7 @@
     const price=Number(opt?.value||0);
     const desc=$('.tree-info p',card)?.textContent.trim()||'';
     const img=card.querySelector('img')?.getAttribute('src')||'';
-    return {id:card.id,name,code,height,price,desc,img,vk:card.classList.contains('tree-product-vk')};
+    return {id:card.id,name,code,height,price,desc,img,diameter:opt?.dataset.diameter,vk:card.classList.contains('tree-product-vk')};
   };
   // Labels and price changes - no promotional price without history
   function syncLabel(card){
@@ -124,7 +142,7 @@
       const item=document.createElement('div');item.className='v9-compare-item';
       const img=document.createElement('img');img.src=model.img;img.alt=model.name;img.loading='lazy';item.appendChild(img);
       const h=document.createElement('h3');h.textContent=model.name;item.appendChild(h);
-      for(const str of [model.code,model.desc,'Высота: '+model.height+' см']){const p=document.createElement('p');p.textContent=str;item.appendChild(p);}
+      for(const str of [model.code,model.desc,'Высота: '+model.height+' см', model.diameter ? 'Диаметр: ' + model.diameter + ' см' : 'Диаметр уточним']){const p=document.createElement('p');p.textContent=str;item.appendChild(p);}
       const price=document.createElement('strong');price.textContent=(model.vk?'Цена ВК: ':'')+fmt(model.price);item.appendChild(price);el.appendChild(item);
     }
     if(!compared.size)el.textContent='Выберите от одной до трёх ёлок.';
@@ -157,6 +175,9 @@
   const bookingHeight = bookForm?.elements.namedItem('height');
   const bookingPrice = $('#v9-book-price');
   const bookingSubmit = bookForm?.querySelector('button[type="submit"]');
+  const bookingSummary = $('#v9-book-summary');
+  const bookingDetails = bookForm?.querySelector('.sc-book-details');
+  const optionalAddressNote = bookForm?.querySelector('[data-v9-optional-address]');
   const bookingStatus = bookForm?.querySelector('[data-v9-order-status]');
   const bookingNotice = bookForm?.querySelector('[data-v9-order-notice]');
   let ordersEndpoint = '';
@@ -285,8 +306,9 @@
       bookForm.elements.phone.required = websiteOrder;
       bookForm.elements.name.required = websiteOrder;
       bookForm.elements.date.required = websiteOrder;
+      if (bookingDetails && websiteOrder) bookingDetails.open = true;
       bookingNotice.hidden = !websiteOrder;
-      bookingSubmit.textContent = websiteOrder ? 'Отправить заявку' : 'Выбрать способ связи ↗';
+      bookingSubmit.textContent = websiteOrder ? 'Отправить заявку' : 'Продолжить в мессенджере ↗';
       if (!sendingOrder) setBookingStatus('');
     }
     syncBookingFulfillment();
@@ -294,10 +316,13 @@
 
   function updateRegionalNote() {
     const city = deliveryCity.value.toLocaleLowerCase('ru-RU').replace(/[^а-яё]/g, '');
-    const estimated = ['комсомольскнаамуре', 'комсомольск', 'биробиджан'].includes(city);
-    regionalNote.textContent = estimated
-      ? 'Отправляем из Хабаровска. Доставка до города — около 500 ₽. Точную стоимость и срок подтвердим до оплаты.'
-      : 'Отправляем из Хабаровска. Стоимость и срок доставки подтвердим до оплаты.';
+    if (isKomsomolsk(deliveryCity.value)) {
+      regionalNote.textContent = freeDelivery + ' Срок и пункт получения подтвердим до оплаты.';
+    } else if (city === 'биробиджан') {
+      regionalNote.textContent = 'Отправляем из Хабаровска. Ориентир — около 500 ₽. Точную стоимость и срок подтвердим до оплаты.';
+    } else {
+      regionalNote.textContent = 'Отправляем из Хабаровска. Стоимость и срок подтвердим до оплаты.';
+    }
   }
 
   function syncBookingFulfillment() {
@@ -315,6 +340,7 @@
     address.closest('label').hidden = !needsAddress;
     address.disabled = !needsAddress;
     address.required = needsAddress && usesWebsiteOrders();
+    if (optionalAddressNote) optionalAddressNote.hidden = address.required;
     if (fulfillment?.value === 'express' && !bookForm.elements.date.value) {
       bookForm.elements.date.value = bookForm.elements.date.min;
     }
@@ -328,6 +354,10 @@
     bookingPrice.textContent = booking.price > 0
       ? 'Цена в каталоге: ' + fmt(booking.price) + (booking.vk ? ' (уточняется)' : '')
       : 'Цена по запросу';
+    if (bookingSummary) {
+      bookingSummary.textContent = booking.name + ' · ' + booking.height + ' см · ' + fmt(booking.price);
+      bookingSummary.hidden = false;
+    }
   }
 
   bookingHeight?.addEventListener('change', syncBookingVariant);
@@ -343,6 +373,7 @@
     if (paymentType !== 'split' && ordersSetup && !ordersEndpoint) await ordersSetup;
     if (sendingOrder || bookDialog.open) return;
     booking = cardData(card);
+    if (bookingDetails) bookingDetails.open = false;
     bookForm.elements.model.value = booking.name + ' (' + booking.code + ')';
     const cardSizes = $('select', card);
     const sizes = [...cardSizes.options].filter(option => !option.disabled);
@@ -407,14 +438,18 @@
     if (d.get('date')) lines.push('Желаемая дата: ' + d.get('date'));
     if (deliveryAddress) lines.push('Адрес доставки: ' + deliveryAddress);
     if (fulfillment?.value === 'regional') {
-      lines.push('Подтвердите, пожалуйста, стоимость и срок доставки до моего города.');
+      lines.push(isKomsomolsk(destination)
+        ? freeDelivery + ' Подтвердите, пожалуйста, срок и пункт получения.'
+        : 'Подтвердите, пожалуйста, стоимость и срок доставки до моего города.');
     } else if (fulfillment?.value === 'express') {
       lines.push('Подтвердите, пожалуйста, итоговую сумму и возможность доставки за 30 минут.');
     } else {
       lines.push('Подтвердите, пожалуйста, итоговую сумму и условия получения.');
     }
     const msg = lines.join('\n');
-    closeDialog(bookDialog);goal('v9_booking_request');showContact(msg);
+    closeDialog(bookDialog);
+    goal('v9_booking_contact_ready', { sku: booking.code, method: fulfillment?.value || 'pickup' });
+    showContact(msg);
   });
   // Direct order button: opening correct copyable context for all messengers
   cards.forEach(card=>{
@@ -423,7 +458,9 @@
       e.preventDefault();const x=cardData(card);
       const price = x.price > 0 ? ', ' + (x.vk ? 'цена в ВК (нужно подтвердить) ' : 'цена ') + fmt(x.price) : '';
       const request = x.price > 0 ? 'наличие' : 'цену и наличие';
-      showContact('Здравствуйте! Интересует ёлка «' + x.name + '», артикул ' + x.code + ', высота ' + x.height + ' см' + price + '. Подскажите, пожалуйста, ' + request + '.');
+      const cityNote = regionalCity?.trim() ? '\nГород доставки: ' + regionalCity.trim() : '';
+      const offer = isKomsomolsk(regionalCity) ? '\n' + freeDelivery : '';
+      showContact('Здравствуйте! Интересует ёлка «' + x.name + '», артикул ' + x.code + ', высота ' + x.height + ' см' + price + '. Подскажите, пожалуйста, ' + request + '.' + cityNote + offer);
       goal('v9_product_request',{sku:x.code});
     });
   });

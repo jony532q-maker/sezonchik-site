@@ -10,6 +10,11 @@
   const plannedPrice = detail.querySelector('[data-detail-planned]');
   const primaryAction = detail.querySelector('.shop-detail-cta');
   const bookLinks = [...detail.querySelectorAll('[data-detail-book]')];
+  const params = new URLSearchParams(location.search);
+  const destination = params.get('delivery_city')?.trim().slice(0, 100);
+  const variantNote = document.createElement('p');
+  variantNote.className = 'shop-detail-variant-note';
+  picker.after(variantNote);
   const money = new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 });
 
   function choose(button) {
@@ -21,10 +26,14 @@
     const showPlanned = Number(planned) > Number(price) && Number(price) > 0;
     plannedPrice.hidden = !showPlanned;
     plannedPrice.textContent = showPlanned ? money.format(planned) : '';
-    primaryAction.textContent = Number(price) > 0 ? 'Купить' : 'Уточнить цену';
+    primaryAction.textContent = Number(price) > 0 ? 'Оформить заявку' : 'Уточнить цену';
+    const diameter = button.dataset.diameter ? 'Диаметр ' + button.dataset.diameter + ' см' : 'Диаметр уточним';
+    const stock = button.dataset.stock === 'in-stock' ? size + ' см в наличии' : 'Наличие ' + size + ' см подтвердим';
+    variantNote.textContent = diameter + ' · ' + stock;
     for (const link of bookLinks) {
       const address = new URL(link.href);
       address.searchParams.set('size', size);
+      if (destination) address.searchParams.set('delivery_city', destination);
       link.href = address.href;
     }
   }

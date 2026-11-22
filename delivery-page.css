@@ -168,3 +168,29 @@ body.regional-shipping {
   .regional-lead { margin: 9px 0 11px; font-size: 13px; }
   .regional-estimate p { font-size: 12px; }
 }
+
+.sc-regional-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  margin: 16px 0 0;
+}
+.sc-regional-actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.sc-regional-actions #regional-quote-link { color: #f1d59b; }
+
+.regional-shipping .sc-regional-actions .v9-gold-btn {
+  color: #102c23;
+  text-decoration: none;
+}
+.sc-regional-referral:empty { display: none; }
+.sc-regional-referral { padding-bottom: 16px; }
+.regional-shipping .sc-regional-referral .sc-ref-widget:not(.sc-ref-expanded) {
+  position: static;
+  transform: none;
+  width: fit-content;
+}

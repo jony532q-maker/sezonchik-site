@@ -15,9 +15,22 @@ const height=document.getElementById('tree-height'),budget=document.getElementBy
 const type=document.getElementById('tree-type');
 const filterSummary = document.getElementById('shop-filter-selection');
 const queryOptions=new URLSearchParams(window.location.search);
+let catalogCity = queryOptions.get('delivery_city');
+try {
+  if (catalogCity === null) catalogCity = sessionStorage.getItem('sezonchik.deliveryCity');
+} catch (_) {}
+catalogCity = catalogCity?.trim().slice(0, 100);
+const catalogDestination = document.getElementById('catalog-destination');
+if (catalogCity && catalogDestination) {
+  const cityKey = catalogCity.toLocaleLowerCase('ru-RU').replace(/[^а-яё]/g, '');
+  catalogDestination.textContent = ['комсомольск', 'комсомольскнаамуре'].includes(cityKey)
+    ? 'Комсомольск-на-Амуре · доставка 0 ₽ до пункта выдачи ТК'
+    : 'Город доставки: ' + catalogCity;
+  catalogDestination.hidden = false;
+}
 const urlType=queryOptions.get('type');if(type&&['lit','snow','mixed'].includes(urlType))type.value=urlType;
 const urlHeight=queryOptions.get('height');if(urlHeight&&[...height.options].some(o=>o.value===urlHeight))height.value=urlHeight;
-const urlBudget=queryOptions.get('budget');if(urlBudget&&[...budget.options].some(o=>o.value===urlBudget))budget.value=urlBudget;
+const urlBudget=queryOptions.get('budget');if (/^[1-9]\d{0,6}$/.test(urlBudget ?? '')) budget.value = urlBudget;
 const urlSort = queryOptions.get('sort');
 let sortOverride = [...sort.options].some(option => option.value === urlSort) ? urlSort : null;
 const models = cards.map((card, index) => {
@@ -29,6 +42,7 @@ const models = cards.map((card, index) => {
     details: [...card.querySelectorAll('.shop-model-link, .v102-details-link')],
     heightLabel: card.querySelector('.shop-card-height'),
     price: card.querySelector('.tree-price'),
+    spec: card.querySelector('.shop-variant-spec'),
     name: card.querySelector('h2').textContent,
     code: link.dataset.code,
     variants: [...select.options].map(option => ({ height: parseInt(option.textContent, 10), price: Number(option.value) }))
@@ -36,9 +50,17 @@ const models = cards.map((card, index) => {
 });
 function updatePrice(model){if(model.soon){const variant=model.variants[model.select.selectedIndex];model.price.textContent='Цена после поступления';model.link.href='https://wa.me/79990821045?text='+encodeURIComponent('Здравствуйте! Подскажите, когда появится ёлка «'+model.name+'», '+model.code+', '+variant.height+' см?');return;}const variant=model.variants[model.select.selectedIndex];const option=model.select.options[model.select.selectedIndex];
 if (model.heightLabel) model.heightLabel.textContent = variant.height + ' см';
+if (model.spec) {
+  model.spec.textContent = option.dataset.diameter
+    ? 'Диаметр ' + option.dataset.diameter + ' см'
+    : 'Диаметр уточним';
+  if (option.dataset.stock === 'in-stock') model.spec.textContent += ' · в наличии';
+  else model.spec.textContent += ' · наличие уточним';
+}
 for (const link of model.details) {
   const address = new URL(link.href);
   address.searchParams.set('size', variant.height);
+  if (catalogCity) address.searchParams.set('delivery_city', catalogCity);
   link.href = address.href;
 }
 if (!(variant.price > 0)) {
@@ -53,7 +75,7 @@ function arrange() {
   if (filterSummary) {
     const labels = [height.selectedOptions[0].textContent.trim(), sort.selectedOptions[0].textContent.trim()];
     if (type?.value) labels.push(type.selectedOptions[0].textContent.trim());
-    if (budget.value) labels.push(budget.selectedOptions[0].textContent.trim());
+    if (budget.value) labels.push('До ' + Number(budget.value).toLocaleString('ru-RU') + ' ₽');
     if (search.value.trim()) labels.push('Поиск по названию');
     filterSummary.textContent = labels.join(' · ');
   }
@@ -135,7 +157,17 @@ height.addEventListener('change', () => {
   saveCatalogHeight();
   applyFilters();
 });
-budget.addEventListener('change',applyFilters);
+budget.addEventListener('change', () => {
+  if (!budget.validity.valid) {
+    budget.reportValidity();
+    return;
+  }
+  const url = new URL(location.href);
+  if (budget.value) url.searchParams.set('budget', budget.value);
+  else url.searchParams.delete('budget');
+  try { history.replaceState(history.state, '', url); } catch (_) {}
+  applyFilters();
+});
 sort.addEventListener('change', () => {
   sortOverride = sort.value;
   const url = new URL(location.href);
