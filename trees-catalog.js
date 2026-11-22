@@ -23,9 +23,13 @@ catalogCity = catalogCity?.trim().slice(0, 100);
 const catalogDestination = document.getElementById('catalog-destination');
 if (catalogCity && catalogDestination) {
   const cityKey = catalogCity.toLocaleLowerCase('ru-RU').replace(/[^а-яё]/g, '');
-  catalogDestination.textContent = ['комсомольск', 'комсомольскнаамуре'].includes(cityKey)
-    ? 'Комсомольск-на-Амуре · доставка 0 ₽ до пункта выдачи ТК'
-    : 'Город доставки: ' + catalogCity;
+  if (['комсомольск', 'комсомольскнаамуре'].includes(cityKey)) {
+    catalogDestination.textContent = 'Комсомольск-на-Амуре · доставка за один день · 0 ₽ до пункта выдачи ТК';
+  } else if (cityKey === 'биробиджан') {
+    catalogDestination.textContent = 'Биробиджан · доставка из Хабаровска за один день · 0 ₽';
+  } else {
+    catalogDestination.textContent = 'Город доставки: ' + catalogCity;
+  }
   catalogDestination.hidden = false;
 }
 const urlType=queryOptions.get('type');if(type&&['lit','snow','mixed'].includes(urlType))type.value=urlType;

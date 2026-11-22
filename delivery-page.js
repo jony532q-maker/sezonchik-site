@@ -4,15 +4,16 @@
   const quotes = new Map([
     ['birobidzhan', {
       city: 'Биробиджан',
-      title: 'Доставка ёлок в Биробиджан',
-      estimate: 'Около 500 ₽',
-      priceNote: 'Ориентир для близких направлений. Стоимость до Биробиджана подтвердим по выбранной ёлке.'
+      title: 'Искусственные ёлки с доставкой в Биробиджан',
+      estimate: 'Доставка за один день — 0 ₽',
+      priceNote: 'Отправляем из Хабаровска. Место и дату получения согласуем до оплаты.',
+      quote: 'Уточнить срок и место получения'
     }],
     ['komsomolsk', {
       city: 'Комсомольск-на-Амуре',
       title: 'Доставка ёлок в Комсомольск-на-Амуре',
-      estimate: 'Доставка 0 ₽',
-      priceNote: 'Бесплатно до пункта выдачи транспортной компании в Комсомольске-на-Амуре. Срок и пункт получения подтвердим до оплаты.',
+      estimate: 'Доставка за один день — 0 ₽',
+      priceNote: 'Бесплатно до пункта выдачи транспортной компании в Комсомольске-на-Амуре. Пункт и дату получения подтвердим до оплаты.',
       quote: 'Уточнить срок и пункт выдачи'
     }]
   ]);
@@ -59,7 +60,7 @@
   }
 
   function prefillRoute() {
-    const key = new URLSearchParams(location.search).get('city');
+    const key = city.dataset.fixedShippingCity || new URLSearchParams(location.search).get('city');
     city.value = quotes.get(key)?.city ?? '';
     displayRoute(key);
   }

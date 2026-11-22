@@ -7,9 +7,14 @@
   const $=(q,root=document)=>root.querySelector(q);
   const $$=(q,root=document)=>[...root.querySelectorAll(q)];
   const goal=(name,params)=>{try{if(window.ym)window.ym(110645856,'reachGoal',name,params||{});}catch(_){}};
-  const isKomsomolsk = city => ['комсомольск', 'комсомольскнаамуре']
-    .includes((city || '').toLocaleLowerCase('ru-RU').replace(/[^а-яё]/g, ''));
-  const freeDelivery = 'Доставка 0 ₽ до пункта выдачи ТК в Комсомольске-на-Амуре.';
+  function regionalDeliveryOffer(city) {
+    const cityKey = (city || '').toLocaleLowerCase('ru-RU').replace(/[^а-яё]/g, '');
+    if (['комсомольск', 'комсомольскнаамуре'].includes(cityKey)) {
+      return 'Доставка за один день — 0 ₽ до пункта выдачи ТК в Комсомольске-на-Амуре.';
+    }
+    if (cityKey === 'биробиджан') return 'Доставка до Биробиджана за один день — 0 ₽.';
+    return '';
+  }
   const fmt = price => price > 0 ? Number(price).toLocaleString('ru-RU') + ' ₽' : 'цена по запросу';
   function showDialog(dialog){if(!dialog)return; if(typeof dialog.showModal==='function')dialog.showModal();else dialog.setAttribute('open','');}
   function closeDialog(dialog){if(!dialog)return;if(typeof dialog.close==='function')dialog.close();else dialog.removeAttribute('open');}
@@ -86,8 +91,9 @@
       if(!deliveryForm.reportValidity())return;
       const data=new FormData(deliveryForm);
       const city = String(data.get('city') || '').trim();
-      const request = isKomsomolsk(city)
-        ? freeDelivery + ' Подтвердите срок и пункт получения.'
+      const offer = regionalDeliveryOffer(city);
+      const request = offer
+        ? offer + ' Подтвердите срок и место получения.'
         : 'Подскажите ориентировочную стоимость и сроки.';
       const msg = [
         'Здравствуйте! Хочу заказать доставку ёлки из Хабаровска.',
@@ -315,14 +321,10 @@
   }
 
   function updateRegionalNote() {
-    const city = deliveryCity.value.toLocaleLowerCase('ru-RU').replace(/[^а-яё]/g, '');
-    if (isKomsomolsk(deliveryCity.value)) {
-      regionalNote.textContent = freeDelivery + ' Срок и пункт получения подтвердим до оплаты.';
-    } else if (city === 'биробиджан') {
-      regionalNote.textContent = 'Отправляем из Хабаровска. Ориентир — около 500 ₽. Точную стоимость и срок подтвердим до оплаты.';
-    } else {
-      regionalNote.textContent = 'Отправляем из Хабаровска. Стоимость и срок подтвердим до оплаты.';
-    }
+    const offer = regionalDeliveryOffer(deliveryCity.value);
+    regionalNote.textContent = offer
+      ? offer + ' Срок и место получения согласуем до оплаты.'
+      : 'Отправляем из Хабаровска. Стоимость и срок подтвердим до оплаты.';
   }
 
   function syncBookingFulfillment() {
@@ -438,8 +440,9 @@
     if (d.get('date')) lines.push('Желаемая дата: ' + d.get('date'));
     if (deliveryAddress) lines.push('Адрес доставки: ' + deliveryAddress);
     if (fulfillment?.value === 'regional') {
-      lines.push(isKomsomolsk(destination)
-        ? freeDelivery + ' Подтвердите, пожалуйста, срок и пункт получения.'
+      const offer = regionalDeliveryOffer(destination);
+      lines.push(offer
+        ? offer + ' Подтвердите, пожалуйста, срок и место получения.'
         : 'Подтвердите, пожалуйста, стоимость и срок доставки до моего города.');
     } else if (fulfillment?.value === 'express') {
       lines.push('Подтвердите, пожалуйста, итоговую сумму и возможность доставки за 30 минут.');
@@ -459,8 +462,9 @@
       const price = x.price > 0 ? ', ' + (x.vk ? 'цена в ВК (нужно подтвердить) ' : 'цена ') + fmt(x.price) : '';
       const request = x.price > 0 ? 'наличие' : 'цену и наличие';
       const cityNote = regionalCity?.trim() ? '\nГород доставки: ' + regionalCity.trim() : '';
-      const offer = isKomsomolsk(regionalCity) ? '\n' + freeDelivery : '';
-      showContact('Здравствуйте! Интересует ёлка «' + x.name + '», артикул ' + x.code + ', высота ' + x.height + ' см' + price + '. Подскажите, пожалуйста, ' + request + '.' + cityNote + offer);
+      const offer = regionalDeliveryOffer(regionalCity);
+      const deliveryNote = offer ? '\n' + offer : '';
+      showContact('Здравствуйте! Интересует ёлка «' + x.name + '», артикул ' + x.code + ', высота ' + x.height + ' см' + price + '. Подскажите, пожалуйста, ' + request + '.' + cityNote + deliveryNote);
       goal('v9_product_request',{sku:x.code});
     });
   });
