@@ -1,0 +1,42 @@
+name: Apply SEZONCHIK V14 page fixes
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/sezonchik_v14_patch.py'
+      - '.github/workflows/sezonchik_v14_apply.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  apply-site-fixes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the current website
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Apply idempotent site patches
+        run: python3 scripts/sezonchik_v14_patch.py
+      - name: Validate code and patch
+        run: |
+          git diff --check
+          python3 -m py_compile server/orders.py
+          node --check referral-v94.js
+          node --check v9-premium.js
+          node --check tree-detail-shop.js
+          node --check delivery-page.js
+          node --check trees-catalog.js
+      - name: Save updated pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html trees.html elki/serebryanaya-skazka-se-625664.html \
+            tree-detail-shop.js dostavka.html elki-komsomolsk-na-amure.html \
+            delivery-page.js trees-catalog.js v9-premium.js server/orders.py sitemap.xml
+          if ! git diff --cached --quiet; then
+            git commit -m "Apply SEZONCHIK V14 static SEO, booking and delivery improvements"
+            git push
+          else
+            echo "No changes required"
+          fi

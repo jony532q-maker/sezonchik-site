@@ -631,3 +631,52 @@
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',updateHits,{once:true});
   else updateHits();
 })();
+
+/* СЕЗОНЩИК V14: доступная политика и отдельное согласие для оформления заявок.
+ * Оформление заказа остаётся в мессенджере, если сервер не сообщил enabled=true.
+ * Не создаём фиктивных подтверждений или заявок при недоступном API. */
+(()=>{
+  'use strict';
+  const id='sc-legal-v14';
+  function ready(){
+    if(document.getElementById(id))return;
+    const path=location.pathname;
+    const prefix=path.includes('/elki/')||path.includes('/bikes/')?'../':'';
+    const privacy=prefix+'privacy.html';
+    const consent=prefix+'consent.html';
+    const style=document.createElement('style');style.id=id;
+    style.textContent=`
+      .sc-legal-v14{max-width:1120px;margin:12px auto 28px;padding:12px 20px;text-align:center;font:500 12px/1.65 Manrope,Arial,sans-serif;color:inherit;opacity:.85}
+      .sc-legal-v14 a{color:inherit;text-underline-offset:3px}
+      .sc-order-consent-v14{display:flex!important;align-items:flex-start!important;gap:10px!important;margin:12px 0!important;padding:12px!important;background:rgba(222,189,126,.08)!important;border:1px solid rgba(195,160,91,.35);border-radius:8px;font:500 12px/1.6 Manrope,Arial,sans-serif!important}
+      .sc-order-consent-v14 input[type=checkbox]{flex-shrink:0;width:18px;height:18px;min-width:18px;accent-color:#b28b42;margin:1px 0 0!important}
+      .sc-order-consent-v14 a{color:inherit!important;text-decoration:underline;text-underline-offset:2px}
+      .sc-legal-v14 a:focus-visible,.sc-order-consent-v14 a:focus-visible{outline:2px solid #d6b26e;outline-offset:3px}
+    `;
+    document.head.append(style);
+    if(!document.querySelector('.sc-legal-v14, .sc-legal-static-v14')){
+      const footer=document.createElement('nav');footer.className='sc-legal-v14';
+      footer.setAttribute('aria-label','Правовая информация');
+      const a=document.createElement('a');a.href=privacy;a.textContent='Политика обработки персональных данных';
+      const sep=document.createTextNode(' · ');
+      const b=document.createElement('a');b.href=consent;b.textContent='Согласие на обработку данных';
+      footer.append(a,sep,b);
+      const target=document.querySelector('footer');
+      if(target)target.append(footer);else document.body.append(footer);
+    }
+    const form=document.getElementById('v9-book-form');
+    if(form&&!form.querySelector('[data-sc-order-consent]')){
+      const label=document.createElement('label');label.className='sc-order-consent-v14';
+      const input=document.createElement('input');input.type='checkbox';input.required=true;input.name='personal_consent';input.value='yes';
+      input.setAttribute('data-sc-order-consent','');
+      const span=document.createElement('span');span.append('Я даю ');
+      const link=document.createElement('a');link.href=consent;link.target='_blank';link.rel='noopener';link.textContent='отдельное согласие на обработку персональных данных';
+      const policy=document.createElement('a');policy.href=privacy;policy.target='_blank';policy.rel='noopener';policy.textContent='политикой обработки данных';
+      span.append(link,' для ответа на заявку и ознакомлен(а) с ',policy,'.');
+      label.append(input,span);
+      const action=form.querySelector('.sc-book-action')||form.querySelector('button[type="submit"]');
+      if(action)action.before(label);else form.append(label);
+    }
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ready,{once:true});else ready();
+})();
