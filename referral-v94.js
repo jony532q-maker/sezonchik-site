@@ -250,7 +250,7 @@
   else run();
 })();
 
-/* СЕЗОНЩИК · 26.11.2026: подбор по высоте и бюджету без выдуманных остатков. */
+/* СЕЗОНЩИК · 26.11.2026: подбор по высоте и бюджету с уточнением наличия. */
 (()=>{
   'use strict';
   function mountQuickChoice(){
@@ -525,7 +525,7 @@
     if(!box)return;
     if(!box.querySelector('.sc-quick-contact-note')){
       const info=document.createElement('p');info.className='sc-quick-contact-note';
-      info.textContent='Подберём из актуального наличия. Без обязательной оплаты и без выдуманных остатков.';
+      info.textContent='Поможем подобрать подходящую ёлку. Наличие модели и высоты подтвердим перед заказом.';
       box.querySelector('.sc-fast-choice__copy')?.append(info);
     }
     const link=box.querySelector('.sc-fast-choice__action');
@@ -565,9 +565,69 @@
   }
 
   function run(){
-    styles();restoreTruthOnHome();fixSelenaDetail();
+    styles();fixSelenaDetail();
     appendSourceForMessenger();trackDirectWhatsAppLinks();fixMessengerHandoff();enhanceQuickChoice();verifyCatalogSoldOut();
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});
   else run();
+})();
+
+
+/* СЕЗОНЩИК V12: восемь популярных моделей вместо хитов с фиксированными высотами/ценами.
+   Доступные высоты и цены подбираются в карточке товара, не подменяем 210 см другой высотой.
+   Включает ранее опубликованный аудит/исправления V11 и не меняет остальной каталог. */
+(()=>{
+  'use strict';
+  const models=[
+    {name:'Селена', code:'2566', img:'assets/trees/emerald-20261104/2566-main.webp', url:'elki/serebryanaya-skazka-se-625664.html'},
+    {name:'Стелла', code:'2402', img:'assets/trees/emerald-20261104/2402-main.webp', url:'elki/taezhnaya-stroynost-se-624027.html'},
+    {name:'Адель', code:'1717', img:'assets/trees/emerald-20261104/1717-main.webp', url:'elki/lesnaya-nezhnost-se-417179.html'},
+    {name:'Гармония', code:'1976', img:'assets/trees/emerald-20261104/1976-main.webp', url:'elki/lesnaya-garmoniya-se-819765.html'},
+    {name:'Императрица', code:'2433', img:'assets/trees/v92/golubaya-imperatritsa-2433-1.webp', url:'elki/golubaya-imperatritsa-2433.html'},
+    {name:'Жемчужина', code:'2566В', img:'assets/trees/emerald-20261104/2566b-main.webp', url:'elki/taezhnaya-zhemchuzhina-se-42566v7.html'},
+    {name:'Грация', code:'2425', img:'assets/trees/emerald-20261104/2425-main.webp', url:'elki/lesnaya-gratsiya-se-624253.html'},
+    {name:'Метелица', code:'06В', img:'assets/trees/emerald-20261104/06b-main.webp', url:'elki/snezhnaya-metelitsa-06b.html'}
+  ];
+  function updateHits(){
+    const section=document.getElementById('sales-hits');
+    const grid=section?.querySelector('.v4-product-grid');
+    if(!grid||grid.dataset.scHitsV12==='1')return;
+    grid.dataset.scHitsV12='1';
+    const fragment=document.createDocumentFragment();
+    for(const model of models){
+      const card=document.createElement('article');
+      card.className='v4-product-card v6-product sc-hit-model-card';
+      const photo=document.createElement('a');
+      photo.className='v4-product-photo';photo.href=model.url;
+      photo.setAttribute('aria-label','Посмотреть ёлку «'+model.name+'»');
+      const image=document.createElement('img');
+      image.alt='Искусственная ёлка «'+model.name+'» — СЕЗОНЩИК';
+      image.src=model.img;image.width=710;image.height=947;image.loading='lazy';image.decoding='async';
+      photo.append(image);
+      const body=document.createElement('div');body.className='v4-product-body';
+      const title=document.createElement('h3');
+      const titleLink=document.createElement('a');titleLink.href=model.url;titleLink.textContent=model.name;
+      title.append(titleLink);
+      const footer=document.createElement('div');footer.className='v4-product-foot';
+      const action=document.createElement('a');
+      action.className='v4-product-button sc-hit-model-action';action.href=model.url;
+      action.textContent='Смотреть модель';
+      action.setAttribute('aria-label','Открыть карточку ёлки «'+model.name+'» и выбрать высоту');
+      footer.append(action);
+      body.append(title,footer);card.append(photo,body);fragment.append(card);
+    }
+    grid.replaceChildren(fragment);
+    if(!document.getElementById('sc-hits-v12-style')){
+      const style=document.createElement('style');style.id='sc-hits-v12-style';
+      style.textContent=`
+        #sales-hits .sc-hit-model-card .v4-product-body{display:flex;flex-direction:column;flex:1;min-width:0}
+        #sales-hits .sc-hit-model-card .v4-product-foot{margin-top:auto;display:flex;align-items:stretch}
+        #sales-hits .sc-hit-model-card .sc-hit-model-action{display:inline-flex;align-items:center;justify-content:center;text-align:center;min-height:44px;width:100%}
+        @media(min-width:1050px){#sales-hits .v4-product-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+      `;
+      document.head.append(style);
+    }
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',updateHits,{once:true});
+  else updateHits();
 })();
