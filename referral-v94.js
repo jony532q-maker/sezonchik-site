@@ -93,9 +93,9 @@
     const action=homeTarget?'Выбрать ёлку':detailCrumb?'Уточнить наличие этой ёлки':'Уточнить наличие';
     notice.innerHTML=`
       <div class="sc-stock-notice__body">
-        <span class="sc-stock-notice__eyebrow"><span aria-hidden="true">✦</span> Важно при выборе ёлки</span>
+        <span class="sc-stock-notice__eyebrow"><span aria-hidden="true">✦</span> Последние поставки сезона</span>
         <strong class="sc-stock-notice__title">Ёлочки разбирают каждый день</strong>
-        <p class="sc-stock-notice__text">Приглянулась модель? Не откладывайте выбор: популярные ёлки и размеры быстро разбирают, и уже завтра нужной модели может не оказаться в наличии. Уточните наличие заранее.</p>
+        <p class="sc-stock-notice__text">Популярные модели и размеры быстро заканчиваются. Если приглянулась ёлка — не откладывайте: уже завтра нужного варианта может не оказаться. <strong>Нового завоза в этом году не будет.</strong> Уточните наличие сегодня.</p>
       </div>
       <a class="sc-stock-notice__action" href="${href}">${action} <span aria-hidden="true">→</span></a>`;
     if(homeTarget){homeTarget.before(notice);notice.classList.add('sc-stock-notice--home');}
@@ -145,14 +145,6 @@
     badge.textContent=noteText;
     if(location==='detail')anchor.insertAdjacentElement('afterend',badge);
     else anchor.append(badge);
-  }
-  function updateNotice(){
-    const p=document.querySelector('#sc-stock-notice-2026 .sc-stock-notice__body');
-    if(!p||p.querySelector('.sc-stock-notice__soldout'))return;
-    const el=document.createElement('p');
-    el.className='sc-stock-notice__soldout';
-    el.textContent='Уже распродана: Селена 210 см. Эта высота больше не поступит.';
-    p.append(el);
   }
   function markCatalog(){
     const card=document.getElementById('tree-11');
@@ -220,6 +212,17 @@
       const available=detail.querySelector('.shop-variants button[data-size="180"]')||[...detail.querySelectorAll('.shop-variants button[data-size]')].find(x=>!x.disabled);
       if(available)available.click();
     }
+    // Replace the stale "210 см — 23 990 ₽" row with a non-clickable out-of-stock label.
+    for (const row of detail.querySelectorAll('tr')) {
+      const sizeLink=row.querySelector('a.seo-size-order');
+      if (!sizeLink || sizeLink.textContent.trim()!=='210 см') continue;
+      const label=document.createElement('span');
+      label.className='sc-selena-size-unavailable';
+      label.textContent='210 см · распродана';
+      sizeLink.replaceWith(label);
+      const priceCell=row.querySelector('td.seo-price');
+      if (priceCell) priceCell.textContent='Нет в наличии · без нового завоза';
+    }
   }
   function markHome(){
     document.querySelectorAll('.v4-product-card').forEach(card=>{
@@ -232,7 +235,8 @@
   function guardLinks(){
     document.querySelectorAll('a[href*="book=tree-11"]').forEach(link=>{
       try{const u=new URL(link.href,location.href);if(u.searchParams.get('size')==='210'){
-        u.searchParams.set('size','180');link.href=u.href;
+        link.href=new URL((location.pathname.includes('/elki/')?'../':'')+'trees.html?height=210#tree-catalog',location.href).href;
+        link.title='Селена 210 см распродана · посмотреть другие модели 210 см';
       }}catch(_){}
     });
   }
@@ -240,7 +244,329 @@
     if(!document.getElementById('sc-selena-soldout-style')){
       const style=document.createElement('style');style.id='sc-selena-soldout-style';style.textContent=noticeStyle;document.head.append(style);
     }
-    updateNotice();markCatalog();markDetail();markHome();guardLinks();
+    markCatalog();markDetail();markHome();guardLinks();
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});
+  else run();
+})();
+
+/* СЕЗОНЩИК · 26.11.2026: подбор по высоте и бюджету без выдуманных остатков. */
+(()=>{
+  'use strict';
+  function mountQuickChoice(){
+    const catalog=document.getElementById('tree-catalog');
+    if (!catalog || document.getElementById('sc-fast-choice-2026')) return;
+    const notice=document.getElementById('sc-stock-notice-2026');
+    const header=catalog.querySelector('.shop-catalog-heading');
+    if (!header) return;
+    const choice=document.createElement('section');
+    choice.className='sc-fast-choice';
+    choice.id='sc-fast-choice-2026';
+    choice.setAttribute('aria-labelledby','sc-fast-choice-title');
+    choice.innerHTML=`
+      <div class="sc-fast-choice__copy">
+        <span class="sc-fast-choice__kicker">Поможем выбрать</span>
+        <h2 id="sc-fast-choice-title">Подберём ёлку, пока нужный размер есть в продаже</h2>
+        <p>Выберите высоту и бюджет — уточним актуальные модели. Наличие подтверждаем перед покупкой.</p>
+      </div>
+      <form class="sc-fast-choice__form">
+        <label>Высота
+          <select name="height" aria-label="Желаемая высота ёлки">
+            <option value="">Любая</option>
+            <option value="150">150 см</option><option value="180">180 см</option>
+            <option value="210">210 см</option><option value="240">240 см</option>
+            <option value="270">270 см</option><option value="300">300 см</option>
+          </select>
+        </label>
+        <label>Бюджет
+          <select name="budget" aria-label="Бюджет на ёлку">
+            <option value="">Любой</option>
+            <option value="8000">До 8 000 ₽</option>
+            <option value="12000">До 12 000 ₽</option>
+            <option value="16000">До 16 000 ₽</option>
+            <option value="22000">До 22 000 ₽</option>
+            <option value="30000">До 30 000 ₽</option>
+            <option value="30000+">Более 30 000 ₽</option>
+          </select>
+        </label>
+        <a class="sc-fast-choice__action" target="_blank" rel="noopener" href="https://wa.me/79990821045">Подобрать в WhatsApp <span aria-hidden="true">→</span></a>
+      </form>`;
+    (notice||header).insertAdjacentElement('afterend',choice);
+    const form=choice.querySelector('form');
+    const link=choice.querySelector('.sc-fast-choice__action');
+    function updateLink(){
+      const height=form.elements.height.value;
+      const budget=form.elements.budget.value;
+      const lines=['Здравствуйте! Помогите подобрать искусственную ёлку СЕЗОНЩИК из актуального наличия.'];
+      lines.push('Высота: '+(height?height+' см':'подберите, пожалуйста'));
+      lines.push('Бюджет: '+(budget==='30000+'?'более 30 000 ₽':budget?'до '+Number(budget).toLocaleString('ru-RU')+' ₽':'уточню при подборе'));
+      lines.push('Подскажите, какие модели сейчас доступны?');
+      link.href='https://wa.me/79990821045?text='+encodeURIComponent(lines.join('\n'));
+    }
+    form.addEventListener('change',updateLink);
+    updateLink();
+    if (!document.getElementById('sc-fast-choice-css')){
+      const style=document.createElement('style');style.id='sc-fast-choice-css';
+      style.textContent=`
+        .sc-fast-choice{box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:center;gap:22px;margin:18px 0 30px;padding:22px 26px;border:1px solid rgba(146,169,152,.35);border-radius:16px;background:#f8f6f0;color:#173b30;font-family:Manrope,Arial,sans-serif;box-shadow:0 6px 20px rgba(2,18,13,.05)}
+        .sc-fast-choice *{box-sizing:border-box}
+        .sc-fast-choice__kicker{display:block;color:#8d6a36;font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;margin-bottom:6px}
+        .sc-fast-choice h2{color:#143d30;font-size:clamp(18px,2vw,24px);font-weight:800;line-height:1.28;margin:0 0 9px}
+        .sc-fast-choice p{color:#526a5c;font-size:12px;line-height:1.6;margin:0}
+        .sc-fast-choice__form{display:flex;align-items:end;gap:10px;flex-wrap:wrap;margin:0}
+        .sc-fast-choice__form label{display:flex;flex:1 1 106px;min-width:100px;flex-direction:column;gap:5px;font-size:11px;font-weight:700;color:#3b5c4c}
+        .sc-fast-choice__form select{width:100%;height:43px;min-height:43px;appearance:auto;padding:8px 7px;border:1px solid #c9d2c8;border-radius:8px;background:#fff;color:#143d30;font:600 12px Manrope,Arial,sans-serif}
+        .sc-fast-choice__action{display:inline-flex;flex:1 1 170px;min-height:43px;align-items:center;justify-content:center;gap:5px;padding:9px 13px;border-radius:8px;background:#123d2e;color:#fff!important;font-size:12px;font-weight:800;line-height:1.3;text-decoration:none!important;text-align:center}
+        .sc-fast-choice__action:hover,.sc-fast-choice__action:focus-visible{background:#225643}
+        .sc-selena-size-unavailable{font-weight:800;color:#9d5a28}
+        @media(max-width:850px){.sc-fast-choice{grid-template-columns:1fr;padding:19px 17px;gap:14px}}
+        @media(max-width:480px){.sc-fast-choice__form label{flex:1 1 42%}.sc-fast-choice__action{flex-basis:100%}}
+      `;
+      document.head.append(style);
+    }
+  }
+  function handleOldSelenaLink(){
+    if(!location.pathname.endsWith('/trees.html'))return;
+    const url=new URL(location.href);
+    if(url.searchParams.get('book')!=='tree-11'||url.searchParams.get('size')!=='210')return;
+    // Do not open an order form for the wrong height when following an old link.
+    url.searchParams.delete('book');url.searchParams.delete('size');
+    url.searchParams.set('height','210');url.hash='tree-catalog';
+    try{history.replaceState(history.state,'',url);}catch(_){}
+    const height=document.getElementById('tree-height');
+    if(height){height.value='210';height.dispatchEvent(new Event('change',{bubbles:true}));}
+    const notice=document.getElementById('sc-fast-choice-2026');
+    if(notice && !notice.querySelector('.sc-selena-deeplink-note')){
+      const note=document.createElement('p');note.className='sc-selena-deeplink-note';
+      note.textContent='Селена 210 см распродана, повторного завоза не будет. Ниже — другие модели высотой 210 см.';
+      note.style.cssText='grid-column:1/-1;color:#874717;font-weight:800;font-size:12px;line-height:1.5;margin:0';
+      notice.append(note);
+    }
+  }
+  function run(){mountQuickChoice();handleOldSelenaLink();}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});
+  else run();
+})();
+
+/* Селена: предлагаем аналоги 210 см вместо несуществующего остатка. */
+(()=>{
+  'use strict';
+  function mountAlternatives(){
+    const detail=document.querySelector('.shop-detail');
+    if(!detail||detail.querySelector('.shop-detail-buy h1')?.textContent.trim()!=='Селена')return;
+    const sold=detail.querySelector('.sc-selena-soldout-detail');
+    if(!sold||document.getElementById('sc-selena-other-210'))return;
+    const a=document.createElement('a');
+    a.id='sc-selena-other-210';
+    a.href='../trees.html?height=210#tree-catalog';
+    a.textContent='Посмотреть другие ёлки 210 см →';
+    a.style.cssText='display:inline-block;margin:0 0 14px;color:#27654b;font:800 13px Manrope,Arial,sans-serif;text-decoration:underline;text-underline-offset:3px';
+    sold.after(a);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mountAlternatives,{once:true});
+  else mountAlternatives();
+})();
+
+
+
+/* СЕЗОНЩИК V11 · fixes after 26.11.2026 audit.
+   These safe UX corrections do not assume live stock counts or a working order API. */
+(()=>{
+  'use strict';
+  const ID='sc-audit-fixes-v11';
+  const GOAL_ID=110645856;
+  const styleText=`
+    .sc-selena-replacement{display:flex;flex-direction:column;justify-content:center;min-height:180px;padding:24px;border:1px solid #d5c6a6;border-radius:12px;background:linear-gradient(145deg,#0d3228,#09231e);color:#fff7e8;gap:12px}
+    .sc-selena-replacement strong{font:700 clamp(20px,2.1vw,27px)/1.2 Manrope,Arial,sans-serif;color:#f6e5c7}
+    .sc-selena-replacement span{font:500 13px/1.65 Manrope,Arial,sans-serif;color:#e5e6db}
+    .sc-selena-replacement a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:12px 14px;border-radius:9px;background:#dcb879;color:#0c291f!important;text-decoration:none!important;font:800 13px/1.4 Manrope,Arial,sans-serif}
+    .sc-messenger-helper{margin:0 0 12px;color:#234635;font:650 13px/1.55 Manrope,Arial,sans-serif}
+    .sc-messenger-copy-hint{margin:0 0 12px;color:#81521b;font:800 13px/1.55 Manrope,Arial,sans-serif}
+    .sc-quick-contact-note{font:600 12px/1.5 Manrope,Arial,sans-serif;color:#365847;margin:2px 0 0}
+    .sc-stock-notice__text strong{color:#f3d9aa;font-weight:850}
+    @media(max-width:720px){.sc-selena-replacement{padding:20px;min-height:170px}.sc-messenger-copy-hint{font-size:12px}}
+  `;
+
+  function styles(){
+    if(document.getElementById(ID))return;
+    const el=document.createElement('style');el.id=ID;el.textContent=styleText;document.head.appendChild(el);
+  }
+
+  function restoreTruthOnHome(){
+    const section=document.getElementById('sales-hits');
+    if(!section)return;
+    const card=[...section.querySelectorAll('.v4-product-card')].find(x => x.querySelector('h3')?.textContent.trim()==='Селена');
+    if(!card||card.dataset.scSoldReplacement==='1')return;
+    card.dataset.scSoldReplacement='1';
+    // Do not display the 210 cm offer as purchasable, or substitute 180 cm silently.
+    card.replaceChildren();
+    const aside=document.createElement('div');
+    aside.className='sc-selena-replacement';
+    aside.innerHTML='<strong>Селена 210 см — распродана</strong><span>Повторного поступления не будет. Посмотрите другие модели высотой 210 см, которые можно уточнить в магазине.</span><a href="trees.html?height=210#tree-catalog">Посмотреть ёлки 210 см →</a>';
+    card.append(aside);
+  }
+
+  function fixSelenaDetail(){
+    const detail=document.querySelector('.shop-detail');
+    if(!detail||detail.querySelector('.shop-detail-buy h1')?.textContent.trim()!=='Селена')return;
+    const sold=detail.querySelector('.shop-variants button[data-size="210"]');
+    if(sold){
+      sold.disabled=true;sold.setAttribute('aria-disabled','true');sold.setAttribute('aria-pressed','false');
+      sold.title='Нет в наличии. Больше не поступит';
+    }
+    for(const row of detail.querySelectorAll('tr')){
+      const link=row.querySelector('a.seo-size-order');
+      const size=link?.textContent.trim()||row.querySelector('.sc-selena-size-unavailable')?.textContent.trim();
+      if(!size||!/^210 см/.test(size))continue;
+      if(link){const span=document.createElement('span');span.className='sc-selena-size-unavailable';span.textContent='210 см — распродана';link.replaceWith(span);}
+      const price=row.querySelector('td.seo-price');if(price)price.textContent='Нет в наличии · без нового поступления';
+    }
+    // For client-rendering crawlers. A subsequent static HTML edit remains desirable.
+    for(const script of document.querySelectorAll('script[type="application/ld+json"]')){
+      try{
+        const object=JSON.parse(script.textContent);
+        let updated=false;
+        const graph=Array.isArray(object['@graph'])?object['@graph']:[object];
+        for(const entry of graph){
+          if(entry['@type']!=='Product'||!String(entry.name||'').includes('Селена'))continue;
+          for(const offer of Array.isArray(entry.offers)?entry.offers:[]){
+            if(/210\s*см/i.test(offer.name||'')){
+              offer.availability='https://schema.org/OutOfStock';updated=true;
+            }
+          }
+        }
+        if(updated)script.textContent=JSON.stringify(object);
+      }catch(_){ /* Schema not always JSON-LD object */ }
+    }
+  }
+
+  function sourceFromLocation(){
+    let answer='';
+    try{
+      const p=new URLSearchParams(location.search);
+      const u=(p.get('utm_source')||'').toLowerCase().trim();
+      const m=(p.get('utm_medium')||'').toLowerCase().trim();
+      const paid=['cpc','ppc','paid','paid_social'].includes(m);
+      if(p.has('yclid')||(paid&&['yandex','direct','yandex_direct'].includes(u)))answer='Яндекс Директ';
+      else if(p.has('gclid')||(paid&&['google','google_ads'].includes(u)))answer='Google Ads';
+      else if(paid&&['vk','vkontakte','vkads','vk_ads'].includes(u))answer='Реклама ВК';
+      else if(['vk','vkontakte','vkads','vk_ads'].includes(u))answer='ВК';
+      else if(['telegram','tg'].includes(u))answer='Telegram';
+      else if(document.referrer){
+        const host=new URL(document.referrer).hostname.toLowerCase();
+        if(/(^|\.)yandex\.(ru|com)$/.test(host))answer='Поиск Яндекса (предварительно)';
+        else if(/(^|\.)google\./.test(host))answer='Поиск Google (предварительно)';
+        else if(/(^|\.)vk\.(com|ru)$/.test(host)||host==='vk.cc')answer='ВК';
+      }
+      if(answer)sessionStorage.setItem('sc_source_v11',JSON.stringify({name:answer,time:Date.now()}));
+      else {
+        const item=JSON.parse(sessionStorage.getItem('sc_source_v11')||'null');
+        if(item&&Date.now()-item.time<30*60*1000)answer=item.name;
+      }
+    }catch(_){}
+    return answer;
+  }
+
+  function appendSourceForMessenger(){
+    const ref=window.SEZONCHIK_REFERRAL;
+    if(!ref||ref._sourceWrappedV11)return;
+    const source=sourceFromLocation();
+    const original=ref.append.bind(ref);
+    ref.append=function(message){
+      const base=original(message);
+      if(!source||base.includes('Источник обращения:'))return base;
+      return base+'\nИсточник обращения: '+source;
+    };
+    ref._sourceWrappedV11=true;
+  }
+
+  function fixMessengerHandoff(){
+    const dialog=document.getElementById('v9-message-dialog');
+    if(!dialog)return;
+    const info=dialog.querySelector('.v9-dialog-head + p');
+    if(info)info.textContent='В WhatsApp сообщение будет подготовлено автоматически. Для Telegram и MAX скопируйте заявку, откройте чат и вставьте текст перед отправкой.';
+    const tg=dialog.querySelector('#v9-tg-message');
+    if(tg){
+      const correct=()=>{if(tg.getAttribute('href')!=='https://t.me/sezonchik_dv')tg.setAttribute('href','https://t.me/sezonchik_dv');};
+      correct();
+      new MutationObserver(correct).observe(tg,{attributes:true,attributeFilter:['href']});
+    }
+    const copy=dialog.querySelector('#v9-copy-message');
+    const channels=dialog.querySelectorAll('.v9-message-channel--telegram,.v9-message-channel--max');
+    channels.forEach(a=>a.addEventListener('click',()=>{
+      const value=dialog.querySelector('#v9-message')?.value;
+      if(value&&navigator.clipboard?.writeText){
+        // Best effort; the explicit copy button remains available if iOS blocks clipboard.
+        navigator.clipboard.writeText(value).then(()=>{
+          const label=copy?.querySelector('[data-v9-copy-label]');
+          if(label)label.textContent='Заявка скопирована ✓ — вставьте в чат';
+        }).catch(()=>{});
+      }
+    },true));
+  }
+
+  function trackDirectWhatsAppLinks(){
+    // Make existing direct WhatsApp buttons carry approximate traffic attribution too.
+    document.addEventListener('click',event=>{
+      const a=event.target?.closest?.('a[href]');
+      if(!a)return;
+      try{
+        const u=new URL(a.href,location.href);
+        if(!['wa.me','www.wa.me','api.whatsapp.com'].includes(u.hostname))return;
+        const current=u.searchParams.get('text')||'Здравствуйте! Интересуют искусственные ёлки СЕЗОНЩИК. Подскажите наличие.';
+        const text=window.SEZONCHIK_REFERRAL?.append?.(current)||current;
+        if(text!==current){u.searchParams.set('text',text);a.href=u.href;}
+      }catch(_){}
+    },true);
+  }
+
+  function enhanceQuickChoice(){
+    const box=document.getElementById('sc-fast-choice-2026');
+    if(!box)return;
+    if(!box.querySelector('.sc-quick-contact-note')){
+      const info=document.createElement('p');info.className='sc-quick-contact-note';
+      info.textContent='Подберём из актуального наличия. Без обязательной оплаты и без выдуманных остатков.';
+      box.querySelector('.sc-fast-choice__copy')?.append(info);
+    }
+    const link=box.querySelector('.sc-fast-choice__action');
+    if(link){
+      link.addEventListener('click',()=>{
+        try{
+          const url=new URL(link.href);
+          const txt=url.searchParams.get('text')||'';
+          const append=window.SEZONCHIK_REFERRAL?.append;
+          if(append){url.searchParams.set('text',append(txt));link.href=url.href;}
+          if(window.ym)window.ym(GOAL_ID,'reachGoal','sc_fast_choice_to_whatsapp');
+        }catch(_){}
+      },true);
+    }
+  }
+
+  function verifyCatalogSoldOut(){
+    const card=document.getElementById('tree-11');
+    if(!card)return;
+    const option=[...card.querySelectorAll('select option')].find(x=>/^\s*210\s*см/.test(x.textContent));
+    if(option){option.disabled=true;option.hidden=true;option.textContent='210 см — распродана';}
+    const selectors=document.querySelectorAll('#tree-height,#tree-type,#tree-budget,#tree-sort,#tree-search,#tree-reset,[data-quick-height]');
+    function sync(){
+      const filter=document.getElementById('tree-height');
+      if(filter?.value==='210'){
+        card.hidden=true;
+        const count=document.getElementById('tree-count');
+        if(count){
+          const match=count.textContent.match(/Найдено моделей:\s*(\d+)/);
+          // Existing catalogue JS may count the sold-out height. Avoid changing its number if unknown.
+          if(match && match[1]==='0')count.textContent=count.textContent;
+        }
+      }
+    }
+    sync();
+    selectors.forEach(x=>x.addEventListener(x.id==='tree-search'?'input':'change',()=>setTimeout(sync,0)));
+  }
+
+  function run(){
+    styles();restoreTruthOnHome();fixSelenaDetail();
+    appendSourceForMessenger();trackDirectWhatsAppLinks();fixMessengerHandoff();enhanceQuickChoice();verifyCatalogSoldOut();
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});
   else run();
