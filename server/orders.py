@@ -36,6 +36,8 @@ def clean_text(payload, key, limit, required=True):
 def parse_order(payload):
     if not isinstance(payload, dict) or payload.get("website"):
         raise ValueError("payload")
+    if payload.get("consent") is not True:
+        raise ValueError("consent")
     raw_id = clean_text(payload, "id", 36)
     order_id = UUID(raw_id, version=4)
     if str(order_id) != raw_id:
@@ -53,8 +55,8 @@ def parse_order(payload):
     method = clean_text(payload, "method", 10)
     if method not in METHODS:
         raise ValueError("method")
-    day = clean_text(payload, "date", 10)
-    if date.fromisoformat(day).isoformat() != day or date.fromisoformat(day) < datetime.now(LOCAL_ZONE).date():
+    day = clean_text(payload, "date", 10, required=False)
+    if day and (date.fromisoformat(day).isoformat() != day or date.fromisoformat(day) < datetime.now(LOCAL_ZONE).date()):
         raise ValueError("date")
     height = payload.get("height")
     if type(height) is not int or not 60 <= height <= 500:
@@ -70,9 +72,10 @@ def parse_order(payload):
         "height": height,
         "price": price,
         "method": method,
-        "address": clean_text(payload, "address", 200) if method != "pickup" else "",
+        "address": clean_text(payload, "address", 200, required=False) if method != "pickup" else "",
         "date": day,
-        "name": clean_text(payload, "name", 80),
+        "name": clean_text(payload, "name", 80, required=False),
+        "consent": True,
         "phone": "+" + digits,
         "ref": ref if ref in ("01", "02", "03", "04") else "",
     }
@@ -88,8 +91,8 @@ def message_for(order):
         "Модель: " + order["model"] + (f' ({order["article"]})' if order["article"] else ""),
         f'Высота: {order["height"]} см',
         "Получение: " + METHODS[order["method"]],
-        "Дата: " + date.fromisoformat(order["date"]).strftime("%d.%m.%Y"),
-        "Имя: " + order["name"],
+        "Дата: " + (date.fromisoformat(order["date"]).strftime("%d.%m.%Y") if order["date"] else "согласуем"),
+        "Имя: " + (order["name"] or "не указано"),
         "Телефон: " + order["phone"],
     ]
     if order["price"]:
@@ -211,6 +214,8 @@ def make_app(orders, origin, token, user_id, tls):
                 "Access-Control-Max-Age": "600",
             })
             return web.Response(status=204, headers=headers)
+        if os.environ.get("ORDERS_ENABLED", "0") != "1":
+            return web.json_response({"error": "not_enabled"}, status=503, headers=headers)
         if request.content_type != "application/json":
             return web.json_response({"error": "format"}, status=415, headers=headers)
         try:
@@ -241,6 +246,15 @@ def make_app(orders, origin, token, user_id, tls):
             with suppress(asyncio.CancelledError):
                 await worker
 
+    async def config(_request):
+        # No client-side access until HTTPS, Russian-hosted DB and MAX bot are ready.
+        is_enabled = os.environ.get("ORDERS_ENABLED", "0") == "1"
+        return web.json_response(
+            {"enabled": is_enabled, "privacy_url": origin + "/privacy.html"},
+            headers={"Access-Control-Allow-Origin": origin,
+                     "Vary": "Origin", "Cache-Control": "no-store"},
+        )
+
     async def health(_request):
         return web.Response(text="OK")
 
@@ -248,6 +262,7 @@ def make_app(orders, origin, token, user_id, tls):
     app.router.add_route("POST", "/orders", receive)
     app.router.add_route("OPTIONS", "/orders", receive)
     app.router.add_get("/health", health)
+    app.router.add_get("/config", config)
     app.cleanup_ctx.append(worker_context)
     return app
 

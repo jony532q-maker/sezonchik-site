@@ -10,9 +10,9 @@
   function regionalDeliveryOffer(city) {
     const cityKey = (city || '').toLocaleLowerCase('ru-RU').replace(/[^а-яё]/g, '');
     if (['комсомольск', 'комсомольскнаамуре'].includes(cityKey)) {
-      return 'Доставка за один день — 0 ₽ до пункта выдачи ТК в Комсомольске-на-Амуре.';
+      return 'Доставка 0 ₽ до пункта выдачи ТК в Комсомольске-на-Амуре. Срок подтвердим до оплаты.';
     }
-    if (cityKey === 'биробиджан') return 'Доставка до Биробиджана за один день — 0 ₽.';
+    if (cityKey === 'биробиджан') return 'Доставка до Биробиджана 0 ₽. Срок и место получения согласуем.';
     return '';
   }
   const fmt = price => price > 0 ? Number(price).toLocaleString('ru-RU') + ' ₽' : 'цена по запросу';
@@ -246,6 +246,7 @@
       return;
     }
     const order = {
+      consent: Boolean(bookForm.querySelector('[data-sc-order-consent]')?.checked),
       article: booking.code,
       model: booking.name,
       height: Number(booking.height),
@@ -310,8 +311,8 @@
       $('[data-v9-order-phone]', bookForm).hidden = !websiteOrder;
       bookForm.elements.phone.disabled = !websiteOrder;
       bookForm.elements.phone.required = websiteOrder;
-      bookForm.elements.name.required = websiteOrder;
-      bookForm.elements.date.required = websiteOrder;
+      bookForm.elements.name.required = false;
+      bookForm.elements.date.required = false;
       if (bookingDetails && websiteOrder) bookingDetails.open = true;
       bookingNotice.hidden = !websiteOrder;
       bookingSubmit.textContent = websiteOrder ? 'Отправить заявку' : 'Продолжить в мессенджере ↗';
@@ -341,7 +342,7 @@
     const needsAddress = fulfillment?.value === 'delivery' || fulfillment?.value === 'express';
     address.closest('label').hidden = !needsAddress;
     address.disabled = !needsAddress;
-    address.required = needsAddress && usesWebsiteOrders();
+    address.required = false;
     if (optionalAddressNote) optionalAddressNote.hidden = address.required;
     if (fulfillment?.value === 'express' && !bookForm.elements.date.value) {
       bookForm.elements.date.value = bookForm.elements.date.min;

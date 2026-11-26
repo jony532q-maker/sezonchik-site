@@ -24,9 +24,9 @@ const catalogDestination = document.getElementById('catalog-destination');
 if (catalogCity && catalogDestination) {
   const cityKey = catalogCity.toLocaleLowerCase('ru-RU').replace(/[^а-яё]/g, '');
   if (['комсомольск', 'комсомольскнаамуре'].includes(cityKey)) {
-    catalogDestination.textContent = 'Комсомольск-на-Амуре · доставка за один день · 0 ₽ до пункта выдачи ТК';
+    catalogDestination.textContent = 'Комсомольск-на-Амуре · доставка 0 ₽ до пункта выдачи ТК · срок уточним';
   } else if (cityKey === 'биробиджан') {
-    catalogDestination.textContent = 'Биробиджан · доставка из Хабаровска за один день · 0 ₽';
+    catalogDestination.textContent = 'Биробиджан · доставка из Хабаровска 0 ₽ · срок уточним';
   } else {
     catalogDestination.textContent = 'Город доставки: ' + catalogCity;
   }

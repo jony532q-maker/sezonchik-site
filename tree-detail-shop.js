@@ -39,12 +39,12 @@
   }
 
   const requestedSize = new URLSearchParams(location.search).get('size');
-  choose(sizes.find(button => button.dataset.size === requestedSize) || sizes[0]);
+  choose(sizes.find(button => button.dataset.size === requestedSize && !button.disabled) || sizes.find(button => !button.disabled) || sizes[0]);
   picker.hidden = false;
 
   picker.addEventListener('click', event => {
     const button = event.target.closest('button[data-size]');
-    if (!button) return;
+    if (!button || button.disabled) return;
     choose(button);
     const address = new URL(location.href);
     address.searchParams.set('size', button.dataset.size);
